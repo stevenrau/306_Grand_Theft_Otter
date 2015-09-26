@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<< d4a93928583dab43dd70bff41ef8417dd126bd87
 guid: cb60061e1cb1b50468c301e8fd71839a
 folderAsset: yes
@@ -8,6 +9,11 @@ guid: 098547a4f0d265f4ba33e0130f013f10
 folderAsset: yes
 timeCreated: 1443288460
 >>>>>>> Added Pearl sprite and spinnin animation
+=======
+guid: 098547a4f0d265f4ba33e0130f013f10
+folderAsset: yes
+timeCreated: 1443288460
+>>>>>>> eb3396c5491ae074b31ad04aa1b3cf1c4a4086ef
 licenseType: Free
 DefaultImporter:
   userData: 
