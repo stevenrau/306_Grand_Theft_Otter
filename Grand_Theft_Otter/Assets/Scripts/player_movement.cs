@@ -31,8 +31,10 @@ public class player_movement : MonoBehaviour {
         r_body.AddForce(new Vector2(0, move_force * v));
 
         //set animation
-        //animator.SetFloat("Speed_x", h);
-        //animator.SetFloat("Speed_y", v);
+        if ( (h > 0.01) || (v > 0.01))
+		{	
+			animator.SetBool("is_moving", true);
+		}
 
 
         //limit to max speed in x
