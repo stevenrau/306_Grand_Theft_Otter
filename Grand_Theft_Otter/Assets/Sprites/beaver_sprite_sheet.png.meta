@@ -1,0 +1,621 @@
+fileFormatVersion: 2
+guid: 0d1d837317d41a549a405b6309a015ff
+timeCreated: 1443285094
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: beaver_sprite_sheet_3
+    21300002: idle_1
+    21300004: idle_2
+    21300006: idle_3
+    21300008: idle_4
+    21300010: hurt_1
+    21300012: hurt_2
+    21300014: walking_1
+    21300016: walking_2
+    21300018: walking_3
+    21300020: walking_4
+    21300022: walking_5
+    21300024: walking_6
+    21300026: walking_7
+    21300028: walking_8
+    21300030: jumping_2
+    21300032: jumping_3
+    21300034: jumping_5
+    21300036: jumping_6
+    21300038: jumping_1
+    21300040: jumping_4
+    21300042: jumping_7
+    21300044: jumping_8
+    21300046: crouching_1
+    21300048: crouching_2
+    21300050: crawling_1
+    21300052: crawling_2
+    21300054: crawling_
+    21300056: crawling_4
+    21300058: turning_1
+    21300060: turning_2
+    21300062: turning_3
+    21300064: turning_4
+    21300066: waving_1
+    21300068: waving_2
+    21300070: swimming_1
+    21300072: swimming_2
+    21300074: swimming_3
+    21300076: swimming_4
+    21300078: underwater
+    21300080: beaver_sprite_sheet_101
+    21300082: beaver_sprite_sheet_107
+    21300084: changing_dir_1
+    21300086: changing_dir_2
+    21300088: changing_dir_3
+    21300090: pulling_1
+    21300092: pulling_2
+    21300094: pulling_3
+    21300096: pulling_4
+    21300098: icon_big
+    21300100: icon_1
+    21300102: icon_2
+    21300104: icon_3
+    21300106: icon_4
+    21300108: beaver_sprite_sheet_132
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 10
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: idle_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 683
+        width: 56
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: idle_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 683
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: idle_3
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 683
+        width: 55
+        height: 48
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: idle_4
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 683
+        width: 54
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hurt_1
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 679
+        width: 50
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: hurt_2
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 679
+        width: 62
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 610
+        width: 60
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 610
+        width: 62
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_3
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 610
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_4
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 610
+        width: 53
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_5
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 610
+        width: 58
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_6
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 610
+        width: 60
+        height: 47
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_7
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 610
+        width: 60
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: walking_8
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 610
+        width: 58
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_2
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 527
+        width: 37
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_3
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 533
+        width: 43
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_5
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 540
+        width: 59
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_6
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 527
+        width: 40
+        height: 64
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 527
+        width: 56
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_4
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 548
+        width: 58
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_7
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 527
+        width: 55
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: jumping_8
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 537
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: crouching_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 462
+        width: 57
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: crouching_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 462
+        width: 61
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: crawling_1
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 462
+        width: 61
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: crawling_2
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 462
+        width: 60
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: crawling_
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 462
+        width: 59
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: crawling_4
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 462
+        width: 60
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turning_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 385
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turning_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 385
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turning_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 386
+        width: 34
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: turning_4
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 385
+        width: 58
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: waving_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 311
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: waving_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 311
+        width: 56
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swimming_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 255
+        width: 80
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swimming_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 245
+        width: 83
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swimming_3
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 255
+        width: 86
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: swimming_4
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 253
+        width: 83
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: underwater
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 253
+        width: 80
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: changing_dir_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 192
+        width: 68
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: changing_dir_2
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 193
+        width: 45
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: changing_dir_3
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 192
+        width: 68
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pulling_1
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 129
+        width: 80
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pulling_2
+      rect:
+        serializedVersion: 2
+        x: 89
+        y: 119
+        width: 83
+        height: 46
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pulling_3
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 129
+        width: 86
+        height: 36
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: pulling_4
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 127
+        width: 83
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_big
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 50
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 50
+        width: 44
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_2
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 50
+        width: 46
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_3
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 50
+        width: 44
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_4
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 50
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
