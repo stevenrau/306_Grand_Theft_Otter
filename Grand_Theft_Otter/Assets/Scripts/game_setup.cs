@@ -9,9 +9,16 @@ public class game_setup : MonoBehaviour {
 	private int cur_left_point_structs;
 	private int cur_right_point_structs;
 
+	string[] structures;
+
 	// Use this for initialization
 	void Start () {
-	
+		structures = new string[5];
+		structures [0] = "first_point";
+		structures [1] = "second_point";
+		structures [2] = "third_point";
+		structures [3] = "fourth_point";
+		structures [4] = "fifth_point";
 	}
 
 	void Awake()
@@ -92,7 +99,20 @@ public class game_setup : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		if (cur_left_point_structs < left_score) {
+			GameObject cur_struct = Instantiate (Resources.Load (structures [left_score - 1])) as GameObject;
+
+			cur_left_point_structs++;
+		}
+		else if (cur_right_point_structs < right_score) {
+			GameObject cur_struct = Instantiate (Resources.Load (structures [right_score - 1])) as GameObject;
+
+			cur_struct.transform.position = new Vector3(Mathf.Abs (cur_struct.transform.position.x), cur_struct.transform.position.y, cur_struct.transform.position.z);
+			cur_struct.transform.localScale = new Vector2(-cur_struct.transform.localScale.x, cur_struct.transform.localScale.y);
+			
+			cur_right_point_structs++;
+		}
 	}
 
 	public void increment_left_score()
@@ -100,8 +120,18 @@ public class game_setup : MonoBehaviour {
 		left_score++;
 	}
 
-	public void increment_left_score()
+	public void increment_right_score()
 	{
 		right_score++;
+	}
+
+	public void print_left_score()
+	{
+		print (left_score);
+	}
+
+	public void print_right_score()
+	{
+		print (right_score);
 	}
 }
