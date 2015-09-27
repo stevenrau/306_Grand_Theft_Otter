@@ -24,8 +24,23 @@ public class pearl_behaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-		if (respawn) {
+
+ //       if (transform.position.x < -4.35)
+  //      {
+  //          Transform temp = transform;
+   //         transform.position = new Vector2(-4,temp.position.y);
+   //            
+   //     }
+//
+ //       if (transform.position.x < -4.35)
+  //      {
+  //          Transform temp = transform;
+  //          transform.position = new Vector2(-4, temp.position.y);
+  //
+   //     }
+
+
+        if (respawn) {
 			transform.position = spawn_point.transform.position;
 			animator.SetTrigger ("has_respawned");
 
