@@ -21,6 +21,19 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		{
 			pearl_behaviour pearl_script = other.gameObject.GetComponent<pearl_behaviour> ();
 			pearl_script.score_and_animate ();
+
+			if (gameObject.name == "left_score_zone")
+			{
+				game_script.increment_left_score();
+				
+				game_script.print_left_score();
+			}
+			else if (gameObject.name == "right_score_zone");
+			{
+				game_script.increment_right_score ();
+				
+				game_script.print_right_score();
+			}
 		} 
 		else if (other.tag == "Player") 
 		{
