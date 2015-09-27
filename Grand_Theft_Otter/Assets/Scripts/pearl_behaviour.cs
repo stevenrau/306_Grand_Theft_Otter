@@ -28,6 +28,7 @@ public class pearl_behaviour : MonoBehaviour {
 	
 		if (respawn) {
 			transform.position = spawn_point.transform.position;
+			animator.SetTrigger ("has_respawned");
 
 			respawn = false;
 		}
@@ -48,5 +49,17 @@ public class pearl_behaviour : MonoBehaviour {
 		if (other.tag == "Player") {
 			respawn = true;
 		}
+	}
+
+	void set_respawn_true()
+	{
+		respawn = true;
+	}
+
+	public void score_and_animate()
+	{
+		animator.SetTrigger ("score");
+
+		Invoke ("set_respawn_true", 2.0f);
 	}
 }
