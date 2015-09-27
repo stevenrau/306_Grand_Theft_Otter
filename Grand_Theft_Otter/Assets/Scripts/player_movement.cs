@@ -201,7 +201,8 @@ public class player_movement : MonoBehaviour {
 
             //throw the pearl in the right direction
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
-            
+
+            has_pearl = false;
 
             Vector3 dir;
             if (facing_right)

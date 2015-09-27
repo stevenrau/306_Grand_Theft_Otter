@@ -25,19 +25,19 @@ public class pearl_behaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
- //       if (transform.position.x < -4.35)
-  //      {
-  //          Transform temp = transform;
-   //         transform.position = new Vector2(-4,temp.position.y);
-   //            
-   //     }
-//
- //       if (transform.position.x < -4.35)
-  //      {
-  //          Transform temp = transform;
-  //          transform.position = new Vector2(-4, temp.position.y);
-  //
-   //     }
+        if (transform.position.x < -8.5)
+        {
+            Transform temp = transform;
+            transform.position = new Vector2(-4,temp.position.y);
+               
+        }
+
+        if (transform.position.x > 8.5)
+        {
+            Transform temp = transform;
+            transform.position = new Vector2(4, temp.position.y);
+
+        }
 
 
         if (respawn) {
