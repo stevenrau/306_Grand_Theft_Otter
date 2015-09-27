@@ -8,7 +8,8 @@ public class player_movement : MonoBehaviour {
 
     public float move_force;
     public float max_speed;
-    float facing_angle;
+
+    GameObject pearlOffset; //this is a pearl that will indicate the direction it will be thrown
 
 	// Use this for initialization
 	void Start () {
@@ -16,17 +17,16 @@ public class player_movement : MonoBehaviour {
         r_body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        
+        pearlOffset = transform.GetChild(0).gameObject; //get the offset pearl for aiming purposes
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+        //move the player position 
         float h = Input.GetAxis("left_analog_horizontal");
-
         float v = Input.GetAxis("left_analog_vertical");
-
         r_body.AddForce(new Vector2(move_force * h, 0));
         r_body.AddForce(new Vector2(0, move_force * v));
 
@@ -35,7 +35,6 @@ public class player_movement : MonoBehaviour {
 		{	
 			animator.SetBool("is_moving", true);
 		}
-
 
         //limit to max speed in x
         if (r_body.velocity.x > max_speed)
@@ -57,13 +56,21 @@ public class player_movement : MonoBehaviour {
             r_body.velocity = new Vector2( r_body.velocity.x, max_speed*-1);
         }
 
+        //point the beaver in the same direction as it is moving
+        rotateBeaver();
 
-        // ROTATE A GUN OBJECT AROUND THE Z-AXIS
-        // BASED ON THE ANGLE OF THE RIGHT ANALOG STICK
-        float x = Input.GetAxis("right_analog_horizontal");
-        float y = Input.GetAxis("right_analog_vertical");
+        //set the offset pearl object to point in the direction it will be thrown
+        rotatePearlOffset();
+    }
+
+    //point the beaver in the same direction as it is moving
+    void rotateBeaver()
+    {
+        //get values of analog stick
+        float x = Input.GetAxis("left_analog_horizontal");
+        float y = Input.GetAxis("left_analog_vertical");
         float aim_angle = 0.0f;
-        
+
         // USED TO CHECK OUTPUT
         //Debug.Log(" horz: " + x + "   vert: " + y);
 
@@ -77,13 +84,34 @@ public class player_movement : MonoBehaviour {
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
         {
-
-            aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) *-1 -180;
-
-            // ANGLE GUN
+            aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) * -1 - 180;
             transform.rotation = Quaternion.AngleAxis(aim_angle, Vector3.forward);
         }
+    }
 
+    //point the pearl based on left analog stick
+    void rotatePearlOffset()
+    {
+        //get values of analog stick
+        float x = Input.GetAxis("right_analog_horizontal");
+        float y = Input.GetAxis("right_analog_vertical");
+        float aim_angle = 0.0f;
 
+        // USED TO CHECK OUTPUT
+        //Debug.Log(" horz: " + x + "   vert: " + y);
+
+        // CANCEL ALL INPUT BELOW THIS FLOAT
+        float R_analog_threshold = 0.20f;
+
+        if (Mathf.Abs(x) < R_analog_threshold) { x = 0.0f; }
+
+        if (Mathf.Abs(y) < R_analog_threshold) { y = 0.0f; }
+
+        // CALCULATE ANGLE AND ROTATE
+        if (x != 0.0f || y != 0.0f)
+        {
+            aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) * -1 - 180;
+            transform.rotation = Quaternion.AngleAxis(aim_angle, Vector3.forward);
+        }
     }
 }

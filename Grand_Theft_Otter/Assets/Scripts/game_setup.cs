@@ -29,6 +29,7 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 		GameObject seaweed_left = Instantiate(Resources.Load("Seaweed")) as GameObject;
 		GameObject seaweed_right = Instantiate(Resources.Load("Seaweed")) as GameObject;
+        
 		//seaweed_left.transform.Translate(new Vector2 (-0.2f, -0.1f));
 		Transform left_transform = seaweed_left.transform;
 		seaweed_right.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
@@ -58,7 +59,8 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the beavers (otters)
 		 * ************************************************************************************/
-		GameObject beaver = Instantiate (Resources.Load ("Beaver")) as GameObject;
+		GameObject beaver1 = Instantiate (Resources.Load ("Beaver")) as GameObject;
+        beaver1.name = "Beaver1";
 	}
 	
 	// Update is called once per frame
