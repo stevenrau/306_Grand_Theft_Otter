@@ -6,6 +6,7 @@ public class player_movement : MonoBehaviour {
     Rigidbody2D r_body; //the body of the player
     Animator animator; //the animator for the player
 
+    bool facing_right;
     public float move_force;
     public float max_speed;
 
@@ -17,6 +18,8 @@ public class player_movement : MonoBehaviour {
         r_body = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
+        facing_right = true;
+
         pearlOffset = transform.GetChild(0).gameObject; //get the offset pearl for aiming purposes
 
 	}
@@ -24,11 +27,22 @@ public class player_movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        Debug.Log("facing_right =" + facing_right);
+
         //move the player position 
         float h = Input.GetAxis("left_analog_horizontal");
         float v = Input.GetAxis("left_analog_vertical");
         r_body.AddForce(new Vector2(move_force * h, 0));
         r_body.AddForce(new Vector2(0, move_force * v));
+
+        if (facing_right && h < 0)
+        {
+            Flip();
+        }
+        else if (!facing_right && h > 0)
+        {
+            Flip();
+        }
 
         //set animation
         if ( (h > 0.01) || (v > 0.01))
@@ -84,7 +98,15 @@ public class player_movement : MonoBehaviour {
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
         {
-            aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) * -1 - 180;
+            if (facing_right)
+            {
+                aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+            }
+            else
+            {
+                aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg)  + 180;
+            }
+            
             transform.rotation = Quaternion.AngleAxis(aim_angle, Vector3.forward);
         }
     }
@@ -110,8 +132,29 @@ public class player_movement : MonoBehaviour {
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
         {
-            aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) * -1 - 180;
-            transform.rotation = Quaternion.AngleAxis(aim_angle, Vector3.forward);
+            if (facing_right)
+            {
+                aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) * -1 - 180;
+            }
+            else
+            {
+                aim_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg)  -180 ;
+            }
+           
+            pearlOffset.transform.rotation = Quaternion.AngleAxis(aim_angle, Vector3.forward);
         }
     }
+
+    //face the player right or left based on its horizontal speed
+    void Flip()
+    {
+        animator.SetTrigger("turn");
+
+        facing_right = !facing_right;
+
+        Vector3 tmp = transform.localScale;
+        tmp.x = tmp.x * -1;
+        transform.localScale = tmp;
+    }
+
 }

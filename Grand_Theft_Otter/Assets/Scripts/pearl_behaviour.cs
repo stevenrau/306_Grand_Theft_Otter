@@ -47,7 +47,15 @@ public class pearl_behaviour : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag == "Player") {
-			respawn = true;
+
+            GameObject player = other.gameObject;
+
+            GameObject pearlOffset = player.transform.GetChild(0).gameObject;
+            pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
+
+            Destroy(gameObject);
+
+			//respawn = true;
 		}
 	}
 

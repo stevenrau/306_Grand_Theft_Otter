@@ -70,7 +70,13 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 		GameObject beaver1 = Instantiate (Resources.Load ("Beaver")) as GameObject;
         beaver1.name = "Beaver1";
-	}
+
+        GameObject pearlOffset = Instantiate(Resources.Load("Pearl_Offset")) as GameObject;
+        pearlOffset.transform.parent= beaver1.transform;
+        pearlOffset.transform.position = new Vector3(beaver1.transform.position.x +0.25f, beaver1.transform.position.y-0.4f);
+        
+        pearlOffset.GetComponent<SpriteRenderer>().enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update () {
