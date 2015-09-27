@@ -22,7 +22,12 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the Sky Background
 		 * ************************************************************************************/
-		GameObject sky = Instantiate (Resources.Load ("Day_Sky")) as GameObject;
+		GameObject sky = Instantiate (Resources.Load ("Night_Sky")) as GameObject;
+
+		/***************************************************************************************
+		 * Load the water surface edge
+		 * ************************************************************************************/
+		GameObject water_surface_edge = Instantiate (Resources.Load ("Water_Surface_Edge")) as GameObject;
 
 		/***************************************************************************************
 		 * Load the seaweed barriers

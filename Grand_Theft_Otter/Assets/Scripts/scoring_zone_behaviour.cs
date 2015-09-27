@@ -28,6 +28,8 @@ public class scoring_zone_behaviour : MonoBehaviour {
 			{
 				player_script.hide_pearl ();
 
+				player_script.set_has_pearl(false);
+
 				GameObject scored_pearl = Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity) as GameObject;
 
 				Invoke("create_new_pearl", 1.5f);
