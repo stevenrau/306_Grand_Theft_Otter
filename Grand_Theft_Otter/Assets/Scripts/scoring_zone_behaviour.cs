@@ -15,6 +15,8 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		game_setup game_script = GameObject.Find ("game_setup").GetComponent<game_setup> ();
+
 		if (other.tag == "Pearl") 
 		{
 			pearl_behaviour pearl_script = other.gameObject.GetComponent<pearl_behaviour> ();
@@ -33,6 +35,10 @@ public class scoring_zone_behaviour : MonoBehaviour {
 				GameObject scored_pearl = Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity) as GameObject;
 
 				Invoke("create_new_pearl", 1.5f);
+
+				/*if (gameObject.name == "left_score_zone")
+				{
+					game_script.increment_left_score();*/
 			}
 		}
 	}

@@ -4,6 +4,11 @@ using System.Collections.Generic;
 
 public class game_setup : MonoBehaviour {
 
+	private int left_score = 0;
+	private int right_score = 0;
+	private int cur_left_point_structs;
+	private int cur_right_point_structs;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -55,7 +60,9 @@ public class game_setup : MonoBehaviour {
 		 * Load the scoring zones
 		 * ************************************************************************************/
 		GameObject scoring_zone_left = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
+		scoring_zone_left.name = "left_score_zone";
 		GameObject scoring_zone_right = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
+		scoring_zone_right.name = "right_score_zone";
 		left_transform = scoring_zone_left.transform;
 		scoring_zone_right.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
 		scoring_zone_right.transform.localScale = new Vector2(-scoring_zone_left.transform.localScale.x, scoring_zone_left.transform.localScale.y);
@@ -86,5 +93,15 @@ public class game_setup : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	public void increment_left_score()
+	{
+		left_score++;
+	}
+
+	public void increment_left_score()
+	{
+		right_score++;
 	}
 }
