@@ -55,6 +55,8 @@ public class pearl_behaviour : MonoBehaviour {
 
             Destroy(gameObject);
 
+			player_movement player_script = other.gameObject.GetComponent<player_movement>();
+			player_script.set_has_pearl(true);
 			//respawn = true;
 		}
 	}

@@ -10,6 +10,8 @@ public class player_movement : MonoBehaviour {
     public float move_force;
     public float max_speed;
 
+	private bool has_pearl = false;
+
     GameObject pearlOffset; //this is a pearl that will indicate the direction it will be thrown
 
 	// Use this for initialization
@@ -30,8 +32,8 @@ public class player_movement : MonoBehaviour {
         Debug.Log("facing_right =" + facing_right);
 
         //move the player position 
-        float h = Input.GetAxis("left_analog_horizontal");
-        float v = Input.GetAxis("left_analog_vertical");
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
         r_body.AddForce(new Vector2(move_force * h, 0));
         r_body.AddForce(new Vector2(0, move_force * v));
 
@@ -156,5 +158,20 @@ public class player_movement : MonoBehaviour {
         tmp.x = tmp.x * -1;
         transform.localScale = tmp;
     }
+
+	public void set_has_pearl(bool pearl)
+	{
+		has_pearl = pearl;
+	}
+
+	public bool get_has_pearl()
+	{
+		return has_pearl;
+	}
+
+	public void hide_pearl()
+	{
+		transform.GetChild (0).gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+	}
 
 }
