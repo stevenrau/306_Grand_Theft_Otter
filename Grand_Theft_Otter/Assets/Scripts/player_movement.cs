@@ -39,19 +39,12 @@ public class player_movement : MonoBehaviour {
     void Update() {
 
         //move the player position 
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("left_analog_horizontal");
+        float v = Input.GetAxis("left_analog_vertical");
         r_body.AddForce(new Vector2(move_force * h, 0));
         r_body.AddForce(new Vector2(0, move_force * v));
 
-        if (facing_right && h < 0)
-        {
-            Flip();
-        }
-        else if (!facing_right && h > 0)
-        {
-            Flip();
-        }
+        
 
         //set animation
         if ((h > 0.01) || (v > 0.01))
@@ -94,6 +87,16 @@ public class player_movement : MonoBehaviour {
         {
             throwPearl(); //will throw in the direction the pearl is currently facing
         }
+
+        if (facing_right && h < 0)
+        {
+            Flip();
+        }
+        else if (!facing_right && h > 0)
+        {
+            Flip();
+        }
+
     }
 
     //point the beaver in the same direction as it is moving
@@ -198,22 +201,64 @@ public class player_movement : MonoBehaviour {
 
             //throw the pearl in the right direction
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
-            thrownPearl.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+            
 
             Vector3 dir;
             if (facing_right)
             {
-                dir = Quaternion.AngleAxis(throw_angle, Vector3.forward) * Vector3.up;
+                thrownPearl.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
+                //dir = Quaternion.AngleAxis(throw_angle, Vector3.forward) * Vector3.up;
+
+                if(throw_x < 0)
+                {
+                    throw_x *= -1;
+                }
+                else
+                {
+
+                }
+
+                if (throw_y < 0)
+                {
+                    
+                }
+                else
+                {
+                    throw_y *= -1;
+                }
+
             }
             else
             {
-                dir = Quaternion.AngleAxis(throw_angle, Vector3.forward) * Vector3.down;
+                thrownPearl.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
+                //dir = Quaternion.AngleAxis(throw_angle -180, Vector3.forward) * Vector3.up;
+
+                if (throw_x < 0)
+                {
+                    
+                }
+                else
+                {
+                    throw_x *= 1;
+                }
+
+                if(throw_y < 0)
+                {
+                    throw_y *= -1;
+                }
+                else
+                {
+
+                }
+                //throw_x *= 1;
+                
+                
             }
            
-            thrownPearl.GetComponent<Rigidbody2D>().AddForce(dir * throw_force);
-            
+            thrownPearl.GetComponent<Rigidbody2D>().AddForce(new Vector2(throw_x * throw_force, throw_y* throw_force)); 
         }
          
+    
 
     }
 
