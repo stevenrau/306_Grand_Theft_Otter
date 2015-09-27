@@ -15,6 +15,16 @@ public class game_setup : MonoBehaviour {
 		Debug.Log (Screen.height);
 
 		/***************************************************************************************
+		 * Load the Water Background
+		 * ************************************************************************************/
+		GameObject water_bg = Instantiate (Resources.Load ("Water_BG")) as GameObject;
+
+		/***************************************************************************************
+		 * Load the Sky Background
+		 * ************************************************************************************/
+		GameObject sky = Instantiate (Resources.Load ("Day_Sky")) as GameObject;
+
+		/***************************************************************************************
 		 * Load the seaweed barriers
 		 * ************************************************************************************/
 		GameObject seaweed_left = Instantiate(Resources.Load("Seaweed")) as GameObject;
@@ -39,6 +49,15 @@ public class game_setup : MonoBehaviour {
 		 * Load the floor
 		 * ************************************************************************************/
 		GameObject floor = Instantiate (Resources.Load ("Floor")) as GameObject;
+
+		/***************************************************************************************
+		 * Load the pearl
+		 * ************************************************************************************/
+
+		/***************************************************************************************
+		 * Load the beavers (otters)
+		 * ************************************************************************************/
+		GameObject beaver = Instantiate (Resources.Load ("Beaver")) as GameObject;
 	}
 	
 	// Update is called once per frame
