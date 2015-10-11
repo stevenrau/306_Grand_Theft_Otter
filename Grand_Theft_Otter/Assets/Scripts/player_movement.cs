@@ -208,7 +208,7 @@ public class player_movement : MonoBehaviour {
 			//disable beaver's collider temporarily
 			gameObject.GetComponent<BoxCollider2D>().enabled = false;
 
-			//turn it back on in a second
+			//turn it back on in a second. This is NOT THE FINAL SOLUTION
 			Invoke("enableCollider", 1.0f);
 
             //throw the pearl in the right direction
