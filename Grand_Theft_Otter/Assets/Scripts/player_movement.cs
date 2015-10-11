@@ -4,53 +4,79 @@ using System.Collections;
 public class player_movement : MonoBehaviour {
 
     Rigidbody2D r_body; //the body of the player
-    Animator animator; //the animator for the player
 
-    bool facing_right;
+	GameObject pearl_offset; //the child object of the player that will indicate the direction the pearl will be thrown
+	SpriteRenderer pearl_renderer; //the component that will either show or hide the pearl on the beaver.
+
+	GameObject beaver_sprite; //the child object of player that displays the beaver and animates it
+    Animator animator; //the animator for the beaver sprite
+
+
+    bool facing_right; //is the player facing right
     public float move_force;
     public float max_speed;
     public float throw_force;
 
-    private float throw_x, throw_y;
-
 	private bool has_pearl = false;
 
-    GameObject pearlOffset; //this is a pearl that will indicate the direction it will be thrown
+    
     float facing_angle; //the angle the beaver is looking( what way its head is pointing)
     float throw_angle; // the angle the pearl will be thrown
+
+	float L_analog_threshold; //the analog stick must be moved more than this to trigger moving animation
+	float R_analog_threshold;
 
 	// Use this for initialization
 	void Start () {
 
-        r_body = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+		//get references to the child objects
+		pearl_offset = transform.GetChild(0).gameObject;
+		beaver_sprite = transform.GetChild(1).gameObject;
 
+        r_body = GetComponent<Rigidbody2D>();
+
+		//get reference to the animator located on the beaver_sprite child object
+        animator = beaver_sprite.GetComponent<Animator>();
+
+		//get reference to the sprite renderer located on the pearl_offset child object
+		pearl_renderer = pearl_offset.GetComponent<SpriteRenderer>();
+		
         throw_angle = 0.0f;
         facing_angle = 0.0f;
 
-        facing_right = true;
-        throw_force = 600;
+        facing_right = true; //facing right initially
 
-        pearlOffset = transform.GetChild(0).gameObject; //get the offset pearl for aiming purposes
-
+		L_analog_threshold = 0.001f;
+		R_analog_threshold = 0.20f;
 	}
 
     // Update is called once per frame
     void Update() {
 
         //move the player position 
+
+        //for xbox controller
         float h = Input.GetAxis("left_analog_horizontal");
         float v = Input.GetAxis("left_analog_vertical");
-        r_body.AddForce(new Vector2(move_force * h, 0));
-        r_body.AddForce(new Vector2(0, move_force * v));
 
-        
+        //for key board
+        //float h = Input.GetAxis("Horizontal");
+        //float v = Input.GetAxis("Vertical");
 
-        //set animation
-        if ((h > 0.01) || (v > 0.01))
-        {
-            animator.SetBool("is_moving", true);
-        }
+
+        //set animation if stick is moved enough
+		if ((Mathf.Abs(h) > L_analog_threshold) || (Mathf.Abs(v) > L_analog_threshold)  ) {
+
+			//show the player moving animation
+			animator.SetBool ("is_moving", true);
+
+			//move the player in the direction of the input
+			r_body.AddForce(new Vector2(move_force * h, 0));
+			r_body.AddForce(new Vector2(0, move_force * v));
+
+		} else {
+			animator.SetBool ("is_moving", false);
+		}
 
         //limit to max speed in x
         if (r_body.velocity.x > max_speed)
@@ -72,41 +98,35 @@ public class player_movement : MonoBehaviour {
             r_body.velocity = new Vector2(r_body.velocity.x, max_speed * -1);
         }
 
-        //point the beaver in the same direction as it is moving
+        //point the beaver_sprite in the same direction as it is moving
         rotateBeaver(h, v);
 
+		//set the offset pearl object to point in the direction it will be thrown
+		//also sets throw angle
+		rotatePearlOffset(Input.GetAxis("right_analog_horizontal"), Input.GetAxis("right_analog_vertical"));
 
-        /////////
 
-        //set the offset pearl object to point in the direction it will be thrown
-        //also sets throw angle
-        rotatePearlOffset(Input.GetAxis("right_analog_horizontal"), Input.GetAxis("right_analog_vertical"));
+		//flip the orientation of the sprite if direction was changed
+		if ( (facing_right && h < 0) || (!facing_right && h > 0) )
+		{
+			Flip();
+		}
+
+      
 
         //check for throw
         if (Input.GetButton("r_shoulder"))
         {
-            throwPearl(); //will throw in the direction the pearl is currently facing
+            throwPearl(); //will throw in the direction the pearl is currently pointing
         }
-
-        if (facing_right && h < 0)
-        {
-            Flip();
-        }
-        else if (!facing_right && h > 0)
-        {
-            Flip();
-        }
-
+		
     }
 
     //point the beaver in the same direction as it is moving
     void rotateBeaver(float x, float y)
     {
-        // CANCEL ALL INPUT BELOW THIS FLOAT
-        float L_analog_threshold = 0.50f;
-      
+        // cancel all input below the threshold
         if (Mathf.Abs(x) < L_analog_threshold) { x = 0.0f; }
-
         if (Mathf.Abs(y) < L_analog_threshold) { y = 0.0f; }
 
         
@@ -122,40 +142,25 @@ public class player_movement : MonoBehaviour {
                 facing_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg)  + 180;
             }
             
+			//beaver_sprite.transform.rotation = Quaternion.AngleAxis(facing_angle, Vector3.forward);
             transform.rotation = Quaternion.AngleAxis(facing_angle, Vector3.forward);
         }
     }
 
-    //point the pearl based on left analog stick
+    //point the pearl based on right analog stick
     void rotatePearlOffset(float x, float y)
     {
-        //set the direction to throw
-        throw_x = x;
-        throw_y = y;
+   
 
-        // USED TO CHECK OUTPUT
-        //Debug.Log(" horz: " + x + "   vert: " + y);
-
-        // CANCEL ALL INPUT BELOW THIS FLOAT
-        float L_analog_threshold = 0.20f;
-
-        if (Mathf.Abs(x) < L_analog_threshold) { x = 0.0f; }
-
-        if (Mathf.Abs(y) < L_analog_threshold) { y = 0.0f; }
+        // cancel all input below this 
+		if (Mathf.Abs(x) < R_analog_threshold) { x = 0.0f; }
+        if (Mathf.Abs(y) < R_analog_threshold) { y = 0.0f; }
 
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
-        {
-            if (facing_right)
-            {
-                throw_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) * -1 - 180;
-            }
-            else
-            {
-                throw_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg)  -180 ;
-            }
-           
-            pearlOffset.transform.rotation = Quaternion.AngleAxis(throw_angle, Vector3.forward);
+		{
+            throw_angle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg) *-1 ) - 180;
+            pearl_offset.transform.rotation = Quaternion.AngleAxis(throw_angle, Vector3.forward);
         }
     }
 
@@ -166,9 +171,9 @@ public class player_movement : MonoBehaviour {
 
         facing_right = !facing_right;
 
-        Vector3 tmp = transform.localScale;
+        Vector3 tmp = beaver_sprite.transform.localScale;
         tmp.x = tmp.x * -1;
-        transform.localScale = tmp;
+        beaver_sprite.transform.localScale = tmp;
     }
 
 
@@ -184,7 +189,8 @@ public class player_movement : MonoBehaviour {
 
 	public void hide_pearl()
 	{
-		transform.GetChild (0).gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		//transform.GetChild (0).gameObject.GetComponent<SpriteRenderer> ().enabled = false;
+		pearl_renderer.enabled = false;
 	}
 
 
@@ -193,74 +199,39 @@ public class player_movement : MonoBehaviour {
     {
        
         //if the beaver is currently holding a pearl
-        if(pearlOffset.GetComponent<SpriteRenderer>().enabled)
+        if(pearl_renderer.enabled)
         {
+			has_pearl = false;
             //remove it from his grasp visually
-            GameObject offsetPearl = transform.GetChild(0).gameObject;
-            offsetPearl.GetComponent<SpriteRenderer>().enabled = false;
+            pearl_renderer.enabled = false;
+
+			//disable beaver's collider temporarily
+			gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+			//turn it back on in a second
+			Invoke("enableCollider", 1.0f);
 
             //throw the pearl in the right direction
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
 
-            has_pearl = false;
+			//the pearl starts on the player
+            thrownPearl.transform.position = new Vector2(transform.position.x, transform.position.y);
 
-            Vector3 dir;
-            if (facing_right)
-            {
-                thrownPearl.transform.position = new Vector2(transform.position.x + 1, transform.position.y);
-                //dir = Quaternion.AngleAxis(throw_angle, Vector3.forward) * Vector3.up;
 
-                if(throw_x < 0)
-                {
-                    throw_x *= -1;
-                }
-                else
-                {
-
-                }
-
-                if (throw_y < 0)
-                {
-                    
-                }
-                else
-                {
-                    throw_y *= -1;
-                }
-
-            }
-            else
-            {
-                thrownPearl.transform.position = new Vector2(transform.position.x - 1, transform.position.y);
-                //dir = Quaternion.AngleAxis(throw_angle -180, Vector3.forward) * Vector3.up;
-
-                if (throw_x < 0)
-                {
-                    
-                }
-                else
-                {
-                    throw_x *= 1;
-                }
-
-                if(throw_y < 0)
-                {
-                    throw_y *= -1;
-                }
-                else
-                {
-
-                }
-                //throw_x *= 1;
-                
-                
-            }
+			//find the angle to throw based on the angle found for the pearl_offest
+			Vector3 dir = Quaternion.AngleAxis(throw_angle, Vector3.forward) *Vector3.up;
+            
+			//apply force to the pearl in that direction
+			thrownPearl.GetComponent<Rigidbody2D>().AddForce(dir * throw_force);
            
-            thrownPearl.GetComponent<Rigidbody2D>().AddForce(new Vector2(throw_x * throw_force, throw_y* throw_force)); 
         }
          
     
 
     }
+
+	void enableCollider(){
+		gameObject.GetComponent<BoxCollider2D>().enabled = true;
+	}
 
 }
