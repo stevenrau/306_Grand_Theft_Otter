@@ -18,7 +18,7 @@ public class player_movement : MonoBehaviour {
     public float throw_force;
 
 	private bool has_pearl = false;
-	private bool isPC = false;
+	private bool isPC = true;
 
     
     float facing_angle; //the angle the beaver is looking( what way its head is pointing)
@@ -58,13 +58,13 @@ public class player_movement : MonoBehaviour {
         //move the player position 
 
         //for xbox controller
-       // float h = Input.GetAxis("left_analog_horizontal");
-        //float v = Input.GetAxis("left_analog_vertical");
+        float h = Input.GetAxis("left_analog_horizontal");
+        float v = Input.GetAxis("left_analog_vertical");
 
 
         //for key board
-        float h = Input.GetAxis("Horizontal");
-        float v = Input.GetAxis("Vertical");
+        //float h = Input.GetAxis("Horizontal");
+        //float v = Input.GetAxis("Vertical");
 
 
         //set animation if stick is moved enough
