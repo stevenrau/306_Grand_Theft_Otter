@@ -18,6 +18,7 @@ public class player_movement : MonoBehaviour {
     public float throw_force;
 
 	private bool has_pearl = false;
+	private bool isPC = false;
 
     
     float facing_angle; //the angle the beaver is looking( what way its head is pointing)
@@ -25,6 +26,7 @@ public class player_movement : MonoBehaviour {
 
 	float L_analog_threshold; //the analog stick must be moved more than this to trigger moving animation
 	float R_analog_threshold;
+	
 
 	// Use this for initialization
 	void Start () {
@@ -56,12 +58,13 @@ public class player_movement : MonoBehaviour {
         //move the player position 
 
         //for xbox controller
-        float h = Input.GetAxis("left_analog_horizontal");
-        float v = Input.GetAxis("left_analog_vertical");
+       // float h = Input.GetAxis("left_analog_horizontal");
+        //float v = Input.GetAxis("left_analog_vertical");
+
 
         //for key board
-        //float h = Input.GetAxis("Horizontal");
-        //float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
 
 
         //set animation if stick is moved enough
@@ -103,7 +106,12 @@ public class player_movement : MonoBehaviour {
 
 		//set the offset pearl object to point in the direction it will be thrown
 		//also sets throw angle
-		rotatePearlOffset(Input.GetAxis("right_analog_horizontal"), Input.GetAxis("right_analog_vertical"));
+		if (isPC) {
+			rotatePearlOffset (Input.GetAxis ("right_analog_horizontal"), Input.GetAxis ("right_analog_vertical"));
+		} else {
+			rotatePearlOffset (Input.GetAxis ("right_analog_horizontalMac"), Input.GetAxis ("right_analog_verticalMac"));
+
+		}
 
 
 		//flip the orientation of the sprite if direction was changed
@@ -115,11 +123,15 @@ public class player_movement : MonoBehaviour {
       
 
         //check for throw
-        if (Input.GetButton("r_shoulder"))
-        {
-            throwPearl(); //will throw in the direction the pearl is currently pointing
-        }
-		
+		if (isPC) {
+			if (Input.GetButton ("r_shoulder")) {
+				throwPearl (); //will throw in the direction the pearl is currently pointing
+			}
+		} else {
+			if (Input.GetButton ("r_shoulderMac")) {
+				throwPearl (); //will throw in the direction the pearl is currently pointing
+			}
+		}
     }
 
     //point the beaver in the same direction as it is moving
@@ -159,8 +171,12 @@ public class player_movement : MonoBehaviour {
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
 		{
-            throw_angle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg) *-1 ) - 180;
-            pearl_offset.transform.rotation = Quaternion.AngleAxis(throw_angle, Vector3.forward);
+			if(isPC) {
+				throw_angle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg) *-1 ) - 180;	// for PC
+			} else {
+				throw_angle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg)-90);			// for MAC
+			}
+			pearl_offset.transform.rotation = Quaternion.AngleAxis(throw_angle, Vector3.forward);
         }
     }
 
