@@ -89,6 +89,9 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 		GameObject beaver1 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
         beaver1.name = "Beaver1";
+		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
+		beaver2.name = "Beaver2";
+		beaver2.transform.position = new Vector3 (3, 1, 0);
 
 		/*
         GameObject pearlOffset = Instantiate(Resources.Load("Pearl_Offset")) as GameObject;
