@@ -93,6 +93,10 @@ public class game_setup : MonoBehaviour {
 		beaver2.name = "Beaver2";
 		beaver2.transform.position = new Vector3 (3, 1, 0);
 
+		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
+		beaver2.name = "Beaver2";
+		beaver2.transform.position = new Vector2 (4.0f, 0.0f);
+
 		/*
         GameObject pearlOffset = Instantiate(Resources.Load("Pearl_Offset")) as GameObject;
         pearlOffset.transform.parent= beaver1.transform;
@@ -110,7 +114,7 @@ public class game_setup : MonoBehaviour {
 
 			cur_left_point_structs++;
 		}
-		else if (cur_right_point_structs < right_score) {
+		if (cur_right_point_structs < right_score) {
 			GameObject cur_struct = Instantiate (Resources.Load (structures [right_score - 1])) as GameObject;
 
 			cur_struct.transform.position = new Vector3(Mathf.Abs (cur_struct.transform.position.x), cur_struct.transform.position.y, cur_struct.transform.position.z);
@@ -132,11 +136,11 @@ public class game_setup : MonoBehaviour {
 
 	public void print_left_score()
 	{
-		print (left_score);
+		print ("Left score: " + left_score);
 	}
 
 	public void print_right_score()
 	{
-		print (right_score);
+		print ("Right score: " + right_score);
 	}
 }
