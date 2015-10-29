@@ -89,12 +89,15 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 		GameObject beaver1 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
         beaver1.name = "Beaver1";
-		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
-		beaver2.name = "Beaver2";
-		beaver2.transform.position = new Vector3 (3, 1, 0);
+		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.blue;
+		beaver1.GetComponent<player_movement>().setPlayerId ("1");
+
 
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
+		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
+
+		beaver2.GetComponent<player_movement>().setPlayerId ("2");
 		beaver2.transform.position = new Vector2 (4.0f, 0.0f);
 
 		/*
@@ -114,7 +117,8 @@ public class game_setup : MonoBehaviour {
 
 			cur_left_point_structs++;
 		}
-		if (cur_right_point_structs < right_score) {
+
+		else if (cur_right_point_structs < right_score) {
 			GameObject cur_struct = Instantiate (Resources.Load (structures [right_score - 1])) as GameObject;
 
 			cur_struct.transform.position = new Vector3(Mathf.Abs (cur_struct.transform.position.x), cur_struct.transform.position.y, cur_struct.transform.position.z);

@@ -22,13 +22,13 @@ public class scoring_zone_behaviour : MonoBehaviour {
 			pearl_behaviour pearl_script = other.gameObject.GetComponent<pearl_behaviour> ();
 			pearl_script.score_and_animate ();
 
-			if (gameObject.name == "left_score_zone")
+			if (gameObject.name == "right_score_zone")
 			{
 				game_script.increment_left_score();
 				
 				game_script.print_left_score();
 			}
-			else if (gameObject.name == "right_score_zone");
+			if (gameObject.name == "left_score_zone");
 			{
 				game_script.increment_right_score ();
 				
@@ -49,13 +49,13 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 				Invoke("create_new_pearl", 1.5f);
 
-				if (gameObject.name == "left_score_zone")
+				if (gameObject.name == "right_score_zone")
 				{
 					game_script.increment_left_score();
 
 					game_script.print_left_score();
 				}
-				else if (gameObject.name == "right_score_zone");
+				if (gameObject.name == "left_score_zone");
 				{
 					game_script.increment_right_score ();
 

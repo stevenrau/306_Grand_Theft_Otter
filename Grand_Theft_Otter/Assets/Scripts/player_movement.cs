@@ -11,6 +11,7 @@ public class player_movement : MonoBehaviour {
 	GameObject beaver_sprite; //the child object of player that displays the beaver and animates it
     Animator animator; //the animator for the beaver sprite
 
+	string player_id;
 
     bool facing_right; //is the player facing right
     public float move_force;
@@ -27,6 +28,14 @@ public class player_movement : MonoBehaviour {
 	float L_analog_threshold; //the analog stick must be moved more than this to trigger moving animation
 	float R_analog_threshold;
 	
+
+	private string left_h_inputName; 
+	private string left_v_inputName;
+
+	private string right_h_inputName; 
+	private string right_v_inputName;
+
+	private string r_bumper_inputName;
 
 	// Use this for initialization
 	void Start () {
@@ -58,8 +67,10 @@ public class player_movement : MonoBehaviour {
         //move the player position 
 
         //for xbox controller
-        float h = Input.GetAxis("left_analog_horizontal");
-        float v = Input.GetAxis("left_analog_vertical");
+
+
+        float h = Input.GetAxis(left_h_inputName);
+        float v = Input.GetAxis(left_v_inputName);
 
 
         //for key board
@@ -106,12 +117,20 @@ public class player_movement : MonoBehaviour {
 
 		//set the offset pearl object to point in the direction it will be thrown
 		//also sets throw angle
+
+		/*
+		 * 
+
 		if (isPC) {
 			rotatePearlOffset (Input.GetAxis ("right_analog_horizontal"), Input.GetAxis ("right_analog_vertical"));
 		} else {
 			rotatePearlOffset (Input.GetAxis ("right_analog_horizontalMac"), Input.GetAxis ("right_analog_verticalMac"));
 
 		}
+
+*/
+		rotatePearlOffset(Input.GetAxis(right_h_inputName), Input.GetAxis(right_v_inputName));
+
 
 
 		//flip the orientation of the sprite if direction was changed
@@ -123,6 +142,8 @@ public class player_movement : MonoBehaviour {
       
 
         //check for throw
+		/*
+
 		if (isPC) {
 			if (Input.GetButton ("r_shoulder")) {
 				throwPearl (); //will throw in the direction the pearl is currently pointing
@@ -132,6 +153,14 @@ public class player_movement : MonoBehaviour {
 				throwPearl (); //will throw in the direction the pearl is currently pointing
 			}
 		}
+*/
+
+        if (Input.GetButton(r_bumper_inputName))
+        {
+            throwPearl(); //will throw in the direction the pearl is currently pointing
+        }
+		
+
     }
 
     //point the beaver in the same direction as it is moving
@@ -250,4 +279,15 @@ public class player_movement : MonoBehaviour {
 		gameObject.GetComponent<BoxCollider2D>().enabled = true;
 	}
 
+	public void setPlayerId( string id){
+		player_id = id;
+
+		left_h_inputName = "left_analog_horizontal_" + player_id;
+		left_v_inputName = "left_analog_vertical_" + player_id;
+
+		right_h_inputName = "right_analog_horizontal_" + player_id;
+		right_v_inputName = "right_analog_vertical_" + player_id;
+
+		r_bumper_inputName = "r_bumper_" + player_id;
+	}
 }
