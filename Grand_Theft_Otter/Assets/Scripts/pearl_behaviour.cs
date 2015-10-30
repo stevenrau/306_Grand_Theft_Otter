@@ -3,14 +3,17 @@ using System.Collections;
 
 public class pearl_behaviour : MonoBehaviour {
 
-	private GameObject spawn_point;  //The pearl spawn point
+	private GameObject spawn_point; //The pearl spawn point
 	private bool respawn = false;
 	private Transform transform;    //The transform component for the pearl
 
-	private Vector3 prev_pos;      //The pearl's position from last frame (detect motion)
-	private Vector2 cur_pos;       //The pearl's position in the current frame
+	private Vector3 prev_pos;       //The pearl's position from last frame (detect motion)
+	private Vector2 cur_pos;        //The pearl's position in the current frame
+	private GameObject beaver;	    //The beaver that spawned it
 
-	Animator animator; //the animator for the pearl
+	private bool has_left_beaver = false;	//Check if pearl has exited beaver's collider
+
+	Animator animator; 				//the animator for the pearl
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +65,16 @@ public class pearl_behaviour : MonoBehaviour {
 	{
 		if (other.tag == "Player") {
 
+			/**
+			 * This should fix the beaver's collider issue.
+			 * The idea is: spawn the pearl inside the beaver that is throwing.
+			 * While the pearl is inside the beaver's collider don't collide with the beaver.
+			 * But once the pearl has left the Beaver then maybe have a cool down
+			 * till the beaver can pick up the pearl again.
+			 * At any time any other beaver can pick up the pearl.
+			 * TODO: once the pearl leaves than flip has_left_beaver to true.
+			 */ 
+			//		if(has_left_beaver || other != this.getBeaver()){}
             GameObject player = other.gameObject;
 
             GameObject pearlOffset = player.transform.GetChild(0).gameObject;
@@ -92,4 +105,19 @@ public class pearl_behaviour : MonoBehaviour {
         //Instantiate the spawn point and set it to the global var
         spawn_point = Instantiate(Resources.Load("Pearl_Spawn")) as GameObject;
     }
+
+	// returns the beaver that instantiated this pearl
+	public GameObject getBeaver() {
+		if (this.beaver != null) {
+			return this.beaver;
+		} else {
+			return null;
+		}
+	}
+
+	// sets the pearl's instantiator
+	public void setBeaver(GameObject beav) {
+		this.beaver = beav;
+	}
+
 }

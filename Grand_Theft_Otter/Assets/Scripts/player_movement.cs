@@ -19,7 +19,7 @@ public class player_movement : MonoBehaviour {
     public float throw_force;
 
 	private bool has_pearl = false;
-	private bool isPC = true;
+	private bool is_PC = true;
 
     
     float facing_angle; //the angle the beaver is looking( what way its head is pointing)
@@ -29,13 +29,13 @@ public class player_movement : MonoBehaviour {
 	float R_analog_threshold;
 	
 
-	private string left_h_inputName; 
-	private string left_v_inputName;
+	private string mov_horz; 
+	private string mov_vert;
 
-	private string right_h_inputName; 
-	private string right_v_inputName;
+	private string aim_horz; 
+	private string aim_vert;
 
-	private string r_bumper_inputName;
+	private string throw_bumper;
 
 	// Use this for initialization
 	void Start () {
@@ -69,8 +69,8 @@ public class player_movement : MonoBehaviour {
         //for xbox controller
 
 
-        float h = Input.GetAxis(left_h_inputName);
-        float v = Input.GetAxis(left_v_inputName);
+        float h = Input.GetAxis(mov_horz);
+        float v = Input.GetAxis(mov_vert);
 
 
         //for key board
@@ -118,18 +118,8 @@ public class player_movement : MonoBehaviour {
 		//set the offset pearl object to point in the direction it will be thrown
 		//also sets throw angle
 
-		/*
-		 * 
 
-		if (isPC) {
-			rotatePearlOffset (Input.GetAxis ("right_analog_horizontal"), Input.GetAxis ("right_analog_vertical"));
-		} else {
-			rotatePearlOffset (Input.GetAxis ("right_analog_horizontalMac"), Input.GetAxis ("right_analog_verticalMac"));
-
-		}
-
-*/
-		rotatePearlOffset(Input.GetAxis(right_h_inputName), Input.GetAxis(right_v_inputName));
+		rotatePearlOffset(Input.GetAxis(aim_horz), Input.GetAxis(aim_vert));
 
 
 
@@ -142,20 +132,8 @@ public class player_movement : MonoBehaviour {
       
 
         //check for throw
-		/*
 
-		if (isPC) {
-			if (Input.GetButton ("r_shoulder")) {
-				throwPearl (); //will throw in the direction the pearl is currently pointing
-			}
-		} else {
-			if (Input.GetButton ("r_shoulderMac")) {
-				throwPearl (); //will throw in the direction the pearl is currently pointing
-			}
-		}
-*/
-
-        if (Input.GetButton(r_bumper_inputName))
+        if (Input.GetButton(throw_bumper))
         {
             throwPearl(); //will throw in the direction the pearl is currently pointing
         }
@@ -200,7 +178,7 @@ public class player_movement : MonoBehaviour {
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
 		{
-			if(isPC) {
+			if(is_PC) {
 				throw_angle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg) *-1 ) - 180;	// for PC
 			} else {
 				throw_angle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg)-90);			// for MAC
@@ -259,6 +237,9 @@ public class player_movement : MonoBehaviour {
             //throw the pearl in the right direction
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
 
+			//remember which beaver threw this pearl
+			thrownPearl.GetComponent<pearl_behaviour>().setBeaver(this.transform.gameObject);
+
 			//the pearl starts on the player
             thrownPearl.transform.position = new Vector2(transform.position.x, transform.position.y);
 
@@ -282,12 +263,22 @@ public class player_movement : MonoBehaviour {
 	public void setPlayerId( string id){
 		player_id = id;
 
-		left_h_inputName = "left_analog_horizontal_" + player_id;
-		left_v_inputName = "left_analog_vertical_" + player_id;
+		if (is_PC) {
+			mov_horz = "left_analog_horizontal_" + player_id;
+			mov_vert = "left_analog_vertical_" + player_id;
 
-		right_h_inputName = "right_analog_horizontal_" + player_id;
-		right_v_inputName = "right_analog_vertical_" + player_id;
+			aim_horz = "right_analog_horizontal_" + player_id;
+			aim_vert = "right_analog_vertical_" + player_id;
 
-		r_bumper_inputName = "r_bumper_" + player_id;
+			throw_bumper = "r_bumper_" + player_id;
+		} else {
+			mov_horz = "left_analog_horizontal_" + player_id;
+			mov_vert = "left_analog_vertical_" + player_id;
+			
+			aim_horz = "right_analog_horizontal_Mac_" + player_id;
+			aim_vert = "right_analog_vertical_Mac_" + player_id;
+			
+			throw_bumper = "r_bumper_Mac_" + player_id;
+		}
 	}
 }

@@ -92,14 +92,14 @@ public class game_setup : MonoBehaviour {
 		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.blue;
 		beaver1.GetComponent<player_movement>().setPlayerId ("1");
 
-
+		/*
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
 		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
 
 		beaver2.GetComponent<player_movement>().setPlayerId ("2");
 		beaver2.transform.position = new Vector2 (4.0f, 0.0f);
-
+		*/
 		/*
         GameObject pearlOffset = Instantiate(Resources.Load("Pearl_Offset")) as GameObject;
         pearlOffset.transform.parent= beaver1.transform;
