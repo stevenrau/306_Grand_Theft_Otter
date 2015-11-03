@@ -6,12 +6,12 @@ public class player_movement : MonoBehaviour {
     Rigidbody2D r_body; //the body of the player
 
 	GameObject pearl_offset; //the child object of the player that will indicate the direction the pearl will be thrown
-	SpriteRenderer pearl_renderer; //the component that will either show or hide the pearl on the beaver.
+	public SpriteRenderer pearl_renderer; //the component that will either show or hide the pearl on the beaver.
 
 	GameObject beaver_sprite; //the child object of player that displays the beaver and animates it
     Animator animator; //the animator for the beaver sprite
 
-	string player_id;
+	string player_id;	// to determine which controller is mapped
 
     bool facing_right; //is the player facing right
     public float move_force;
@@ -19,7 +19,7 @@ public class player_movement : MonoBehaviour {
     public float throw_force;
 
 	private bool has_pearl = false;
-	private bool is_PC = true;
+	private bool is_PC = false;
 
     
     float facing_angle; //the angle the beaver is looking( what way its head is pointing)
@@ -135,6 +135,7 @@ public class player_movement : MonoBehaviour {
 
         if (Input.GetButton(throw_bumper))
         {
+			print (throw_bumper);
             throwPearl(); //will throw in the direction the pearl is currently pointing
         }
 		
@@ -228,11 +229,10 @@ public class player_movement : MonoBehaviour {
             //remove it from his grasp visually
             pearl_renderer.enabled = false;
 
-			//disable beaver's collider temporarily
-			gameObject.GetComponent<BoxCollider2D>().enabled = false;
+			// thrower doesn't interatct with pearl for given time
+			transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
 
-			//turn it back on in a second. This is NOT THE FINAL SOLUTION
-			Invoke("enableCollider", 1.0f);
+			Invoke("MakeInteractable", 0.5f);
 
             //throw the pearl in the right direction
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
@@ -256,29 +256,44 @@ public class player_movement : MonoBehaviour {
 
     }
 
-	void enableCollider(){
-		gameObject.GetComponent<BoxCollider2D>().enabled = true;
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		print (other.tag);
+		if (other.tag == "Pearl") {
+
+          //  GameObject pearlOffset = player.transform.GetChild(0).gameObject;
+            //pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
+			pearl_renderer.enabled = true;
+			pearl_offset.GetComponent<SpriteRenderer>().enabled = true;
+
+            Destroy(other.gameObject);
+
+			set_has_pearl(true);
+		}
 	}
+
 
 	public void setPlayerId( string id){
 		player_id = id;
 
+		mov_horz = "left_analog_horizontal_" + player_id;
+		mov_vert = "left_analog_vertical_" + player_id;
+
 		if (is_PC) {
-			mov_horz = "left_analog_horizontal_" + player_id;
-			mov_vert = "left_analog_vertical_" + player_id;
 
 			aim_horz = "right_analog_horizontal_" + player_id;
 			aim_vert = "right_analog_vertical_" + player_id;
 
 			throw_bumper = "r_bumper_" + player_id;
 		} else {
-			mov_horz = "left_analog_horizontal_" + player_id;
-			mov_vert = "left_analog_vertical_" + player_id;
-			
 			aim_horz = "right_analog_horizontal_Mac_" + player_id;
 			aim_vert = "right_analog_vertical_Mac_" + player_id;
 			
 			throw_bumper = "r_bumper_Mac_" + player_id;
 		}
+	}
+
+	void MakeInteractable() {
+		transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Interactable");
 	}
 }

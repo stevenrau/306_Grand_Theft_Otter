@@ -17,7 +17,8 @@ public class pearl_behaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+
 
 		transform = GetComponent<Transform> ();
 		animator = GetComponent<Animator>();
@@ -27,6 +28,8 @@ public class pearl_behaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		// draw ray cast, if going to collide then reduce velocity.
 
         if (transform.position.x < -8.5)
         {
@@ -61,11 +64,12 @@ public class pearl_behaviour : MonoBehaviour {
 		prev_pos = this.transform.position;
 	}
 
+/*
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Player") {
+		if (other.gameObject.tag == "Player") {
 
-			/**
+			/
 			 * This should fix the beaver's collider issue.
 			 * The idea is: spawn the pearl inside the beaver that is throwing.
 			 * While the pearl is inside the beaver's collider don't collide with the beaver.
@@ -73,7 +77,7 @@ public class pearl_behaviour : MonoBehaviour {
 			 * till the beaver can pick up the pearl again.
 			 * At any time any other beaver can pick up the pearl.
 			 * TODO: once the pearl leaves than flip has_left_beaver to true.
-			 */ 
+			 / 
 			//		if(has_left_beaver || other != this.getBeaver()){}
             GameObject player = other.gameObject;
 
@@ -85,9 +89,12 @@ public class pearl_behaviour : MonoBehaviour {
 			player_movement player_script = other.gameObject.GetComponent<player_movement>();
 			player_script.set_has_pearl(true);
 			//respawn = true;
+
+
+
 		}
 	}
-
+*/
 	void set_respawn_true()
 	{
 		respawn = true;
