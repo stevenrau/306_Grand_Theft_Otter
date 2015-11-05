@@ -19,7 +19,7 @@ public class player_movement : MonoBehaviour {
     public float throw_force;
 
 	private bool has_pearl = false;
-	private bool is_PC = false;
+	private bool is_PC = true;
 
     
     float facing_angle; //the angle the beaver is looking( what way its head is pointing)

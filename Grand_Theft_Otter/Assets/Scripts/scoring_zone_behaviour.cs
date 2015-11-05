@@ -27,8 +27,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 				game_script.increment_left_score();
 				
 				game_script.print_left_score();
-			}
-			if (gameObject.name == "left_score_zone");
+			} else if (gameObject.name == "left_score_zone");
 			{
 				game_script.increment_right_score ();
 				
@@ -54,8 +53,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 					game_script.increment_left_score();
 
 					game_script.print_left_score();
-				}
-				if (gameObject.name == "left_score_zone");
+				} else if (gameObject.name == "left_score_zone");
 				{
 					game_script.increment_right_score ();
 
