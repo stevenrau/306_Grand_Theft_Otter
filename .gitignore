@@ -1,3 +1,6 @@
 /Grand_Theft_Otter/Library
 /Grand_Theft_Otter/Temp
+/Grand_Theft_Otter/Assets/Scripts/collision_detection.cs.meta
+/Grand_Theft_Otter/Assets/Scripts/aiming.cs.meta
+/Grand_Theft_Otter/Assets/Scenes.meta
 *.unity*
