@@ -90,14 +90,16 @@ public class game_setup : MonoBehaviour {
 		GameObject beaver1 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
         beaver1.name = "Beaver1";
 		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.blue;
-		beaver1.GetComponent<player_movement>().setPlayerId ("1");
+//		beaver1.GetComponent<player_movement>().setPlayerId ("1");
+		beaver1.GetComponent<get_input>().SetPlayerID ("1");
 
 
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
 		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
 
-		beaver2.GetComponent<player_movement>().setPlayerId ("2");
+//		beaver2.GetComponent<player_movement>().setPlayerId ("2");
+		beaver2.GetComponent<get_input>().SetPlayerID ("2");
 		beaver2.transform.position = new Vector2 (4.0f, 0.0f);
 
 		/*

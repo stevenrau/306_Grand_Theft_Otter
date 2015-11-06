@@ -35,8 +35,7 @@ public class aiming : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		//rotatePearlOffset (Input.GetAxis (aim_horz), Input.GetAxis (aim_vert));
-		//rotatePearlOffset (inputScript.GetAimHorizontalAxis(), inputScript.GetAimVerticalAxis());
+		rotatePearlOffset (inputScript.GetAimHorizontalAxis(), inputScript.GetAimVerticalAxis());
 	}
 
 	//point the pearl based on right analog stick
