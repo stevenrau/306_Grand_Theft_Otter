@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class collision_detection : MonoBehaviour {
 
-	GameObject pearl_offset; //the child object of the player that will indicate the direction the pearl will be thrown
-	public SpriteRenderer pearl_renderer; //the component that will either show or hide the pearl on the beaver.
+	GameObject pearlOffset; //the child object of the player that will indicate the direction the pearl will be thrown
+	public SpriteRenderer pearlRenderer; //the component that will either show or hide the pearl on the beaver.
 
-	private bool has_pearl = false;
+	private bool hasPearl = false;
 
 
 	// Use this for initialization
 	void Start() {
 		//get references to the child objects
-		pearl_offset = transform.GetChild (0).gameObject;
+		pearlOffset = transform.GetChild (0).gameObject;
+
+		//get reference to the sprite renderer located on the pearlOffset child object
+		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -22,32 +25,29 @@ public class NewBehaviourScript : MonoBehaviour {
 			
 			//  GameObject pearlOffset = player.transform.GetChild(0).gameObject;
 			//pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
-			pearl_renderer.enabled = true;
-			pearl_offset.GetComponent<SpriteRenderer>().enabled = true;
+			pearlRenderer.enabled = true;
+			pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
 			
 			Destroy(other.gameObject);
 			
-			set_has_pearl(true);
+			SetHasPearl(true);
 		}
 	}
 
-	public void set_has_pearl(bool pearl)
+	public void SetHasPearl(bool pearl)
 	{
-		has_pearl = pearl;
+		hasPearl = pearl;
 	}
 	
-	public bool get_has_pearl()
+	public bool GetHasPearl()
 	{
-		return has_pearl;
+		return hasPearl;
 	}
 	
-	public void hide_pearl()
+	public void HidePearl()
 	{
 		//transform.GetChild (0).gameObject.GetComponent<SpriteRenderer> ().enabled = false;
-		pearl_renderer.enabled = false;
+		pearlRenderer.enabled = false;
 	}
 
-	void MakeInteractable() {
-		transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Interactable");
-	}
 }

@@ -133,7 +133,7 @@ public class player_movement : MonoBehaviour {
 
         //check for throw
 
-        if (Input.GetButton(throw_bumper))
+		if (Input.GetButton (throw_bumper))
         {
 			print (throw_bumper);
             throwPearl(); //will throw in the direction the pearl is currently pointing

@@ -1,23 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
-
-	GameObject inputScript;
+public class aiming : MonoBehaviour {
 
 	//the child object of the player that will indicate the direction the pearl will be thrown
 	GameObject pearlOffset;
 	//the component that will either show or hide the pearl on the beaver.
 	public SpriteRenderer pearlRenderer;
 
-	float facingAngle; //the angle the beaver is looking( what way its head is pointing)
 	float throwAngle; // the angle the pearl will be thrown
+
+	float aimingThreshold;
+
+	// script
+	get_input inputScript;
+	
 
 
 	// Use this for initialization
 	void Start () {
 
-		inputScript = transform.GetComponent<get_input> ();
+		inputScript = gameObject.GetComponent<get_input>();
 
 		//get references to the child pearl
 		pearlOffset = transform.GetChild(0).gameObject;
@@ -26,13 +29,14 @@ public class NewBehaviourScript : MonoBehaviour {
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
 		
 		throwAngle = 0.0f;
-		facingAngle = 0.0f;
+
+		aimingThreshold = 0.20f;
 	}
 
 	// Update is called once per frame
 	void Update() {
 		//rotatePearlOffset (Input.GetAxis (aim_horz), Input.GetAxis (aim_vert));
-		rotatePearlOffset (Input.GetAxis (inputScript.GetAimHorizontal()), Input.GetAxis (GetAimVertical()));
+		//rotatePearlOffset (inputScript.GetAimHorizontalAxis(), inputScript.GetAimVerticalAxis());
 	}
 
 	//point the pearl based on right analog stick
@@ -41,18 +45,22 @@ public class NewBehaviourScript : MonoBehaviour {
 		
 		
 		// cancel all input below this 
-		if (Mathf.Abs(x) < R_analog_threshold) { x = 0.0f; }
-		if (Mathf.Abs(y) < R_analog_threshold) { y = 0.0f; }
+		if (Mathf.Abs(x) < aimingThreshold) { x = 0.0f; }
+		if (Mathf.Abs(y) < aimingThreshold) { y = 0.0f; }
 		
 		// CALCULATE ANGLE AND ROTATE
 		if (x != 0.0f || y != 0.0f)
 		{
-			if(inputScript.IsPC()) {
+			if(inputScript.PlatformIsPC()) {
 				throwAngle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg) *-1 ) - 180;	// for PC
 			} else {
 				throwAngle = ((Mathf.Atan2(y, x) * Mathf.Rad2Deg)-90);			// for MAC
 			}
 			pearlOffset.transform.rotation = Quaternion.AngleAxis(throwAngle, Vector3.forward);
 		}
+	}
+
+	public float GetThrowAngle() {
+		return throwAngle;
 	}
 }
