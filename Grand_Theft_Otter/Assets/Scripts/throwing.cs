@@ -37,15 +37,19 @@ public class throwing : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //check for throw
-		if(throwInputScript.GetThrowingButton())
+        /***************************************************************************************
+        * Throwing Button
+        * ************************************************************************************/
+        if (throwInputScript.GetThrowingButton())
         {
             //print(throw_bumper);
             throwPearl(); //will throw in the direction the pearl is currently pointing
         }
     }
 
-    // disables the rendering of the offset pearl, generates a new pearl, and adds a force to the new pearl
+    /***************************************************************************************
+    * disables the rendering of the offset pearl, generates a new pearl, and adds a force to the new pearl
+    * ************************************************************************************/
     void throwPearl()
     {
 

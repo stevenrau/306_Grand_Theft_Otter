@@ -101,7 +101,7 @@ public class game_setup : MonoBehaviour {
 //		beaver2.GetComponent<player_movement>().setPlayerId ("2");
 		beaver2.GetComponent<get_input>().SetPlayerID ("2");
 		beaver2.transform.position = new Vector2 (4.0f, 0.0f);
-
+        
 		/*
         GameObject pearlOffset = Instantiate(Resources.Load("Pearl_Offset")) as GameObject;
         pearlOffset.transform.parent= beaver1.transform;
