@@ -1,0 +1,61 @@
+===============================================================
+|/////////////////////////// TO DO \\\\\\\\\\\\\\\\\\\\\\\\\\\|
+|-------------------------------------------------------------|
+
+Bugs:
+-> Pearl shoots out of water
+-> Fix the boundary colliders + seawead walls (keep some seaweed for aesthetic puposes, make new walls)
+
+Player Actions:
+-> Dash
+   - Water animation (rushes by)
+   - Brief "power-up" delay
+   - Speed boost
+   - Player who gets hit drops pearl (if they have the pearl)
+   - Player who gets hit is stunned for a brief period
+   - Limit to dash frequency
+   
+-> Throw
+-> Breathing input triggers
+   - Threshold for # keypresses/time (dependant on update interval)
+   - If player breathes underwater:
+     (a)Controls disabled
+	 (b)Animation plays
+	 (c)Float to the top
+	 (d)Player can now breathe freely
+	 (e)Player state is reset once they reach the surface
+   - Surface will be defined as a trigger box collider
+   - Beaver will have a game object attached to the mouth that will trigger when breathing is "allowed"
+-> Virtual breath
+   - On screen breath meter for each player (position is up for debate)
+   - Breath decreases over time
+   - Player goes to the breathing zone to gain breath
+
+Audio:
+-> Music
+-> Player sounds
+-> Interaction sounds (splash, throw, pearl hitting objects, etc.)
+
+Menu:
+-> View instructions
+-> Breathing input option
+-> Backstory (shown before playing)
+
+Points/Scoring:
+-> Create sprites for dam growth
+-> Dam grows with points scored
+-> Breathable area shrinks with growing dam
+-> Modify scoring zone/behaviour
+   - Change dam shape to shrink entrace.
+   - Allow player to walk on land (on the scoring platform) via their dam entrance
+   - The player will start on the "bridge"
+   - The bridge will build towards a goal.
+   - Once the bridge reaches the goal, otters will be able to grab it to win.
+   - Prevent players from entering opposing dams
+
+Aesthetics:
+-> Obstacles
+-> Change beaver to otter?? (low priority)
+-> Pearl splashes out of water
+-> Water animation around moving beaver
+-> Make otters gangster
