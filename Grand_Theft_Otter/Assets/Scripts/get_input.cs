@@ -19,6 +19,7 @@ public class get_input : MonoBehaviour
     private string aimVert;
 
     private string throwBumper; // passing button 
+    private string dashButton; // dash button
 
     // Use this for initialization
     void Start()
@@ -95,6 +96,14 @@ public class get_input : MonoBehaviour
 
     }
 
+    /***************************************************************************************
+    * Dash Input
+    * ************************************************************************************/
+    public bool GetDashButton()
+    {
+        return Input.GetButton(dashButton);
+    }
+
     // Setting player ID to distingish between players and platforms
     public void SetPlayerID(string id)
     {
@@ -110,6 +119,7 @@ public class get_input : MonoBehaviour
             aimVert = "right_analog_vertical_" + playerID;
 
             throwBumper = "r_bumper_" + playerID;
+            dashButton = "dash_" + playerID;
         }
         else
         {
@@ -117,6 +127,7 @@ public class get_input : MonoBehaviour
             aimVert = "right_analog_vertical_Mac_" + playerID;
 
             throwBumper = "r_bumper_Mac_" + playerID;
+            dashButton = "dash_Mac_" + playerID;
         }
     }
 

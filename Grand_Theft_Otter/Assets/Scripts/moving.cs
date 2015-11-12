@@ -63,25 +63,28 @@ public class moving : MonoBehaviour {
             animator.SetBool("is_moving", false);
         }
 
-        //limit to max speed in x
-        if (rBody.velocity.x > maxSpeed)
-        {
-            rBody.velocity = new Vector2(maxSpeed, rBody.velocity.y);
-        }
-        else if (rBody.velocity.x < maxSpeed * -1)
-        {
-            rBody.velocity = new Vector2(maxSpeed * -1, rBody.velocity.y);
-        }
+        // ******** 
+        // * Had to take out the following to let the dash do it's thing
+        // ***********
+        ////limit to max speed in x
+        //if (rBody.velocity.x > maxSpeed)
+        //{
+        //    rBody.velocity = new Vector2(maxSpeed, rBody.velocity.y);
+        //}
+        //else if (rBody.velocity.x < maxSpeed * -1)
+        //{
+        //    rBody.velocity = new Vector2(maxSpeed * -1, rBody.velocity.y);
+        //}
 
-        //limit to max speed in y
-        if (rBody.velocity.y > maxSpeed)
-        {
-            rBody.velocity = new Vector2(rBody.velocity.x, maxSpeed);
-        }
-        else if (rBody.velocity.y < maxSpeed * -1)
-        {
-            rBody.velocity = new Vector2(rBody.velocity.x, maxSpeed * -1);
-        }
+        ////limit to max speed in y
+        //if (rBody.velocity.y > maxSpeed)
+        //{
+        //    rBody.velocity = new Vector2(rBody.velocity.x, maxSpeed);
+        //}
+        //else if (rBody.velocity.y < maxSpeed * -1)
+        //{
+        //    rBody.velocity = new Vector2(rBody.velocity.x, maxSpeed * -1);
+        //}
 
         //point the beaver_sprite in the same direction as it is moving
         RotateBeaver(h, v);
@@ -140,3 +143,4 @@ public class moving : MonoBehaviour {
 		return facingAngle;
 	}
 }
+ 

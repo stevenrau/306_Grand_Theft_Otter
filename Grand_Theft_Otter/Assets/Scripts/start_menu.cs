@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿// followed the tutorial http://xenosmashgames.com/creating-start-menu-unity-5/ for making the main menu
+using UnityEngine;
 using UnityEngine.UI;// we need this namespace in order to access UI elements within our script
 using System.Collections;
 
