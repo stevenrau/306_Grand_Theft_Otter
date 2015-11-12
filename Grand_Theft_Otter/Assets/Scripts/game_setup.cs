@@ -44,13 +44,21 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the seaweed barriers
 		 * ************************************************************************************/
-		GameObject seaweedLeft = Instantiate(Resources.Load("Seaweed")) as GameObject;
+		/*GameObject seaweedLeft = Instantiate(Resources.Load("Seaweed")) as GameObject;
 		GameObject seaweedRight = Instantiate(Resources.Load("Seaweed")) as GameObject;
         
 		//seaweed_left.transform.Translate(new Vector2 (-0.2f, -0.1f));
 		Transform left_transform = seaweedLeft.transform;
 		seaweedRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
-		seaweedRight.transform.localScale = new Vector2(-seaweedLeft.transform.localScale.x, seaweedLeft.transform.localScale.y);
+		seaweedRight.transform.localScale = new Vector2(-seaweedLeft.transform.localScale.x, seaweedLeft.transform.localScale.y);*/
+
+		GameObject wallLeft = Instantiate(Resources.Load("Wall_Textured")) as GameObject;
+		GameObject wallRight = Instantiate(Resources.Load("Wall_Textured")) as GameObject;
+		
+		//seaweed_left.transform.Translate(new Vector2 (-0.2f, -0.1f));
+		Transform leftTransform = wallLeft.transform;
+		wallRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
+		wallRight.transform.localScale = new Vector2(-wallLeft.transform.localScale.x, wallLeft.transform.localScale.y);
 
 
 		/***************************************************************************************
@@ -59,8 +67,8 @@ public class game_setup : MonoBehaviour {
 
 		GameObject otterDenLeft = Instantiate(Resources.Load("Den")) as GameObject;
 		GameObject otterDenRight = Instantiate(Resources.Load("Den")) as GameObject;
-		left_transform = otterDenLeft.transform;
-		otterDenRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
+		leftTransform = otterDenLeft.transform;
+		otterDenRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
 		otterDenRight.transform.localScale = new Vector2(-otterDenLeft.transform.localScale.x, otterDenLeft.transform.localScale.y);
 
 		/***************************************************************************************
@@ -70,8 +78,8 @@ public class game_setup : MonoBehaviour {
 		scoringZoneLeft.name = "left_score_zone";
 		GameObject scoringZoneRight = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
 		scoringZoneRight.name = "right_score_zone";
-		left_transform = scoringZoneLeft.transform;
-		scoringZoneRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
+		leftTransform = scoringZoneLeft.transform;
+		scoringZoneRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
 		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);
 
 		/***************************************************************************************
