@@ -7,21 +7,20 @@ public class pearl_scored_beahviour : MonoBehaviour {
 	Animator animator; //the animator for the pearl
 
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+	{
 		animator = GetComponent<Animator>();
-	
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
+	void Update ()
+	{
 		animator.SetTrigger ("score");
 		
-		Invoke ("delete_pearl_scored", 2.0f);	
+		Invoke ("DeletePearlScored", 2.0f);	
 	}
 
-	void delete_pearl_scored()
+	void DeletePearlScored()
 	{
 		Destroy(gameObject);
 	}

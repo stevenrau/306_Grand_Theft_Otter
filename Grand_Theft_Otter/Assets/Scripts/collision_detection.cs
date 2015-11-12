@@ -4,7 +4,7 @@ using System.Collections;
 public class collision_detection : MonoBehaviour {
 
 	GameObject pearlOffset; //the child object of the player that will indicate the direction the pearl will be thrown
-	public SpriteRenderer pearlRenderer; //the component that will either show or hide the pearl on the beaver.
+	SpriteRenderer pearlRenderer; //the component that will either show or hide the pearl on the beaver.
 
 	private bool hasPearl = false;
 

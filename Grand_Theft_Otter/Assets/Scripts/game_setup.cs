@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 public class game_setup : MonoBehaviour {
 
-	private int left_score = 0;
-	private int right_score = 0;
-	private int cur_left_point_structs;
-	private int cur_right_point_structs;
+	private int leftScore = 0;
+	private int rightScore = 0;
+	private int curLeftPointStructs;
+	private int curRightPointStructs;
 
 	string[] structures;
 
@@ -29,7 +29,7 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the Water Background
 		 * ************************************************************************************/
-		GameObject water_bg = Instantiate (Resources.Load ("Water_BG")) as GameObject;
+		GameObject waterBg = Instantiate (Resources.Load ("Water_BG")) as GameObject;
 
 		/***************************************************************************************
 		 * Load the Sky Background
@@ -39,40 +39,40 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the water surface edge
 		 * ************************************************************************************/
-		GameObject water_surface_edge = Instantiate (Resources.Load ("Water_Surface_Edge")) as GameObject;
+		GameObject waterSurfaceEdge = Instantiate (Resources.Load ("Water_Surface_Edge")) as GameObject;
 
 		/***************************************************************************************
 		 * Load the seaweed barriers
 		 * ************************************************************************************/
-		GameObject seaweed_left = Instantiate(Resources.Load("Seaweed")) as GameObject;
-		GameObject seaweed_right = Instantiate(Resources.Load("Seaweed")) as GameObject;
+		GameObject seaweedLeft = Instantiate(Resources.Load("Seaweed")) as GameObject;
+		GameObject seaweedRight = Instantiate(Resources.Load("Seaweed")) as GameObject;
         
 		//seaweed_left.transform.Translate(new Vector2 (-0.2f, -0.1f));
-		Transform left_transform = seaweed_left.transform;
-		seaweed_right.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
-		seaweed_right.transform.localScale = new Vector2(-seaweed_left.transform.localScale.x, seaweed_left.transform.localScale.y);
+		Transform left_transform = seaweedLeft.transform;
+		seaweedRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
+		seaweedRight.transform.localScale = new Vector2(-seaweedLeft.transform.localScale.x, seaweedLeft.transform.localScale.y);
 
 
 		/***************************************************************************************
 		 * Load the otter dens
 		 * ************************************************************************************/
 
-		GameObject otter_den_left = Instantiate(Resources.Load("Den")) as GameObject;
-		GameObject otter_den_right = Instantiate(Resources.Load("Den")) as GameObject;
-		left_transform = otter_den_left.transform;
-		otter_den_right.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
-		otter_den_right.transform.localScale = new Vector2(-otter_den_left.transform.localScale.x, otter_den_left.transform.localScale.y);
+		GameObject otterDenLeft = Instantiate(Resources.Load("Den")) as GameObject;
+		GameObject otterDenRight = Instantiate(Resources.Load("Den")) as GameObject;
+		left_transform = otterDenLeft.transform;
+		otterDenRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
+		otterDenRight.transform.localScale = new Vector2(-otterDenLeft.transform.localScale.x, otterDenLeft.transform.localScale.y);
 
 		/***************************************************************************************
 		 * Load the scoring zones
 		 * ************************************************************************************/
-		GameObject scoring_zone_left = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
-		scoring_zone_left.name = "left_score_zone";
-		GameObject scoring_zone_right = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
-		scoring_zone_right.name = "right_score_zone";
-		left_transform = scoring_zone_left.transform;
-		scoring_zone_right.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
-		scoring_zone_right.transform.localScale = new Vector2(-scoring_zone_left.transform.localScale.x, scoring_zone_left.transform.localScale.y);
+		GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
+		scoringZoneLeft.name = "left_score_zone";
+		GameObject scoringZoneRight = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
+		scoringZoneRight.name = "right_score_zone";
+		left_transform = scoringZoneLeft.transform;
+		scoringZoneRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
+		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);
 
 		/***************************************************************************************
 		 * Load the floor
@@ -114,39 +114,39 @@ public class game_setup : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (cur_left_point_structs < left_score) {
-			GameObject cur_struct = Instantiate (Resources.Load (structures [left_score - 1])) as GameObject;
+		if (curLeftPointStructs < leftScore) {
+			GameObject cur_struct = Instantiate (Resources.Load (structures [leftScore - 1])) as GameObject;
 
-			cur_left_point_structs++;
+			curLeftPointStructs++;
 		}
 
-		else if (cur_right_point_structs < right_score) {
-			GameObject cur_struct = Instantiate (Resources.Load (structures [right_score - 1])) as GameObject;
+		else if (curRightPointStructs < rightScore) {
+			GameObject cur_struct = Instantiate (Resources.Load (structures [rightScore - 1])) as GameObject;
 
 			cur_struct.transform.position = new Vector3(Mathf.Abs (cur_struct.transform.position.x), cur_struct.transform.position.y, cur_struct.transform.position.z);
 			cur_struct.transform.localScale = new Vector2(-cur_struct.transform.localScale.x, cur_struct.transform.localScale.y);
 			
-			cur_right_point_structs++;
+			curRightPointStructs++;
 		}
 	}
 
-	public void increment_left_score()
+	public void IncrementLeftScore()
 	{
-		left_score++;
+		leftScore++;
 	}
 
-	public void increment_right_score()
+	public void IncrementRightScore()
 	{
-		right_score++;
+		rightScore++;
 	}
 
-	public void print_left_score()
+	public void PrintLeftScore()
 	{
-		print ("Left score: " + left_score);
+		print ("Left score: " + leftScore);
 	}
 
-	public void print_right_score()
+	public void PrintRightScore()
 	{
-		print ("Right score: " + right_score);
+		print ("Right score: " + rightScore);
 	}
 }

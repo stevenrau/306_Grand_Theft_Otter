@@ -12,17 +12,18 @@ public class get_input : MonoBehaviour
 
 
     // controller names in Prject Settings -> Input Manager
-    private string mov_horz;    // movement axis
-    private string mov_vert;
+    private string movHorz;    // movement axis
+    private string movVert;
 
-    private string aim_horz;    // aiming axis
-    private string aim_vert;
+    private string aimHorz;    // aiming axis
+    private string aimVert;
 
-    private string throw_bumper; // passing button 
+    private string throwBumper; // passing button 
 
     // Use this for initialization
     void Start()
     {
+		// check the os to ensure that the proper control scheme is used
         RuntimePlatform os = Application.platform;
         print(os.ToString());
         if (os == RuntimePlatform.WindowsEditor || os == RuntimePlatform.WindowsPlayer)
@@ -51,7 +52,7 @@ public class get_input : MonoBehaviour
     public float GetMoveHorizontalAxis()
     {
 
-        return Input.GetAxis(mov_horz);
+        return Input.GetAxis(movHorz);
 
     }
 
@@ -59,7 +60,7 @@ public class get_input : MonoBehaviour
     public float GetMoveVerticalAxis()
     {
 
-        return Input.GetAxis(mov_vert);
+        return Input.GetAxis(movVert);
 
     }
 
@@ -72,7 +73,7 @@ public class get_input : MonoBehaviour
     public float GetAimHorizontalAxis()
     {
 
-        return Input.GetAxis(aim_horz);
+        return Input.GetAxis(aimHorz);
 
     }
 
@@ -80,7 +81,7 @@ public class get_input : MonoBehaviour
     public float GetAimVerticalAxis()
     {
 
-        return Input.GetAxis(aim_vert);
+        return Input.GetAxis(aimVert);
 
     }
 
@@ -90,35 +91,32 @@ public class get_input : MonoBehaviour
 	* ************************************************************************************/
     public bool GetThrowingButton()
     {
-
-        return Input.GetButton(throw_bumper);
+        return Input.GetButton(throwBumper);
 
     }
-
-
 
     // Setting player ID to distingish between players and platforms
     public void SetPlayerID(string id)
     {
         playerID = id;
 
-        mov_horz = "left_analog_horizontal_" + playerID;
-        mov_vert = "left_analog_vertical_" + playerID;
+        movHorz = "left_analog_horizontal_" + playerID;
+        movVert = "left_analog_vertical_" + playerID;
 
         if (isPC)
         {
 
-            aim_horz = "right_analog_horizontal_" + playerID;
-            aim_vert = "right_analog_vertical_" + playerID;
+            aimHorz = "right_analog_horizontal_" + playerID;
+            aimVert = "right_analog_vertical_" + playerID;
 
-            throw_bumper = "r_bumper_" + playerID;
+            throwBumper = "r_bumper_" + playerID;
         }
         else
         {
-            aim_horz = "right_analog_horizontal_Mac_" + playerID;
-            aim_vert = "right_analog_vertical_Mac_" + playerID;
+            aimHorz = "right_analog_horizontal_Mac_" + playerID;
+            aimVert = "right_analog_vertical_Mac_" + playerID;
 
-            throw_bumper = "r_bumper_Mac_" + playerID;
+            throwBumper = "r_bumper_Mac_" + playerID;
         }
     }
 

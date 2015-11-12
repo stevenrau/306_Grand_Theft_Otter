@@ -8,12 +8,12 @@ public class moving : MonoBehaviour {
 
     public float moveForce;
     public float maxSpeed;
-    bool facing_right; //is the player facing right
-    float facing_angle; //the angle the beaver is looking( what way its head is pointing)
+    bool facingRight; //is the player facing right
+    float facingAngle; //the angle the beaver is looking( what way its head is pointing)
 
-    GameObject beaver_sprite; //the child object of player that displays the beaver and animates it
+    GameObject beaverSprite; //the child object of player that displays the beaver and animates it
 
-    float L_analog_threshold; //the analog stick must be moved more than this to trigger moving animation
+    float leftAnalogThresh; //the analog stick must be moved more than this to trigger moving animation
 
 	// script
 	get_input throwInputScript;
@@ -25,16 +25,16 @@ public class moving : MonoBehaviour {
         rBody = GetComponent<Rigidbody2D>();
 
         //get reference to the animator located on the beaver_sprite child object
-		beaver_sprite = transform.GetChild(1).gameObject;
-        animator = beaver_sprite.GetComponent<Animator>();
+		beaverSprite = transform.GetChild(1).gameObject;
+        animator = beaverSprite.GetComponent<Animator>();
 
         throwInputScript = gameObject.GetComponent<get_input>();
         
-        facing_angle = 0.0f;
+        facingAngle = 0.0f;
 
-        facing_right = true; //facing right initially
+        facingRight = true; //facing right initially
 
-        L_analog_threshold = 0.001f;
+        leftAnalogThresh = 0.001f;
     }
 	
 	// Update is called once per frame
@@ -42,20 +42,12 @@ public class moving : MonoBehaviour {
         //move the player position 
 
         //for xbox controller
-
-
 		float h = throwInputScript.GetMoveHorizontalAxis(); //mov_horiz
 		float v = throwInputScript.GetMoveVerticalAxis(); //mov_vert
-//		float h = 1f;
-//		float v = 1f;
-
-        //for key board
-        //float h = Input.GetAxis("Horizontal");
-        //float v = Input.GetAxis("Vertical");
 
 
         //set animation if stick is moved enough
-        if ((Mathf.Abs(h) > L_analog_threshold) || (Mathf.Abs(v) > L_analog_threshold))
+		if ((Mathf.Abs(h) > leftAnalogThresh) || (Mathf.Abs(v) > leftAnalogThresh))
         {
 
             //show the player moving animation
@@ -92,14 +84,14 @@ public class moving : MonoBehaviour {
         }
 
         //point the beaver_sprite in the same direction as it is moving
-        rotateBeaver(h, v);
+        RotateBeaver(h, v);
 
         //set the offset pearl object to point in the direction it will be thrown
         //also sets throw angle
 
         
         //flip the orientation of the sprite if direction was changed
-        if ((facing_right && h < 0) || (!facing_right && h > 0))
+        if ((facingRight && h < 0) || (!facingRight && h > 0))
         {
             Flip();
         }
@@ -108,27 +100,27 @@ public class moving : MonoBehaviour {
     }
 
     //point the beaver in the same direction as it is moving
-    void rotateBeaver(float x, float y)
+    void RotateBeaver(float x, float y)
     {
         // cancel all input below the threshold
-        if (Mathf.Abs(x) < L_analog_threshold) { x = 0.0f; }
-        if (Mathf.Abs(y) < L_analog_threshold) { y = 0.0f; }
+        if (Mathf.Abs(x) < leftAnalogThresh) { x = 0.0f; }
+        if (Mathf.Abs(y) < leftAnalogThresh) { y = 0.0f; }
 
 
         // CALCULATE ANGLE AND ROTATE
         if (x != 0.0f || y != 0.0f)
         {
-            if (facing_right)
+            if (facingRight)
             {
-                facing_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+                facingAngle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
             }
             else
             {
-                facing_angle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) + 180;
+                facingAngle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) + 180;
             }
 
             //beaver_sprite.transform.rotation = Quaternion.AngleAxis(facing_angle, Vector3.forward);
-            transform.rotation = Quaternion.AngleAxis(facing_angle, Vector3.forward);
+            transform.rotation = Quaternion.AngleAxis(facingAngle, Vector3.forward);
         }
     }
 
@@ -137,14 +129,14 @@ public class moving : MonoBehaviour {
     {
         animator.SetTrigger("turn");
 
-        facing_right = !facing_right;
+        facingRight = !facingRight;
 
-        Vector3 tmp = beaver_sprite.transform.localScale;
+        Vector3 tmp = beaverSprite.transform.localScale;
         tmp.x = tmp.x * -1;
-        beaver_sprite.transform.localScale = tmp;
+        beaverSprite.transform.localScale = tmp;
     }
 
 	public float GetFaceingAngle() {
-		return facing_angle;
+		return facingAngle;
 	}
 }

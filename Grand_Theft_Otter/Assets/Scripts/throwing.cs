@@ -4,7 +4,7 @@ using System.Collections;
 public class throwing : MonoBehaviour {
 
     //the component that will either show or hide the pearl on the beaver.
-    public SpriteRenderer pearlRenderer;
+    SpriteRenderer pearlRenderer;
 
 	GameObject pearlOffset; //the child object of the player that will indicate the direction the pearl will be thrown
 
@@ -16,7 +16,7 @@ public class throwing : MonoBehaviour {
 	collision_detection colDetectScript;
 
  //  float throw_angle; // the angle the pearl will be thrown
-    public float throw_force;
+    public float throwForce;
 
     void Start () {
 
@@ -41,14 +41,14 @@ public class throwing : MonoBehaviour {
         if (throwInputScript.GetThrowingButton())
         {
             //print(throw_bumper);
-            throwPearl(); //will throw in the direction the pearl is currently pointing
+            ThrowPearl(); //will throw in the direction the pearl is currently pointing
         }
     }
 
     /***************************************************************************************
     * disables the rendering of the offset pearl, generates a new pearl, and adds a force to the new pearl
     * ************************************************************************************/
-    void throwPearl()
+    void ThrowPearl()
     {
 
         //if the beaver is currently holding a pearl
@@ -68,7 +68,7 @@ public class throwing : MonoBehaviour {
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
 
             //remember which beaver threw this pearl
-            thrownPearl.GetComponent<pearl_behaviour>().setBeaver(this.transform.gameObject);
+            thrownPearl.GetComponent<pearl_behaviour>().SetBeaver(this.transform.gameObject);
 
             //the pearl starts on the player
             thrownPearl.transform.position = new Vector2(transform.position.x, transform.position.y);
@@ -77,13 +77,14 @@ public class throwing : MonoBehaviour {
 			Vector3 dir = Quaternion.AngleAxis(aimingDirScript.GetThrowAngle(), Vector3.forward) * Vector3.up;
 
             //apply force to the pearl in that direction
-            thrownPearl.GetComponent<Rigidbody2D>().AddForce(dir * throw_force);
+            thrownPearl.GetComponent<Rigidbody2D>().AddForce(dir * throwForce);
         }
         
 
     }
 
-	void MakeInteractable() {
+	void MakeInteractable()
+	{
 		transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Interactable");
 	}
 }

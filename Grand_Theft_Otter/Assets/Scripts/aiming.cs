@@ -6,7 +6,7 @@ public class aiming : MonoBehaviour {
 	//the child object of the player that will indicate the direction the pearl will be thrown
 	GameObject pearlOffset;
 	//the component that will either show or hide the pearl on the beaver.
-	public SpriteRenderer pearlRenderer;
+	SpriteRenderer pearlRenderer;
 
 	float throwAngle; // the angle the pearl will be thrown
 
@@ -35,14 +35,12 @@ public class aiming : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		rotatePearlOffset (inputScript.GetAimHorizontalAxis(), inputScript.GetAimVerticalAxis());
+		RotatePearlOffset (inputScript.GetAimHorizontalAxis(), inputScript.GetAimVerticalAxis());
 	}
 
 	//point the pearl based on right analog stick
-	void rotatePearlOffset(float x, float y)
+	void RotatePearlOffset(float x, float y)
 	{
-		
-		
 		// cancel all input below this 
 		if (Mathf.Abs(x) < aimingThreshold) { x = 0.0f; }
 		if (Mathf.Abs(y) < aimingThreshold) { y = 0.0f; }

@@ -238,7 +238,7 @@ public class player_movement : MonoBehaviour {
             GameObject thrownPearl = Instantiate(Resources.Load("Pearl")) as GameObject;
 
 			//remember which beaver threw this pearl
-			thrownPearl.GetComponent<pearl_behaviour>().setBeaver(this.transform.gameObject);
+			thrownPearl.GetComponent<pearl_behaviour>().SetBeaver(this.transform.gameObject);
 
 			//the pearl starts on the player
             thrownPearl.transform.position = new Vector2(transform.position.x, transform.position.y);
