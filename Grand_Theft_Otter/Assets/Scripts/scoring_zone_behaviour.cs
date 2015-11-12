@@ -3,16 +3,6 @@ using System.Collections;
 
 public class scoring_zone_behaviour : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		game_setup game_script = GameObject.Find ("game_setup").GetComponent<game_setup> ();
@@ -37,16 +27,18 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		} 
 		else if (other.tag == "Player") 
 		{
-			player_movement player_script = other.gameObject.GetComponent<player_movement> ();
+			collision_detection player_script = other.gameObject.GetComponent<collision_detection> ();
 
-			if (player_script.get_has_pearl ()) 
+			if (player_script.GetHasPearl ()) 
 			{
-				player_script.hide_pearl ();
+				player_script.HidePearl ();
 
-				player_script.set_has_pearl(false);
+				player_script.SetHasPearl(false);
 
-				GameObject scored_pearl = Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity) as GameObject;
+				//Load the scored pearl object
+				Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity);
 
+				//Wait a little bit before spawning a new pearl
 				Invoke("create_new_pearl", 1.5f);
 
 				if (gameObject.name == "left_score_zone")

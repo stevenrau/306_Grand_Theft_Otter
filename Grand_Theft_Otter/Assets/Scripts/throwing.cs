@@ -8,8 +8,6 @@ public class throwing : MonoBehaviour {
 
 	GameObject pearlOffset; //the child object of the player that will indicate the direction the pearl will be thrown
 
-   // private bool has_pearl = false;
-
   //  private string throw_bumper;
 
     //getting scripts

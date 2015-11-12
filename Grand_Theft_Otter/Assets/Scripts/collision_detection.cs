@@ -20,7 +20,6 @@ public class collision_detection : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		print (other.tag);
 		if (other.tag == "Pearl") {
 			
 			//  GameObject pearlOffset = player.transform.GetChild(0).gameObject;
