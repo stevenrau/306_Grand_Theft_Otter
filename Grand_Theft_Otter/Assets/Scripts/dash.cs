@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// script made using the following help forum: http://answers.unity3d.com/questions/892955/dashing-mechanic-using-rigidbodyaddforce.html
+// with a few alterations
+
+using UnityEngine;
 using System.Collections;
 
 public class dash : MonoBehaviour {
