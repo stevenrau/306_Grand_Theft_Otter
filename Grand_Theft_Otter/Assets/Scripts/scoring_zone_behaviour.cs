@@ -15,14 +15,10 @@ public class scoring_zone_behaviour : MonoBehaviour {
 			if (gameObject.name == "left_score_zone")
 			{
 				gameScript.IncrementLeftScore();
-				
-				gameScript.PrintLeftScore();
 			}
 			if (gameObject.name == "right_score_zone")
 			{
 				gameScript.IncrementRightScore ();
-				
-				gameScript.PrintRightScore();
 			}
 		} 
 		else if (other.tag == "Player") 
@@ -44,14 +40,10 @@ public class scoring_zone_behaviour : MonoBehaviour {
 				if (gameObject.name == "left_score_zone")
 				{
 					gameScript.IncrementLeftScore();
-
-					gameScript.PrintLeftScore();
 				}
 				if (gameObject.name == "right_score_zone")
 				{
 					gameScript.IncrementRightScore ();
-
-					gameScript.PrintRightScore();
 				}
 			}
 		}

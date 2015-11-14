@@ -6,19 +6,29 @@ public class game_setup : MonoBehaviour {
 
 	private int leftScore = 0;
 	private int rightScore = 0;
-	private int curLeftPointStructs;
-	private int curRightPointStructs;
 
-	string[] structures;
+	private int maxScore = 3;
+
+	//private int curLeftPointStructs;
+	//private int curRightPointStructs;
+
+	//string[] structures;
+
+	GameObject otterRampLeft;
+	GameObject otterRampRight;
 
 	// Use this for initialization
 	void Start () {
+
+		/*
 		structures = new string[5];
 		structures [0] = "first_point";
 		structures [1] = "second_point";
 		structures [2] = "third_point";
 		structures [3] = "fourth_point";
 		structures [4] = "fifth_point";
+*/
+
 	}
 
 	void Awake()
@@ -39,7 +49,7 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the water surface edge
 		 * ************************************************************************************/
-		GameObject waterSurfaceEdge = Instantiate (Resources.Load ("Water_Surface_Edge")) as GameObject;
+		//GameObject waterSurfaceEdge = Instantiate (Resources.Load ("Water_Surface_Edge")) as GameObject;
 
 		/***************************************************************************************
 		 * Load the seaweed barriers
@@ -72,6 +82,16 @@ public class game_setup : MonoBehaviour {
 		otterDenRight.transform.localScale = new Vector2(-otterDenLeft.transform.localScale.x, otterDenLeft.transform.localScale.y);
 
 		/***************************************************************************************
+		 * Load the den ramps
+		 * ************************************************************************************/
+		otterRampLeft = Instantiate(Resources.Load("Den_ramp_and_deck")) as GameObject;
+		otterRampRight = Instantiate(Resources.Load("Den_ramp_and_deck")) as GameObject;
+	
+		leftTransform = otterRampLeft.transform;
+		otterRampRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
+		otterRampRight.transform.localScale = new Vector2(-leftTransform.localScale.x, leftTransform.localScale.y);
+
+		/***************************************************************************************
 		 * Load the scoring zones
 		 * ************************************************************************************/
 		GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
@@ -95,40 +115,45 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the beavers (otters)
 		 * ************************************************************************************/
+		GameObject startObject1 = Instantiate (Resources.Load ("Player_start_1")) as GameObject;
+		GameObject startObject2 = Instantiate (Resources.Load ("Player_start_2")) as GameObject;
+		GameObject startObject3 = Instantiate (Resources.Load ("Player_start_3")) as GameObject;
+		GameObject startObject4 = Instantiate (Resources.Load ("Player_start_4")) as GameObject;
+
+		Vector2 startPos1 = startObject1.transform.position;
+		Vector2 startPos2 = startObject2.transform.position;
+		Vector2 startPos3 = startObject3.transform.position;
+		Vector2 startPos4 = startObject4.transform.position;
+
+
 		GameObject beaver1 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
         beaver1.name = "Beaver1";
-		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.blue;
-//		beaver1.GetComponent<player_movement>().setPlayerId ("1");
 		beaver1.GetComponent<get_input>().SetPlayerID ("1");
-
-
+		beaver1.transform.position = new Vector2 (startPos1.x, startPos1.y);
+		
+		//beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = new Color(0.5f, 0.5f, 0.0f, 0.5f);
+		
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
-		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
-
-//		beaver2.GetComponent<player_movement>().setPlayerId ("2");
 		beaver2.GetComponent<get_input>().SetPlayerID ("2");
-		beaver2.transform.position = new Vector2 (4.0f, 0.0f);
-        
-		/*
-        GameObject pearlOffset = Instantiate(Resources.Load("Pearl_Offset")) as GameObject;
-        pearlOffset.transform.parent= beaver1.transform;
-        pearlOffset.transform.position = new Vector3(beaver1.transform.position.x +0.25f, beaver1.transform.position.y-0.4f);
-        
-        pearlOffset.GetComponent<SpriteRenderer>().enabled = false;
-        */
+		beaver2.transform.position = new Vector2 (startPos2.x, startPos2.y);
+
+		//beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
+
     }
 	
 	// Update is called once per frame
 	void Update () {
 
+		/*
 		if (curLeftPointStructs < leftScore) {
 			GameObject cur_struct = Instantiate (Resources.Load (structures [leftScore - 1])) as GameObject;
 
 			curLeftPointStructs++;
 		}
 
-		else if (curRightPointStructs < rightScore) {
+
+		if (curRightPointStructs < rightScore) {
 			GameObject cur_struct = Instantiate (Resources.Load (structures [rightScore - 1])) as GameObject;
 
 			cur_struct.transform.position = new Vector3(Mathf.Abs (cur_struct.transform.position.x), cur_struct.transform.position.y, cur_struct.transform.position.z);
@@ -136,25 +161,30 @@ public class game_setup : MonoBehaviour {
 			
 			curRightPointStructs++;
 		}
+		*/
+
 	}
+
+
+	//keep score and build the bridge further with each point scored
 
 	public void IncrementLeftScore()
 	{
-		leftScore++;
+		if (leftScore < maxScore) {
+			leftScore++;
+			//enable the next section of the bridge
+			otterRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
+		}
+		print ("Left score: " + leftScore);
 	}
 
 	public void IncrementRightScore()
 	{
-		rightScore++;
-	}
-
-	public void PrintLeftScore()
-	{
-		print ("Left score: " + leftScore);
-	}
-
-	public void PrintRightScore()
-	{
+		if (rightScore < maxScore) {
+			rightScore++;
+			//enable the next section of the bridge
+			otterRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
+		}
 		print ("Right score: " + rightScore);
 	}
 }

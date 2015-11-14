@@ -6,6 +6,11 @@ public class moving : MonoBehaviour {
     Rigidbody2D rBody; //the body of the player
     Animator animator; //the animator for the beaver sprite
 
+	float waterGravity = 0.2f;
+	float landGravity = 1.2f;
+	float waterSurface = 3.0f;
+	float deckSurface = 3.5f;
+
     public float moveForce;
     public float maxSpeed;
     bool facingRight; //is the player facing right
@@ -43,7 +48,26 @@ public class moving : MonoBehaviour {
 
         //for xbox controller
 		float h = throwInputScript.GetMoveHorizontalAxis(); //mov_horiz
-		float v = throwInputScript.GetMoveVerticalAxis(); //mov_vert
+		float v = throwInputScript.GetMoveVerticalAxis();  //mov_vert
+
+		//check if on land or swimming
+		if (transform.position.y >= waterSurface)
+		{
+			beaverSprite.GetComponent<SpriteRenderer>().color = Color.magenta;
+			rBody.gravityScale = landGravity;
+			if(transform.position.y >= deckSurface)
+			{
+				beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
+			v = 0.0f;
+			}
+		} 
+		else
+		{
+			beaverSprite.GetComponent<SpriteRenderer>().color =new Color(0.5f, 0.5f, 0.0f, 0.5f);
+			rBody.gravityScale = waterGravity;
+
+		}
+
 
 
         //set animation if stick is moved enough

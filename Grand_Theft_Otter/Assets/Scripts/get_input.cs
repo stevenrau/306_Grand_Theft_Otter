@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿
+using UnityEngine;
 using System.Collections;
 
 public class get_input : MonoBehaviour
@@ -8,7 +9,7 @@ public class get_input : MonoBehaviour
     private bool isPC = true;
 
     // to determine which controller is mapped
-    string playerID;
+    public string playerID;
 
 
     // controller names in Prject Settings -> Input Manager
@@ -42,6 +43,8 @@ public class get_input : MonoBehaviour
             isPC = true;
             print("it's Other!!");
         }
+
+		SetPlayerID (playerID);
     }
 
 
