@@ -12,9 +12,7 @@ public class dash : MonoBehaviour {
     public float dashTimer;
     //max time between dashes
     public float maxDash = 5f;
-
     public float dashVelocity = 4f;
-
     public Vector2 savedVelocity;
 
     Rigidbody2D r_body;
@@ -23,6 +21,9 @@ public class dash : MonoBehaviour {
     get_input dashInputScript;
 
     AudioSource splashSound;
+
+    GameObject beaverSprite; //the child object of player that displays the beaver and animates it
+    Animator animator; //the animator for the beaver sprite
 
     public enum DashState
     {
@@ -38,38 +39,35 @@ public class dash : MonoBehaviour {
         dashInputScript = GetComponent<get_input>();
 
         splashSound = GetComponent<AudioSource>();
+
+        //get reference to the animator located on the beaver_sprite child object
+        beaverSprite = transform.GetChild(1).gameObject;
+        animator = beaverSprite.GetComponent<Animator>();
     }
 
     void Update()
     {
         switch (dashState)
         {
-            case DashState.Ready:
-                //if dash button is pressed, set velocity... 
-                if (dashInputScript.GetDashButton())
-                {
-                    savedVelocity = r_body.velocity;
-                    //r_body.AddForce(savedVelocity * 10f);
-                    r_body.velocity = savedVelocity * dashVelocity;
-                    //r_body.velocity = new Vector2(r_body.velocity.x * 10f, r_body.velocity.y * 10f);
-                    dashState = DashState.Dashing;
-
-                    splashSound.Play();
-
-                    //want player to dash longer than the single frame
-                    //StartCoroutine(Waiting()); 
-                }
-                break;
             case DashState.Dashing:
-                dashTimer += Time.deltaTime * 3;
+
+                //show the player dashing animation
+                animator.SetBool("is_dashing", true);
+
+                dashTimer += Time.deltaTime * 5;
                 if (dashTimer >= maxDash)
                 {
+                    //stop the player dashing animation
+                    animator.SetBool("is_dashing", false);
+
                     dashTimer = maxDash;
                     r_body.velocity = savedVelocity;
                     dashState = DashState.Cooldown;
                 }
                 break;
             case DashState.Cooldown:
+                
+
                 dashTimer -= Time.deltaTime;
                 if (dashTimer <= 0)
                 {
@@ -77,6 +75,25 @@ public class dash : MonoBehaviour {
                     dashState = DashState.Ready;
                 }
                 break;
+            case DashState.Ready:
+                //if dash button is pressed, set velocity... 
+                if (dashInputScript.GetDashButton())
+                {
+                    
+
+                    savedVelocity = r_body.velocity;
+                    //r_body.AddForce(savedVelocity * 10f);
+                    r_body.velocity = savedVelocity * dashVelocity;
+                    //r_body.velocity = new Vector2(r_body.velocity.x * 10f, r_body.velocity.y * 10f);
+                    dashState = DashState.Dashing;
+
+                    splashSound.Play();
+                    
+                    //want player to dash longer than the single frame
+                    //StartCoroutine(Waiting()); 
+                }
+                break;
+            
         }
         
     }
