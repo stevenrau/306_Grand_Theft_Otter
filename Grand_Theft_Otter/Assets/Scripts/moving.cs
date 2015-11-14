@@ -8,8 +8,8 @@ public class moving : MonoBehaviour {
 
 	float waterGravity = 0.2f;
 	float landGravity = 1.2f;
-	float waterSurface = 3.0f;
-	float deckSurface = 3.5f;
+	float waterSurface = 2.5f;
+	float deckSurface = 4.1f;
 
     public float moveForce;
     public float maxSpeed;
@@ -22,6 +22,7 @@ public class moving : MonoBehaviour {
 
 	// script
 	get_input throwInputScript;
+	player_state playerStateScript;
 	
 
     // Use this for initialization
@@ -34,12 +35,17 @@ public class moving : MonoBehaviour {
         animator = beaverSprite.GetComponent<Animator>();
 
         throwInputScript = gameObject.GetComponent<get_input>();
+		playerStateScript = gameObject.GetComponent<player_state>();
         
         facingAngle = 0.0f;
 
         facingRight = true; //facing right initially
 
         leftAnalogThresh = 0.001f;
+
+		animator.SetBool ("on_land", true);
+		animator.SetBool ("is_moving", false);
+		playerStateScript.SetIsOnLand (false);
     }
 	
 	// Update is called once per frame
@@ -50,20 +56,34 @@ public class moving : MonoBehaviour {
 		float h = throwInputScript.GetMoveHorizontalAxis(); //mov_horiz
 		float v = throwInputScript.GetMoveVerticalAxis();  //mov_vert
 
+		//temporary for testing
+		if (playerStateScript.GetCanBreathe()) {
+			beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
+		} else {
+			beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
+		}
+
 		//check if on land or swimming
 		if (transform.position.y >= waterSurface)
 		{
-			beaverSprite.GetComponent<SpriteRenderer>().color = Color.magenta;
+			animator.SetBool ("on_land", false);
+			playerStateScript.SetIsOnLand (false);
+			//beaverSprite.GetComponent<SpriteRenderer>().color = Color.magenta;
 			rBody.gravityScale = landGravity;
+
 			if(transform.position.y >= deckSurface)
 			{
-				beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
-			v = 0.0f;
+				animator.SetBool ("on_land", true);
+				playerStateScript.SetIsOnLand (true);
+				//beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
+				v = 0.0f;
 			}
 		} 
 		else
 		{
-			beaverSprite.GetComponent<SpriteRenderer>().color =new Color(0.5f, 0.5f, 0.0f, 0.5f);
+			animator.SetBool ("on_land", false);
+			playerStateScript.SetIsOnLand (false);
+			//beaverSprite.GetComponent<SpriteRenderer>().color =new Color(0.0f, 0.5f, 0.0f, 0.8f);
 			rBody.gravityScale = waterGravity;
 
 		}

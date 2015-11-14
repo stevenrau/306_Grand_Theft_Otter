@@ -8,6 +8,7 @@ public class collision_detection : MonoBehaviour {
 
 	private bool hasPearl = false;
 
+	player_state playerStateScript;
 
 	// Use this for initialization
 	void Start() {
@@ -16,6 +17,8 @@ public class collision_detection : MonoBehaviour {
 
 		//get reference to the sprite renderer located on the pearlOffset child object
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
+
+		playerStateScript = gameObject.GetComponent<player_state>();
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +33,21 @@ public class collision_detection : MonoBehaviour {
 			Destroy(other.gameObject);
 			
 			SetHasPearl(true);
+		}
+
+		if (other.tag == "Breathable") 
+		{
+			print ("can beathe");
+			playerStateScript.SetCanBreathe(true);
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other)
+	{
+		if (other.tag == "Breathable")
+		{
+			print ("can not beathe");
+			playerStateScript.SetCanBreathe(false);
 		}
 	}
 
