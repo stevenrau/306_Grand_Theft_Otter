@@ -50,7 +50,6 @@ public class dash : MonoBehaviour {
         switch (dashState)
         {
             case DashState.Dashing:
-
                 //show the player dashing animation
                 animator.SetBool("is_dashing", true);
 
@@ -67,7 +66,6 @@ public class dash : MonoBehaviour {
                 break;
             case DashState.Cooldown:
                 
-
                 dashTimer -= Time.deltaTime;
                 if (dashTimer <= 0)
                 {
@@ -79,7 +77,6 @@ public class dash : MonoBehaviour {
                 //if dash button is pressed, set velocity... 
                 if (dashInputScript.GetDashButton())
                 {
-                    
 
                     savedVelocity = r_body.velocity;
                     //r_body.AddForce(savedVelocity * 10f);

@@ -134,6 +134,26 @@ public class get_input : MonoBehaviour
         }
     }
 
+    // returns the player's id (controller) : 1, 2, 3, or 4
+    public string GetPlayerID()
+    {
+        return playerID;
+    }
+
+    // returns the team the player is on : 1 or 2
+    public string GetTeam(string player)
+    {
+        if(player == "1" || player == "2")
+        {
+            return "1"; // team 1 is controllers 1 and 2
+        }
+        else
+        {
+            return "2"; // team 2 is controllers 3 and 4
+        }
+            
+    }
+
     // returns the platform type
     public bool PlatformIsPC()
     {
