@@ -154,7 +154,7 @@ public class get_input : MonoBehaviour
     // returns the team the player is on : 1 or 2
     public string GetTeam(string player)
     {
-        if(player == "1" || player == "2")
+        if(player == "1" || player == "3")
         {
             return "1"; // team 1 is controllers 1 and 2
         }

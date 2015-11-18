@@ -180,12 +180,12 @@ public class game_setup : MonoBehaviour {
 		
 		//beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = new Color(0.5f, 0.5f, 0.0f, 0.5f);
 
-		/*
+		
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
 		beaver2.GetComponent<get_input>().SetPlayerID ("2");
 		beaver2.transform.position = new Vector2 (startPos2.x, startPos2.y);
-*/
+
 		//beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = Color.green;
 
     }

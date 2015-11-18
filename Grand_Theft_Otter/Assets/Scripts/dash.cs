@@ -3,8 +3,7 @@
 * While a player is dashing, they may hit an enemy player to immobolize them for a short while
 * and knock the pearl out of their hands. A player may not dash while they currently posses the pearl.
 *
-* Current Status : player will dash whether or not they are moving in that axis or not. Found "yBoost"
-* value to make dash look good in water and also get beaver onto the platform from water.
+* Current Status : 
 *
 * TODO: knockback, damage flashing, throw pearl
 *
@@ -27,8 +26,8 @@ public class dash : MonoBehaviour {
     public float dashTimer;
 
     //max time between dashes
-    public float maxDash = 1f;
-    public float dashVelocity = 4f;
+    public float maxDash = 2f;
+    private float dashVelocity = 5000f;
     public Vector2 savedVelocity;
 
     Rigidbody2D r_body;
@@ -36,6 +35,7 @@ public class dash : MonoBehaviour {
     //getting scripts
     get_input dashInputScript;
     player_state checkPlayerStateScript;
+    moving movingScript;
 
     AudioSource splashSound;
 
@@ -48,7 +48,8 @@ public class dash : MonoBehaviour {
     private float maxSpeed = 2;
     //klooksgood value for getting beaver to dash with no y velocity and also make it onto platform from water
     private float yBoost = 1.2f;
-    
+
+    private float directionToDash;
 
     public enum DashState
     {
@@ -63,6 +64,7 @@ public class dash : MonoBehaviour {
 
         dashInputScript = GetComponent<get_input>();
         checkPlayerStateScript = GetComponent<player_state>();
+        movingScript = GetComponent<moving>();
 
         splashSound = GetComponent<AudioSource>();
 
@@ -105,33 +107,66 @@ public class dash : MonoBehaviour {
                 {
 
                     savedVelocity = r_body.velocity;
+
                     
+                    //for xbox controller
+                    float h = dashInputScript.GetMoveHorizontalAxis(); //mov_horiz
+                    float v = dashInputScript.GetMoveVerticalAxis();  //mov_vert
+
+                    //dash the player in the direction of the input
+                    
+                    if (h < 0.02f && v < 0.02f)
+                    {
+                        //find the angle to throw based on the angle found for the pearl_offest
+                        Vector3 dir = Quaternion.AngleAxis(movingScript.GetFacingAngle(), Vector3.forward) * Vector3.up;
+
+                        //apply force to the pearl in that direction
+                        r_body.AddForce(dir * dashVelocity);
+                    }
+                    else
+                    {
+                        r_body.AddForce(new Vector2(dashVelocity * h, dashVelocity * v));
+                    }
+
                     //dashing in the case where velocity in one or more axis' velocity is small
-                    if (r_body.velocity.x < maxSpeed && r_body.velocity.x > maxSpeed * -1)
-                    {
-                        //set it to an arbitrary speed
-                        if (r_body.velocity.x < 0) //velocity in the negative
-                        {
-                            r_body.velocity = new Vector2(maxSpeed * -1, r_body.velocity.y);
-                        }
-                        else
-                        {
-                            r_body.velocity = new Vector2(maxSpeed, r_body.velocity.y);
-                        }
+                    //if (r_body.velocity.x < 0.3f && r_body.velocity.x > 0.3f * -1)
+                    //{
+                    //    //set it to an arbitrary speed
+                    //    if (r_body.velocity.x < 0) //velocity in the negative
+                    //    {
+                    //        r_body.velocity = new Vector2(maxSpeed * -1, r_body.velocity.y);
+                    //    }   
+                    //    else
+                    //    {
+                    //        r_body.velocity = new Vector2(maxSpeed, r_body.velocity.y);
+                    //    }
                         
-                    }
+                    //}
 
+                    //if (r_body.velocity.y < 0.3f && r_body.velocity.y > 0.3f * -1)
+                    //{
+                    //    //set it to an arbitrary speed
+                    //    if (r_body.velocity.y < 0) //velocity in the negative
+                    //    {
+                    //        r_body.velocity = new Vector2(r_body.velocity.y, maxSpeed * -1);
+                    //    }
+                    //    else
+                    //    {
+                    //        r_body.velocity = new Vector2(r_body.velocity.y, maxSpeed);
+                    //    }
+
+                    //}
                     // Took out the code for small Y value because gravity was affecting the scaling 
-                    if (r_body.velocity.y < maxSpeed && r_body.velocity.y > maxSpeed * -1)
-                    {
-                        //set it to an arbitrary speed ** 1.2 klooksgood in the water and gets beaver to jump onto platform
-                        r_body.velocity = new Vector2(r_body.velocity.x, yBoost);
+                    //if ((r_body.velocity.y < 0.01f && r_body.velocity.y > 0.01f * -1) && !(r_body.velocity.x > 0.3f && r_body.velocity.x < 0.3f * -1))
+                    //{
+                    //    //set it to an arbitrary speed ** 1.2 klooksgood in the water and gets beaver to jump onto platform
+                    //    r_body.velocity = new Vector2(r_body.velocity.x, yBoost);
 
-                    }
+                    //}
 
                     //adding the dash burst to the player velocity 
                     //r_body.AddForce(savedVelocity * 10f);
-                    r_body.velocity = r_body.velocity * dashVelocity;
+                    //r_body.velocity = r_body.velocity * dashVelocity;
                     //r_body.velocity = new Vector2(r_body.velocity.x + 10f, r_body.velocity.y + 10f);
                     dashState = DashState.Dashing;
 
@@ -163,7 +198,7 @@ public class dash : MonoBehaviour {
                     //Damage(enemyPlayer); 
 
                     //knockback the other player (enemy)
-                    StartCoroutine(Knockback(enemyPlayer, 0.02f, 350, enemyPlayer.transform.position));
+                    StartCoroutine(Knockback(enemyPlayer, 1f, 350, enemyPlayer.transform.position));
                 }
                 else if (enemyPlayer.GetComponent<player_state>().GetIsDashing() == true) //enemy has dash on
                 {
@@ -171,7 +206,7 @@ public class dash : MonoBehaviour {
                     //Damage(beaverSprite);
 
                     //knockback the other player (This player)
-                    StartCoroutine(Knockback(beaverSprite, 0.02f, 350, beaverSprite.transform.position));
+                    StartCoroutine(Knockback(beaverSprite, 1f, 350, beaverSprite.transform.position));
                 }
                 
             }
@@ -192,7 +227,7 @@ public class dash : MonoBehaviour {
         {
             timer += Time.deltaTime;
 
-            playerHit.GetComponent<Rigidbody2D>().AddForce(new Vector3(knockbackDir.x * -100, knockbackDir.y * knockbackPwr, playerHit.transform.position.z));
+            playerHit.GetComponent<Rigidbody2D>().AddForce(new Vector2(knockbackDir.x * -100, knockbackDir.y * knockbackPwr));
 
         }
 
