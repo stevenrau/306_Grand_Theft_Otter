@@ -161,17 +161,19 @@ namespace BreathingSensorWithKeyPress
             float difB = dataB - prevDataB;
 
             // Is player A breathing?
-            if (Math.Abs(difB) > threshold)
+            if (Math.Abs(difA) > threshold)
             {
-                if (difB > 0) //positive
+                if (difA > 0) //positive
                 {
                     //breathing in
                     GenerateKeyStroke("i");
+                    Console.WriteLine("printing i");
                 }
                 else //negative
                 {
                     //breathing out
                     GenerateKeyStroke("o");
+                    Console.WriteLine("printing o");
                 }
             }
 
@@ -182,11 +184,13 @@ namespace BreathingSensorWithKeyPress
                 {
                     //breathing in
                     GenerateKeyStroke("k");
+                    Console.WriteLine("printing k");
                 }
                 else //negative
                 {
                     //breathing out
                     GenerateKeyStroke("l");
+                    Console.WriteLine("printing l");
                 }
             }
 

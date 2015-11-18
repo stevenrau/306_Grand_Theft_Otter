@@ -8,7 +8,7 @@ public class moving : MonoBehaviour {
 
 	float waterGravity = 0.2f;
 	float landGravity = 1.2f;
-	float waterSurface = 2.5f;
+	float waterSurface = 2.8f;
 	float deckSurface = 4.1f;
 
     public float moveForce;
@@ -75,6 +75,7 @@ public class moving : MonoBehaviour {
 			{
 				animator.SetBool ("on_land", true);
 				playerStateScript.SetIsOnLand (true);
+				rBody.gravityScale = landGravity;
 				//beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
 				v = 0.0f;
 			}

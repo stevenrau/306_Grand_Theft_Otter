@@ -23,7 +23,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		} 
 		else if (other.tag == "Player") 
 		{
-			collision_detection playerScript = other.gameObject.GetComponent<collision_detection> ();
+			collision_detection playerScript = other.gameObject.GetComponentInParent<collision_detection>(); 
 
 			if (playerScript.GetHasPearl ()) 
 			{

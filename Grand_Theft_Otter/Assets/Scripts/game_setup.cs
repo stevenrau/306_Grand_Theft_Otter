@@ -7,7 +7,7 @@ public class game_setup : MonoBehaviour {
 	private int leftScore = 0;
 	private int rightScore = 0;
 
-	private int maxScore = 3;
+	private int maxScore = 5;
 
 	//private int curLeftPointStructs;
 	//private int curRightPointStructs;
@@ -94,13 +94,13 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the scoring zones
 		 * ************************************************************************************/
-		/*GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
+		GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
 		scoringZoneLeft.name = "left_score_zone";
 		GameObject scoringZoneRight = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
 		scoringZoneRight.name = "right_score_zone";
 		leftTransform = scoringZoneLeft.transform;
 		scoringZoneRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
-		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);*/
+		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);
 
 		/***************************************************************************************
 		 * Load the clams
@@ -180,7 +180,11 @@ public class game_setup : MonoBehaviour {
 		
 		//beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = new Color(0.5f, 0.5f, 0.0f, 0.5f);
 
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 6be5c0a4c4fb50d8cb1097250d2da7b1997360b6
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
 		beaver2.GetComponent<get_input>().SetPlayerID ("2");

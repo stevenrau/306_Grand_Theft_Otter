@@ -7,6 +7,7 @@ public class throwing : MonoBehaviour {
     SpriteRenderer pearlRenderer;
 
 	GameObject pearlOffset; //the child object of the player that will indicate the direction the pearl will be thrown
+	GameObject beaverSprite;
 
   //  private string throw_bumper;
 
@@ -22,6 +23,7 @@ public class throwing : MonoBehaviour {
 
 		//get references to the child object
 		pearlOffset = transform.GetChild(0).gameObject;
+		beaverSprite = transform.GetChild (1).gameObject;
 
 		//get reference to the sprite renderer located on the pearlOffset child object
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
@@ -60,7 +62,7 @@ public class throwing : MonoBehaviour {
 			colDetectScript.HidePearl();
 
             // thrower doesn't interatct with pearl for given time
-            transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
+            beaverSprite.transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
 
             Invoke("MakeInteractable", 0.5f);
 
@@ -85,6 +87,6 @@ public class throwing : MonoBehaviour {
 
 	void MakeInteractable()
 	{
-		transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Interactable");
+		beaverSprite.transform.FindChild("beaver_pearl_trigger").gameObject.layer = LayerMask.NameToLayer("Interactable");
 	}
 }
