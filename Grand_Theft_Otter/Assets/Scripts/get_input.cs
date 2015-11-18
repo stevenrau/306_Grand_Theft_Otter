@@ -21,6 +21,7 @@ public class get_input : MonoBehaviour
 
     private string throwBumper; // passing button 
     private string dashButton; // dash button
+    private string startButton; // start or pause button 
 
     // Use this for initialization
     void Start()
@@ -107,6 +108,14 @@ public class get_input : MonoBehaviour
         return Input.GetButton(dashButton);
     }
 
+    /***************************************************************************************
+    * Pause Input
+    * ************************************************************************************/
+    public bool GetStartButton()
+    {
+        return Input.GetButton(startButton);
+    }
+
     // Setting player ID to distingish between players and platforms
     public void SetPlayerID(string id)
     {
@@ -123,6 +132,7 @@ public class get_input : MonoBehaviour
 
             throwBumper = "r_bumper_" + playerID;
             dashButton = "dash_" + playerID;
+            startButton = "Pause";
         }
         else
         {
@@ -131,6 +141,7 @@ public class get_input : MonoBehaviour
 
             throwBumper = "r_bumper_Mac_" + playerID;
             dashButton = "dash_Mac_" + playerID;
+            startButton = "Pause_Mac";
         }
     }
 

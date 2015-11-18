@@ -9,12 +9,15 @@ public class player_state : MonoBehaviour {
 	// Is the player touching the air?
     bool canBreathe;
 
+    // Is the player dashing?
+    bool isDashing;
 
 	// Use this for initialization
 	void Start () {
 	
 		isOnLand = true;
 		canBreathe = true;
+        isDashing = false;
 
 	}
 	
@@ -44,4 +47,15 @@ public class player_state : MonoBehaviour {
     {
         return this.isOnLand;
     }
+
+    public void SetIsDashing(bool newValue)
+    {
+        isDashing = true;
+    }
+
+    public bool GetIsDashing()
+    {
+        return isDashing;
+    }
+
 }
