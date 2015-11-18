@@ -52,7 +52,7 @@ public class game_setup : MonoBehaviour {
 		GameObject breathableArea = Instantiate (Resources.Load ("Breathable_area")) as GameObject;
 
 		/***************************************************************************************
-		 * Load the seaweed barriers
+		 * Load the walls
 		 * ************************************************************************************/
 		/*GameObject seaweedLeft = Instantiate(Resources.Load("Seaweed")) as GameObject;
 		GameObject seaweedRight = Instantiate(Resources.Load("Seaweed")) as GameObject;
@@ -62,8 +62,8 @@ public class game_setup : MonoBehaviour {
 		seaweedRight.transform.position = new Vector3(Mathf.Abs (left_transform.position.x), left_transform.position.y, left_transform.position.z);
 		seaweedRight.transform.localScale = new Vector2(-seaweedLeft.transform.localScale.x, seaweedLeft.transform.localScale.y);*/
 
-		GameObject wallLeft = Instantiate(Resources.Load("Wall_Textured")) as GameObject;
-		GameObject wallRight = Instantiate(Resources.Load("Wall_Textured")) as GameObject;
+		GameObject wallLeft = Instantiate(Resources.Load("Wall_Purple_Rock")) as GameObject;
+		GameObject wallRight = Instantiate(Resources.Load("Wall_Purple_Rock")) as GameObject;
 		
 		//seaweed_left.transform.Translate(new Vector2 (-0.2f, -0.1f));
 		Transform leftTransform = wallLeft.transform;
@@ -94,13 +94,60 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the scoring zones
 		 * ************************************************************************************/
-		GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
+		/*GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
 		scoringZoneLeft.name = "left_score_zone";
 		GameObject scoringZoneRight = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
 		scoringZoneRight.name = "right_score_zone";
 		leftTransform = scoringZoneLeft.transform;
 		scoringZoneRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
-		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);
+		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);*/
+
+		/***************************************************************************************
+		 * Load the clams
+		 * ************************************************************************************/
+
+		//Load the five left clams
+		GameObject clamLeft1 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamLeft1.name = "clam_left_1";
+
+		Transform clamTransform = clamLeft1.transform;
+		GameObject clamLeft2 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamLeft2.name = "clam_left_2";
+		clamLeft2.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 1.25f, clamTransform.position.x);
+		GameObject clamLeft3 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamLeft3.name = "clam_left_3";
+		clamLeft3.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 2.5f, clamTransform.position.x);
+		GameObject clamLeft4 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamLeft4.name = "clam_left_4";
+		clamLeft4.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 3.75f, clamTransform.position.x);
+		GameObject clamLeft5 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamLeft5.name = "clam_left_5";
+		clamLeft5.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 5f, clamTransform.position.x);
+
+
+		//Load the five right clams, using the first left clam as the initial reference
+		GameObject clamRight1 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamRight1.name = "clam_left_1";
+		clamRight1.transform.position = new Vector3(-clamTransform.position.x, clamTransform.position.y, clamTransform.position.x);
+		clamRight1.transform.localScale = new Vector2(-clamTransform.localScale.x, clamTransform.localScale.y);
+		
+		clamTransform = clamRight1.transform;
+		GameObject clamRight2 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamRight2.name = "clam_left_2";
+		clamRight2.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 1.25f, clamTransform.position.x);
+		clamRight2.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
+		GameObject clamRight3 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamRight3.name = "clam_left_3";
+		clamRight3.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 2.5f, clamTransform.position.x);
+		clamRight3.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
+		GameObject clamRight4 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamRight4.name = "clam_left_4";
+		clamRight4.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 3.75f, clamTransform.position.x);
+		clamRight4.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
+		GameObject clamRight5 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		clamRight5.name = "clam_left_5";
+		clamRight5.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 5f, clamTransform.position.x);
+		clamRight5.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
 
 		/***************************************************************************************
 		 * Load the floor
