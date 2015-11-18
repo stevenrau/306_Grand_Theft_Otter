@@ -1,5 +1,20 @@
-﻿// script made using the following help forum: http://answers.unity3d.com/questions/892955/dashing-mechanic-using-rigidbodyaddforce.html
-// with a few alterations
+﻿/*
+* dash script for when the user presses the 'A' button to get a burst of speed for a short time.
+* While a player is dashing, they may hit an enemy player to immobolize them for a short while
+* and knock the pearl out of their hands. A player may not dash while they currently posses the pearl.
+*
+* Current Status : player will dash whether or not they are moving in that axis or not. Found "yBoost"
+* value to make dash look good in water and also get beaver onto the platform from water.
+*
+* TODO: knockback, damage flashing, throw pearl
+*
+* part of script made using the following help forum: 
+* http://answers.unity3d.com/questions/892955/dashing-mechanic-using-rigidbodyaddforce.html
+* 
+*
+*/
+
+
 
 using UnityEngine;
 using System.Collections;
@@ -10,8 +25,9 @@ public class dash : MonoBehaviour {
     public DashState dashState;
     //counts down from max dash time to 0 to reset to 'ready' state
     public float dashTimer;
+
     //max time between dashes
-    public float maxDash = 5f;
+    public float maxDash = 1f;
     public float dashVelocity = 4f;
     public Vector2 savedVelocity;
 
@@ -19,11 +35,20 @@ public class dash : MonoBehaviour {
 
     //getting scripts
     get_input dashInputScript;
+    player_state checkPlayerStateScript;
 
     AudioSource splashSound;
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it
     Animator animator; //the animator for the beaver sprite
+
+    GameObject enemyPlayer;
+
+    //dealing with velocity with player not moving
+    private float maxSpeed = 2;
+    //klooksgood value for getting beaver to dash with no y velocity and also make it onto platform from water
+    private float yBoost = 1.2f;
+    
 
     public enum DashState
     {
@@ -37,6 +62,7 @@ public class dash : MonoBehaviour {
         r_body = GetComponent<Rigidbody2D>();
 
         dashInputScript = GetComponent<get_input>();
+        checkPlayerStateScript = GetComponent<player_state>();
 
         splashSound = GetComponent<AudioSource>();
 
@@ -79,15 +105,38 @@ public class dash : MonoBehaviour {
                 {
 
                     savedVelocity = r_body.velocity;
+                    
+                    //dashing in the case where velocity in one or more axis' velocity is small
+                    if (r_body.velocity.x < maxSpeed && r_body.velocity.x > maxSpeed * -1)
+                    {
+                        //set it to an arbitrary speed
+                        if (r_body.velocity.x < 0) //velocity in the negative
+                        {
+                            r_body.velocity = new Vector2(maxSpeed * -1, r_body.velocity.y);
+                        }
+                        else
+                        {
+                            r_body.velocity = new Vector2(maxSpeed, r_body.velocity.y);
+                        }
+                        
+                    }
+
+                    // Took out the code for small Y value because gravity was affecting the scaling 
+                    if (r_body.velocity.y < maxSpeed && r_body.velocity.y > maxSpeed * -1)
+                    {
+                        //set it to an arbitrary speed ** 1.2 klooksgood in the water and gets beaver to jump onto platform
+                        r_body.velocity = new Vector2(r_body.velocity.x, yBoost);
+
+                    }
+
+                    //adding the dash burst to the player velocity 
                     //r_body.AddForce(savedVelocity * 10f);
-                    r_body.velocity = savedVelocity * dashVelocity;
-                    //r_body.velocity = new Vector2(r_body.velocity.x * 10f, r_body.velocity.y * 10f);
+                    r_body.velocity = r_body.velocity * dashVelocity;
+                    //r_body.velocity = new Vector2(r_body.velocity.x + 10f, r_body.velocity.y + 10f);
                     dashState = DashState.Dashing;
 
                     splashSound.Play();
                     
-                    //want player to dash longer than the single frame
-                    //StartCoroutine(Waiting()); 
                 }
                 break;
             
@@ -95,9 +144,67 @@ public class dash : MonoBehaviour {
         
     }
 
-    IEnumerator Waiting()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        yield return new WaitForSeconds(5);
+        //figure out what player/team this instance is, and check if it's colliding with the enemy team players
+        if (col.tag == "Player")
+        {
+            enemyPlayer = col.gameObject; //current player is beaverSprite
+
+            //only want players of opposite teams
+            if (dashInputScript.GetTeam(dashInputScript.GetPlayerID())
+                != enemyPlayer.GetComponent<get_input>().GetTeam(dashInputScript.GetPlayerID()))
+            {
+                
+                //TODO: case for both have dash on
+                if(checkPlayerStateScript.GetIsDashing() == true) //this player has dash on
+                {
+                    //get enemy to blink red... could also pass int for taking breath away
+                    //Damage(enemyPlayer); 
+
+                    //knockback the other player (enemy)
+                    StartCoroutine(Knockback(enemyPlayer, 0.02f, 350, enemyPlayer.transform.position));
+                }
+                else if (enemyPlayer.GetComponent<player_state>().GetIsDashing() == true) //enemy has dash on
+                {
+                    //get player to blink red... could also pass int for taking breath away
+                    //Damage(beaverSprite);
+
+                    //knockback the other player (This player)
+                    StartCoroutine(Knockback(beaverSprite, 0.02f, 350, beaverSprite.transform.position));
+                }
+                
+            }
+            
+        }
+
+    }
+
+    //knockback the player that was hit - either current player or enemy 
+    IEnumerator Knockback(GameObject playerHit, float knockDur, float knockbackPwr, Vector3 knockbackDir)
+    {
+        //if playerHit has the pearl, throw the force away a bit
+
+        //code for knocking playerHit backward
+        float timer = 0;
+
+        while (knockDur > timer)
+        {
+            timer += Time.deltaTime;
+
+            playerHit.GetComponent<Rigidbody2D>().AddForce(new Vector3(knockbackDir.x * -100, knockbackDir.y * knockbackPwr, playerHit.transform.position.z));
+
+        }
+
+        yield return 0;
+
+    }
+
+    //player flashes red when hit by opposing dashing player
+    public void Damage(GameObject playerHit)
+    {
+        //player flashes red
+        //playerHit.GetComponent<Animation>().Play("Player_RedFlash");
 
     }
 }

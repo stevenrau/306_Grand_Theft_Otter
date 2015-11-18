@@ -40,6 +40,8 @@ public class collision_detection : MonoBehaviour {
 			print ("can beathe");
 			playerStateScript.SetCanBreathe(true);
 		}
+
+        
 	}
 
 	void OnTriggerExit2D(Collider2D other)
