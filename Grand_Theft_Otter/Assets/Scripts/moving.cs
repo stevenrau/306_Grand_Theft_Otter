@@ -14,7 +14,7 @@ public class moving : MonoBehaviour {
     public float moveForce;
     public float maxSpeed;
     bool facingRight; //is the player facing right
-    float facingAngle; //the angle the beaver is looking( what way its head is pointing)
+    public float facingAngle; //the angle the beaver is looking( what way its head is pointing)
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it
 
@@ -172,6 +172,8 @@ public class moving : MonoBehaviour {
         }
     }
 
+    
+
     //face the player right or left based on its horizontal speed
     void Flip()
     {
@@ -184,7 +186,7 @@ public class moving : MonoBehaviour {
         beaverSprite.transform.localScale = tmp;
     }
 
-	public float GetFaceingAngle() {
+	public float GetFacingAngle() {
 		return facingAngle;
 	}
 }
