@@ -18,36 +18,49 @@ public class beaver_breathing : MonoBehaviour {
 	Rigidbody2D rBody; // the ridgit body of the palyer
 	private string Player_name; // player name (eg. "Beaver1)
 	private int breath_count = 0; //counting subsequent breathing_in frames
-	private int breath_threshhold = 10; // How many subsequent breathing_in frames until suffocating. 
+	private int breath_threshhold = 4; // How many subsequent breathing_in frames until suffocating. 
 	static bool at_surface; //bool that indicates if beaver is at surface
 
-
+	GameObject beaverMouth; // the gameobject that flips left and right. Its children include, the beaver mouth
 
 
 	void Start () {
+
+		GameObject beaverSprite = transform.GetChild (1).gameObject;
+		beaverMouth = transform.GetChild (1).gameObject;
+
 		// get Player name form patent object 
-		Player_name = gameObject.transform.parent.name;
+		//Player_name = gameObject.transform.parent.name;
+		Player_name = gameObject.transform.name;
 
 		//gettign the scripts that will be disabled
-		movement = GetComponentInParent<moving> ();
-		dashing = GetComponentInParent<dash> ();
-		Throwing = GetComponentInParent<throwing> ();
+		//movement = GetComponentInParent<moving> ();
+		//dashing = GetComponentInParent<dash> ();
+		//Throwing = GetComponentInParent<throwing> ();
+		movement = GetComponent<moving> ();
+		dashing = GetComponent<dash> ();
+		Throwing = GetComponent<throwing> ();
 
 		//getting the particle system
-		Bubbles = GetComponentInChildren<ParticleSystem>();
+		//Bubbles = GetComponentInChildren<ParticleSystem>();
+		Bubbles = beaverMouth.GetComponentInChildren<ParticleSystem> ();
+
 		//setting the emmision to 0
 		Bubbles.emissionRate = 0;
 
 
 		// gettign the ridgit body of the Player
-		rBody = GetComponentInParent<Rigidbody2D>();
+		//rBody = GetComponentInParent<Rigidbody2D>();
+		rBody = GetComponent<Rigidbody2D> ();
+
 
 		// getting the animator. The "foreach" is nessesary because the animator is not in the partent but in the sibling object "beaver"
 		// and I didnt find an easier way to get an component form a sibling. 
-		foreach (Transform child in transform.parent) {
-			if (child.name == "Beaver")
-				animator = child.GetComponent<Animator> ();
-		}
+		//foreach (Transform child in transform.parent) {
+		//	if (child.name == "Beaver")
+		//		animator = child.GetComponent<Animator> ();
+		//}
+		animator = transform.GetChild (1).gameObject.GetComponent<Animator> ();
 	}
 /*   
 	void OnTriggerEnter2D (Collider2D other)
@@ -104,22 +117,32 @@ public class beaver_breathing : MonoBehaviour {
 	//checking the player_name to only react to the right button presses
 		// Beaver 1
 		if (Player_name == "Beaver1"){
-			if (Input.GetKey ("i"))
+			if (Input.GetKey ("i")){
+				print ("1 breathing in");
 				breath_count += 1;
-			else 
+			}
+			else {
+
+			}
+			if (Input.GetKey ("o")) {
 				breath_count = 0;
-			if (Input.GetKey ("o")) 
-				Bubbles.Emit (2);
+				print ("1 breathing out");
+				Bubbles.Emit (3);
+			}
 		}
 
 		// Beaver 2
 		if (Player_name == "Beaver2"){
-			if (Input.GetKey ("k"))
+			if (Input.GetKey ("k")){
 				breath_count += 1;
-			else
+			}
+			else{
+
+			}
+			if (Input.GetKey ("l")) {
 				breath_count = 0;
-			if (Input.GetKey ("l")) 
-				Bubbles.Emit (2);
+				Bubbles.Emit (3);
+			}
 		}
 
 	// If breath count is greater than the Threshold beaver suffocates
@@ -139,7 +162,7 @@ public class beaver_breathing : MonoBehaviour {
 
 	void floating() {
 		animator.SetTrigger ("floating"); // set anomator trigger so that beaver transitions form sufoocation to floating animation
-		Bubbles.Emit (2); // emmit 2 bursts of Bubbles
+		Bubbles.Emit (1); // emmit 2 bursts of Bubblesl
 		rBody.gravityScale = floating_speed; // sets the gravity scale fo the beaver to the value of floating speed so that the beaver floats up.
 	}
 
