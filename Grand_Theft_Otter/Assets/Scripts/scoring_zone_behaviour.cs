@@ -3,7 +3,14 @@ using System.Collections;
 
 public class scoring_zone_behaviour : MonoBehaviour {
 
-	void OnTriggerEnter2D(Collider2D other)
+    player_state playerStateScript;
+
+    void Start()
+    {
+        playerStateScript = gameObject.GetComponent<player_state>();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
 	{
 		game_setup gameScript = GameObject.Find ("game_setup").GetComponent<game_setup> ();
 
@@ -25,11 +32,11 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		{
 			collision_detection playerScript = other.gameObject.GetComponentInParent<collision_detection>(); 
 
-			if (playerScript.GetHasPearl ()) 
+			if (playerStateScript.GetHasPearl ()) 
 			{
 				playerScript.HidePearl ();
 
-				playerScript.SetHasPearl(false);
+                playerStateScript.SetHasPearl(false);
 
 				//Load the scored pearl object
 				Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity);

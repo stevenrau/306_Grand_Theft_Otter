@@ -6,8 +6,6 @@ public class collision_detection : MonoBehaviour {
 	GameObject pearlOffset; //the child object of the player that will indicate the direction the pearl will be thrown
 	SpriteRenderer pearlRenderer; //the component that will either show or hide the pearl on the beaver.
 
-	private bool hasPearl = false;
-
 	player_state playerStateScript;
 
 	// Use this for initialization
@@ -31,8 +29,8 @@ public class collision_detection : MonoBehaviour {
 			pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
 			
 			Destroy(other.gameObject);
-			
-			SetHasPearl(true);
+
+            playerStateScript.SetHasPearl(true);
 		}
 
 		if (other.tag == "Breathable") 
@@ -53,15 +51,6 @@ public class collision_detection : MonoBehaviour {
 		}
 	}
 
-	public void SetHasPearl(bool pearl)
-	{
-		hasPearl = pearl;
-	}
-	
-	public bool GetHasPearl()
-	{
-		return hasPearl;
-	}
 	
 	public void HidePearl()
 	{

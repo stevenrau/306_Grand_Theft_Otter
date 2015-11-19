@@ -1,0 +1,839 @@
+fileFormatVersion: 2
+guid: c704af76c5b695e4995a18fdbb9c60a4
+timeCreated: 1447312260
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: dashPuff_0
+    21300002: dashPuff_1
+    21300004: dashPuff_2
+    21300006: dashPuff_3
+    21300008: dashPuff_4
+    21300010: dashPuff_5
+    21300012: dashPuff_6
+    21300014: dashPuff_7
+    21300016: dashPuff_8
+    21300018: dashPuff_9
+    21300020: dashPuff_10
+    21300022: dashPuff_11
+    21300024: dashPuff_12
+    21300026: dashPuff_13
+    21300028: dashPuff_14
+    21300030: dashPuff_15
+    21300032: dashPuff_16
+    21300034: dashPuff_17
+    21300036: dashPuff_18
+    21300038: dashPuff_19
+    21300040: dashPuff_20
+    21300042: dashPuff_21
+    21300044: dashPuff_22
+    21300046: dashPuff_23
+    21300048: dashPuff_24
+    21300050: dashPuff_25
+    21300052: dashPuff_26
+    21300054: dashPuff_27
+    21300056: dashPuff_28
+    21300058: dashPuff_29
+    21300060: dashPuff_30
+    21300062: dashPuff_31
+    21300064: dashPuff_32
+    21300066: dashPuff_33
+    21300068: dashPuff_34
+    21300070: dashPuff_35
+    21300072: dashPuff_36
+    21300074: dashPuff_37
+    21300076: dashPuff_38
+    21300078: dashPuff_39
+    21300080: dashPuff_40
+    21300082: dashPuff_41
+    21300084: dashPuff_42
+    21300086: dashPuff_43
+    21300088: dashPuff_44
+    21300090: dashPuff_45
+    21300092: dashPuff_46
+    21300094: dashPuff_47
+    21300096: dashPuff_48
+    21300098: dashPuff_49
+    21300100: dashPuff_50
+    21300102: dashPuff_51
+    21300104: dashPuff_52
+    21300106: dashPuff_53
+    21300108: dashPuff_54
+    21300110: dashPuff_55
+    21300112: dashPuff_56
+    21300114: dashPuff_57
+    21300116: dashPuff_58
+    21300118: dashPuff_59
+    21300120: dashPuff_60
+    21300122: dashPuff_61
+    21300124: dashPuff_62
+    21300126: dashPuff_63
+    21300128: dashPuff_64
+    21300130: dashPuff_65
+    21300132: dashPuff_66
+    21300134: dashPuff_67
+    21300136: dashPuff_68
+    21300138: dashPuff_69
+    21300140: dashPuff_70
+    21300142: dashPuff_71
+    21300144: dashPuff_72
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: dashPuff_0
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 7
+        width: 107
+        height: 130
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_1
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 48
+        width: 50
+        height: 88
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_2
+      rect:
+        serializedVersion: 2
+        x: 635
+        y: 63
+        width: 38
+        height: 67
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_3
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 109
+        width: 39
+        height: 27
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_4
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 99
+        width: 35
+        height: 35
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_5
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 115
+        width: 32
+        height: 20
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_6
+      rect:
+        serializedVersion: 2
+        x: 918
+        y: 106
+        width: 36
+        height: 30
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_7
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 121
+        width: 21
+        height: 13
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_8
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 115
+        width: 26
+        height: 21
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_9
+      rect:
+        serializedVersion: 2
+        x: 1162
+        y: 124
+        width: 12
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_10
+      rect:
+        serializedVersion: 2
+        x: 1210
+        y: 121
+        width: 18
+        height: 14
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_11
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 126
+        width: 8
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_12
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 14
+        width: 102
+        height: 110
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_13
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 59
+        width: 40
+        height: 59
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_14
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 61
+        width: 41
+        height: 53
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_15
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 73
+        width: 34
+        height: 40
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_16
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 95
+        width: 12
+        height: 16
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_17
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 101
+        width: 8
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_18
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 105
+        width: 6
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_19
+      rect:
+        serializedVersion: 2
+        x: 1330
+        y: 109
+        width: 6
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_20
+      rect:
+        serializedVersion: 2
+        x: 760
+        y: 89
+        width: 17
+        height: 19
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_21
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 87
+        width: 18
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_22
+      rect:
+        serializedVersion: 2
+        x: 1134
+        y: 93
+        width: 14
+        height: 13
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_23
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 89
+        width: 7
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_24
+      rect:
+        serializedVersion: 2
+        x: 1277
+        y: 96
+        width: 7
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_25
+      rect:
+        serializedVersion: 2
+        x: 1292
+        y: 30
+        width: 37
+        height: 69
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_26
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 8
+        width: 87
+        height: 90
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_27
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 58
+        width: 21
+        height: 38
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_28
+      rect:
+        serializedVersion: 2
+        x: 787
+        y: 68
+        width: 26
+        height: 24
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_29
+      rect:
+        serializedVersion: 2
+        x: 892
+        y: 73
+        width: 15
+        height: 22
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_30
+      rect:
+        serializedVersion: 2
+        x: 931
+        y: 77
+        width: 20
+        height: 13
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_31
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 81
+        width: 8
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_32
+      rect:
+        serializedVersion: 2
+        x: 1034
+        y: 81
+        width: 12
+        height: 12
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_33
+      rect:
+        serializedVersion: 2
+        x: 1076
+        y: 80
+        width: 12
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_34
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 84
+        width: 10
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_35
+      rect:
+        serializedVersion: 2
+        x: 1220
+        y: 82
+        width: 6
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_36
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 5
+        width: 83
+        height: 71
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_37
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 54
+        width: 8
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_38
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 59
+        width: 5
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_39
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 41
+        width: 13
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_40
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 48
+        width: 7
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_41
+      rect:
+        serializedVersion: 2
+        x: 871
+        y: 48
+        width: 8
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_42
+      rect:
+        serializedVersion: 2
+        x: 924
+        y: 51
+        width: 5
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_43
+      rect:
+        serializedVersion: 2
+        x: 1178
+        y: 46
+        width: 7
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_44
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 19
+        width: 16
+        height: 31
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_45
+      rect:
+        serializedVersion: 2
+        x: 638
+        y: 39
+        width: 12
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_46
+      rect:
+        serializedVersion: 2
+        x: 750
+        y: 28
+        width: 20
+        height: 15
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_47
+      rect:
+        serializedVersion: 2
+        x: 893
+        y: 36
+        width: 14
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_48
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 34
+        width: 5
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_49
+      rect:
+        serializedVersion: 2
+        x: 1036
+        y: 41
+        width: 10
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_50
+      rect:
+        serializedVersion: 2
+        x: 1150
+        y: 39
+        width: 4
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_51
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 29
+        width: 7
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_52
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 23
+        width: 25
+        height: 18
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_53
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 24
+        width: 11
+        height: 13
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_54
+      rect:
+        serializedVersion: 2
+        x: 799
+        y: 29
+        width: 9
+        height: 9
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_55
+      rect:
+        serializedVersion: 2
+        x: 867
+        y: 29
+        width: 7
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_56
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 34
+        width: 5
+        height: 4
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_57
+      rect:
+        serializedVersion: 2
+        x: 942
+        y: 34
+        width: 5
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_58
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 27
+        width: 5
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_59
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 23
+        width: 11
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_60
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 29
+        width: 4
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_61
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 25
+        width: 8
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_62
+      rect:
+        serializedVersion: 2
+        x: 1184
+        y: 28
+        width: 5
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_63
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 23
+        width: 4
+        height: 5
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_64
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 20
+        width: 10
+        height: 7
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_65
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 10
+        width: 14
+        height: 11
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_67
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 11
+        width: 12
+        height: 10
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_68
+      rect:
+        serializedVersion: 2
+        x: 570
+        y: 12
+        width: 9
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_69
+      rect:
+        serializedVersion: 2
+        x: 615
+        y: 8
+        width: 17
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_70
+      rect:
+        serializedVersion: 2
+        x: 708
+        y: 13
+        width: 6
+        height: 6
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: dashPuff_71
+      rect:
+        serializedVersion: 2
+        x: 757
+        y: 13
+        width: 14
+        height: 8
+      alignment: 6
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

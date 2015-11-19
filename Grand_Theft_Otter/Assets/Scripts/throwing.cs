@@ -15,8 +15,9 @@ public class throwing : MonoBehaviour {
     get_input throwInputScript;
     aiming aimingDirScript;
 	collision_detection colDetectScript;
+    player_state playerStateScript;
 
- //  float throw_angle; // the angle the pearl will be thrown
+    //  float throw_angle; // the angle the pearl will be thrown
     public float throwForce;
 
     void Start () {
@@ -31,8 +32,9 @@ public class throwing : MonoBehaviour {
         throwInputScript = gameObject.GetComponent<get_input>();
         aimingDirScript = gameObject.GetComponent<aiming>();
 		colDetectScript = transform.GetComponent<collision_detection> ();
+        playerStateScript = GetComponent<player_state>();
 
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -50,13 +52,13 @@ public class throwing : MonoBehaviour {
     /***************************************************************************************
     * disables the rendering of the offset pearl, generates a new pearl, and adds a force to the new pearl
     * ************************************************************************************/
-    void ThrowPearl()
+    public void ThrowPearl()
     {
 
         //if the beaver is currently holding a pearl
         if (pearlRenderer.enabled)
         {
-			colDetectScript.SetHasPearl(false);
+            playerStateScript.SetHasPearl(false);
 
             //remove it from his grasp visually
 			colDetectScript.HidePearl();

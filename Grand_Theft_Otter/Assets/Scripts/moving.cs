@@ -13,7 +13,7 @@ public class moving : MonoBehaviour {
 
     public float moveForce;
     public float maxSpeed;
-    bool facingRight; //is the player facing right
+    public bool facingRight; //is the player facing right
     public float facingAngle; //the angle the beaver is looking( what way its head is pointing)
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it
@@ -55,6 +55,8 @@ public class moving : MonoBehaviour {
         //for xbox controller
 		float h = throwInputScript.GetMoveHorizontalAxis(); //mov_horiz
 		float v = throwInputScript.GetMoveVerticalAxis();  //mov_vert
+
+        
 
 		//temporary for testing
 		if (playerStateScript.GetCanBreathe()) {
@@ -184,6 +186,11 @@ public class moving : MonoBehaviour {
         Vector3 tmp = beaverSprite.transform.localScale;
         tmp.x = tmp.x * -1;
         beaverSprite.transform.localScale = tmp;
+    }
+
+    public bool GetFacingRight()
+    {
+        return facingRight;
     }
 
 	public float GetFacingAngle() {

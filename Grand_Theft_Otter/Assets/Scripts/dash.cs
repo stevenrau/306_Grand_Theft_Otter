@@ -26,7 +26,7 @@ public class dash : MonoBehaviour {
     public float dashTimer;
 
     //max time between dashes
-    public float maxDash = 2f;
+    private float maxDash = 2f;
     private float dashVelocity = 5000f;
     public Vector2 savedVelocity;
 
@@ -36,6 +36,7 @@ public class dash : MonoBehaviour {
     get_input dashInputScript;
     player_state checkPlayerStateScript;
     moving movingScript;
+    throwing throwingScript;
 
     AudioSource splashSound;
 
@@ -65,6 +66,7 @@ public class dash : MonoBehaviour {
         dashInputScript = GetComponent<get_input>();
         checkPlayerStateScript = GetComponent<player_state>();
         movingScript = GetComponent<moving>();
+        throwingScript = GetComponent<throwing>();
 
         splashSound = GetComponent<AudioSource>();
 
@@ -80,12 +82,15 @@ public class dash : MonoBehaviour {
             case DashState.Dashing:
                 //show the player dashing animation
                 animator.SetBool("is_dashing", true);
+                
 
                 dashTimer += Time.deltaTime * 5;
                 if (dashTimer >= maxDash)
                 {
                     //stop the player dashing animation
                     animator.SetBool("is_dashing", false);
+                    //changing player state
+                    checkPlayerStateScript.SetIsDashing(false);
 
                     dashTimer = maxDash;
                     r_body.velocity = savedVelocity;
@@ -105,72 +110,35 @@ public class dash : MonoBehaviour {
                 //if dash button is pressed, set velocity... 
                 if (dashInputScript.GetDashButton())
                 {
-
-                    savedVelocity = r_body.velocity;
-
-                    
-                    //for xbox controller
-                    float h = dashInputScript.GetMoveHorizontalAxis(); //mov_horiz
-                    float v = dashInputScript.GetMoveVerticalAxis();  //mov_vert
-
-                    //dash the player in the direction of the input
-                    
-                    if (h < 0.02f && v < 0.02f)
+                    if (!checkPlayerStateScript.GetHasPearl() && !checkPlayerStateScript.GetIsHit())
                     {
+                        savedVelocity = r_body.velocity;
+
+
                         //find the angle to throw based on the angle found for the pearl_offest
-                        Vector3 dir = Quaternion.AngleAxis(movingScript.GetFacingAngle(), Vector3.forward) * Vector3.up;
+                        Vector3 dir;
+                        if (movingScript.GetFacingRight())
+                        {
+                            dir = Quaternion.AngleAxis(movingScript.GetFacingAngle() - 90f, Vector3.forward) * Vector3.up;
+                        }
+                        else
+                        {
+                            dir = Quaternion.AngleAxis(movingScript.GetFacingAngle() - 270f, Vector3.forward) * Vector3.up;
+                        }
+
 
                         //apply force to the pearl in that direction
-                        r_body.AddForce(dir * dashVelocity);
+                        GetComponent<Rigidbody2D>().AddForce(dir * dashVelocity);
+
+                        //adding the dash burst to the player velocity
+                        //r_body.AddForce(new Vector2(dashVelocity * 1f, dashVelocity * 1f));
+                        //changing player state
+                        checkPlayerStateScript.SetIsDashing(true);
+
+                        dashState = DashState.Dashing;
+
+                        splashSound.Play();
                     }
-                    else
-                    {
-                        r_body.AddForce(new Vector2(dashVelocity * h, dashVelocity * v));
-                    }
-
-                    //dashing in the case where velocity in one or more axis' velocity is small
-                    //if (r_body.velocity.x < 0.3f && r_body.velocity.x > 0.3f * -1)
-                    //{
-                    //    //set it to an arbitrary speed
-                    //    if (r_body.velocity.x < 0) //velocity in the negative
-                    //    {
-                    //        r_body.velocity = new Vector2(maxSpeed * -1, r_body.velocity.y);
-                    //    }   
-                    //    else
-                    //    {
-                    //        r_body.velocity = new Vector2(maxSpeed, r_body.velocity.y);
-                    //    }
-                        
-                    //}
-
-                    //if (r_body.velocity.y < 0.3f && r_body.velocity.y > 0.3f * -1)
-                    //{
-                    //    //set it to an arbitrary speed
-                    //    if (r_body.velocity.y < 0) //velocity in the negative
-                    //    {
-                    //        r_body.velocity = new Vector2(r_body.velocity.y, maxSpeed * -1);
-                    //    }
-                    //    else
-                    //    {
-                    //        r_body.velocity = new Vector2(r_body.velocity.y, maxSpeed);
-                    //    }
-
-                    //}
-                    // Took out the code for small Y value because gravity was affecting the scaling 
-                    //if ((r_body.velocity.y < 0.01f && r_body.velocity.y > 0.01f * -1) && !(r_body.velocity.x > 0.3f && r_body.velocity.x < 0.3f * -1))
-                    //{
-                    //    //set it to an arbitrary speed ** 1.2 klooksgood in the water and gets beaver to jump onto platform
-                    //    r_body.velocity = new Vector2(r_body.velocity.x, yBoost);
-
-                    //}
-
-                    //adding the dash burst to the player velocity 
-                    //r_body.AddForce(savedVelocity * 10f);
-                    //r_body.velocity = r_body.velocity * dashVelocity;
-                    //r_body.velocity = new Vector2(r_body.velocity.x + 10f, r_body.velocity.y + 10f);
-                    dashState = DashState.Dashing;
-
-                    splashSound.Play();
                     
                 }
                 break;
@@ -179,34 +147,27 @@ public class dash : MonoBehaviour {
         
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void OnCollisionEnter2D(Collision2D col)
     {
         //figure out what player/team this instance is, and check if it's colliding with the enemy team players
-        if (col.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
             enemyPlayer = col.gameObject; //current player is beaverSprite
 
+            get_input enemyScript = enemyPlayer.GetComponent<get_input>();
+
             //only want players of opposite teams
             if (dashInputScript.GetTeam(dashInputScript.GetPlayerID())
-                != enemyPlayer.GetComponent<get_input>().GetTeam(dashInputScript.GetPlayerID()))
+                != enemyScript.GetTeam(enemyScript.GetPlayerID()))
             {
-                
                 //TODO: case for both have dash on
-                if(checkPlayerStateScript.GetIsDashing() == true) //this player has dash on
-                {
-                    //get enemy to blink red... could also pass int for taking breath away
-                    //Damage(enemyPlayer); 
-
-                    //knockback the other player (enemy)
-                    StartCoroutine(Knockback(enemyPlayer, 1f, 350, enemyPlayer.transform.position));
-                }
-                else if (enemyPlayer.GetComponent<player_state>().GetIsDashing() == true) //enemy has dash on
+                if (enemyPlayer.GetComponent<player_state>().GetIsDashing() == true) //enemy has dash on
                 {
                     //get player to blink red... could also pass int for taking breath away
-                    //Damage(beaverSprite);
+                    Damage();
 
                     //knockback the other player (This player)
-                    StartCoroutine(Knockback(beaverSprite, 1f, 350, beaverSprite.transform.position));
+                    //StartCoroutine(Knockback(beaverSprite, 1f, 350, beaverSprite.transform.position));
                 }
                 
             }
@@ -214,6 +175,30 @@ public class dash : MonoBehaviour {
         }
 
     }
+
+    void Damage()
+    {
+        checkPlayerStateScript.SetIsHit(true);
+
+        movingScript.enabled = false; // disables movement, dashing, throwing
+        throwingScript.enabled = false;
+        animator.SetTrigger ("breathing_in"); // sets animator trigger so that suffocation animation is played
+
+        throwingScript.ThrowPearl();
+        Invoke("RestartState", 1.5f);
+        //player flashes red
+        //playerHit.GetComponent<Animation>().Play("Player_RedFlash");
+    }
+
+    void RestartState()
+    {
+        checkPlayerStateScript.SetIsHit(false);
+
+        movingScript.enabled = true; // disables movement, dashing, throwing
+        throwingScript.enabled = true;
+
+        animator.SetTrigger("revived");
+    } 
 
     //knockback the player that was hit - either current player or enemy 
     IEnumerator Knockback(GameObject playerHit, float knockDur, float knockbackPwr, Vector3 knockbackDir)
@@ -235,13 +220,7 @@ public class dash : MonoBehaviour {
 
     }
 
-    //player flashes red when hit by opposing dashing player
-    public void Damage(GameObject playerHit)
-    {
-        //player flashes red
-        //playerHit.GetComponent<Animation>().Play("Player_RedFlash");
-
-    }
+    
 }
 
 

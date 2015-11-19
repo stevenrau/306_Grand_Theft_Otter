@@ -12,12 +12,20 @@ public class player_state : MonoBehaviour {
     // Is the player dashing?
     bool isDashing;
 
-	// Use this for initialization
-	void Start () {
+    // Does player have pearl?
+    private bool hasPearl;
+
+    // Is player hit?
+    private bool isHit;
+
+    // Use this for initialization
+    void Start () {
 	
 		isOnLand = true;
 		canBreathe = true;
         isDashing = false;
+        hasPearl = false;
+        isHit = false;
 
 	}
 	
@@ -50,12 +58,33 @@ public class player_state : MonoBehaviour {
 
     public void SetIsDashing(bool newValue)
     {
-        isDashing = true;
+        isDashing = newValue;
     }
 
     public bool GetIsDashing()
     {
         return isDashing;
     }
+
+    public void SetHasPearl(bool pearl)
+    {
+        hasPearl = pearl;
+    }
+
+    public bool GetHasPearl()
+    {
+        return hasPearl;
+    }
+
+    public void SetIsHit(bool hit)
+    {
+        isHit = hit;
+    }
+
+    public bool GetIsHit()
+    {
+        return isHit;
+    }
+
 
 }
