@@ -38,7 +38,9 @@ public class dash : MonoBehaviour {
     moving movingScript;
     throwing throwingScript;
 
-    AudioSource splashSound;
+	sound_player soundPlayer;
+	public AudioClip dashSound;
+	//AudioSource splashSound;
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it
     Animator animator; //the animator for the beaver sprite
@@ -68,7 +70,8 @@ public class dash : MonoBehaviour {
         movingScript = GetComponent<moving>();
         throwingScript = GetComponent<throwing>();
 
-        splashSound = GetComponent<AudioSource>();
+        //splashSound = GetComponent<AudioSource>();
+		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
 
         //get reference to the animator located on the beaver_sprite child object
         beaverSprite = transform.GetChild(1).gameObject;
@@ -137,7 +140,8 @@ public class dash : MonoBehaviour {
 
                         dashState = DashState.Dashing;
 
-                        splashSound.Play();
+                        //splashSound.Play();
+						soundPlayer.PlayClip(dashSound, 1.0f);
                     }
                     
                 }

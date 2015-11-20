@@ -60,9 +60,11 @@ public class moving : MonoBehaviour {
 
 		//temporary for testing
 		if (playerStateScript.GetCanBreathe()) {
-			beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
+			//beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
+			//beaverSprite.GetComponent<SpriteRenderer> ().color = new Color(0.0f, 0.0f, 0.3f, 0.2f);
 		} else {
-			beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
+			//beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
+			//beaverSprite.GetComponent<SpriteRenderer> ().color = new Color(0.17f,0.20f,0.20f,1f);
 		}
 
 		//check if on land or swimming

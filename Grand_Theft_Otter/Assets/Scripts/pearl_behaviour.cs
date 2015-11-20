@@ -18,7 +18,8 @@ public class pearl_behaviour : MonoBehaviour {
 	void Awake()
 	{
 		//Instantiate the spawn point and set it to the global var
-		spawnPoint = Instantiate(Resources.Load("Pearl_Spawn")) as GameObject;
+		spawnPoint = GameObject.Find ("Pearl_Spawn");
+		//spawnPoint = Instantiate(Resources.Load("Pearl_Spawn")) as GameObject;
 	}
 
 	// Use this for initialization

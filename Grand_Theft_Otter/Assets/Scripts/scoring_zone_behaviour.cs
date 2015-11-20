@@ -4,15 +4,28 @@ using System.Collections;
 public class scoring_zone_behaviour : MonoBehaviour {
 
     player_state playerStateScript;
+	game_setup gameSetupScript;
+
+	private int leftScore = 0;
+	private int rightScore = 0;
+	
+	private int maxScore = 5;
+	
+	GameObject damRampLeft;
+	GameObject damRampRight;
+
 
     void Start()
     {
         playerStateScript = gameObject.GetComponent<player_state>();
+		gameSetupScript = GameObject.Find ("game_setup").GetComponent<game_setup> ();
+		damRampLeft = GameObject.Find ("Dam_Ramp_Left");
+		damRampRight = GameObject.Find ("Dam_Ramp_Right");
     }
 
     void OnTriggerEnter2D(Collider2D other)
 	{
-		game_setup gameScript = GameObject.Find ("game_setup").GetComponent<game_setup> ();
+		 
 
 		if (other.tag == "Pearl") 
 		{
@@ -21,11 +34,11 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 			if (gameObject.name == "left_score_zone")
 			{
-				gameScript.IncrementLeftScore();
+				IncrementLeftScore();
 			}
 			if (gameObject.name == "right_score_zone")
 			{
-				gameScript.IncrementRightScore ();
+				IncrementRightScore ();
 			}
 		} 
 		else if (other.tag == "Player") 
@@ -46,14 +59,35 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 				if (gameObject.name == "left_score_zone")
 				{
-					gameScript.IncrementLeftScore();
+					IncrementLeftScore();
 				}
 				if (gameObject.name == "right_score_zone")
 				{
-					gameScript.IncrementRightScore ();
+					IncrementRightScore ();
 				}
 			}
 		}
+	}
+
+	//keep score and build the bridge further with each point scored
+	public void IncrementLeftScore()
+	{
+		if (leftScore < maxScore) {
+			leftScore++;
+			//enable the next section of the bridge
+			damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
+		}
+		print ("Left score: " + leftScore);
+	}
+	
+	public void IncrementRightScore()
+	{
+		if (rightScore < maxScore) {
+			rightScore++;
+			//enable the next section of the bridge
+			damRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
+		}
+		print ("Right score: " + rightScore);
 	}
 
 	void CreateNewPearl()
