@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0d1d837317d41a549a405b6309a015ff
-timeCreated: 1443285094
+timeCreated: 1448039946
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -452,8 +452,8 @@ TextureImporter:
         y: 255
         width: 80
         height: 30
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: swimming_2
       rect:
@@ -462,8 +462,8 @@ TextureImporter:
         y: 245
         width: 83
         height: 39
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: swimming_3
       rect:
@@ -472,8 +472,8 @@ TextureImporter:
         y: 255
         width: 86
         height: 29
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: swimming_4
       rect:
@@ -482,8 +482,8 @@ TextureImporter:
         y: 253
         width: 83
         height: 31
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: underwater
       rect:
@@ -532,8 +532,8 @@ TextureImporter:
         y: 129
         width: 80
         height: 35
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pulling_2
       rect:
@@ -542,8 +542,8 @@ TextureImporter:
         y: 119
         width: 83
         height: 46
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pulling_3
       rect:
@@ -552,8 +552,8 @@ TextureImporter:
         y: 129
         width: 86
         height: 36
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: pulling_4
       rect:
@@ -562,8 +562,8 @@ TextureImporter:
         y: 127
         width: 83
         height: 38
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .699999988, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: icon_big
       rect:
