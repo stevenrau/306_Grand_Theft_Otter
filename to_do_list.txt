@@ -2,6 +2,38 @@
 |/////////////////////////// TO DO \\\\\\\\\\\\\\\\\\\\\\\\\\\|
 |-------------------------------------------------------------|
 
+
+// FOR ALPHA
+Bugs: 
+-> pearl spawn location
+-> gravity in and out of the water [John & Ansgar]
+  - Possible solns: colider dampen?, tweak gravity points?
+
+Menus:
+-> Main menu [Breanne]
+  - option menu (2 player, 4 player)
+-> end scene [Breanne]
+-> goal to strive for [Breanne]
+
+Animations:
+-> clam anim and scoring [Steven]
+-> sky (non-prioity)
+-> differentiate between teams [Benj]
+-> visual/auido triggers to determine when you can and cannot breath [Benj]
+
+Game Mechanic:
+-> adding force while breathing out [John & Ansgar]
+
+Sounds:
+-> Sound Object/Controller [John]
+-> audio trigger to know when you can and cannot breath
+-> genearl sounds
+
+
+
+
+
+// OLD
 Bugs:
 -> Pearl shoots out of water
 -> Fix the boundary colliders + seawead walls (keep some seaweed for aesthetic puposes, make new walls)
