@@ -12,8 +12,7 @@ public class game_setup : MonoBehaviour {
 
 	void Awake()
 	{
-		Debug.Log (Screen.width);
-		Debug.Log (Screen.height);
+		Debug.Log ("Screen Dimensions: "+ Screen.width + " x " + Screen.height);
 
 		/***************************************************************************************
 		 * Load the Sound Player
@@ -29,11 +28,7 @@ public class game_setup : MonoBehaviour {
 		 * Load the Sky Background
 		 * ************************************************************************************/
 		GameObject sky = Instantiate (Resources.Load ("Night_Sky")) as GameObject;
-
-		/***************************************************************************************
-		 * Load the Breathable area
-		 * ************************************************************************************/
-		GameObject breathableArea = Instantiate (Resources.Load ("Breathable_area")) as GameObject;
+		
 
 		/***************************************************************************************
 		 * Load the pearl spawn point

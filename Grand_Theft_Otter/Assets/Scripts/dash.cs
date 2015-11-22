@@ -28,16 +28,18 @@ public class dash : MonoBehaviour {
     //max time between dashes
     private float maxDash = 2f;
     private float dashVelocity = 5000f;
-    public Vector2 savedVelocity;
+    //public Vector2 savedVelocity;
 
 	float dropPearlForce= 400;
     Rigidbody2D r_body;
 
     //getting scripts
     get_input dashInputScript;
-    player_state checkPlayerStateScript;
+    player_state playerStateScript;
     moving movingScript;
     throwing throwingScript;
+
+
 
 	sound_player soundPlayer;
 	public AudioClip dashSound;
@@ -47,6 +49,8 @@ public class dash : MonoBehaviour {
     Animator animator; //the animator for the beaver sprite
 
     GameObject enemyPlayer;
+	get_input enemyInputScript;
+	player_state enemyStateScript;
 
     //dealing with velocity with player not moving
     private float maxSpeed = 2;
@@ -67,11 +71,10 @@ public class dash : MonoBehaviour {
         r_body = GetComponent<Rigidbody2D>();
 
         dashInputScript = GetComponent<get_input>();
-        checkPlayerStateScript = GetComponent<player_state>();
+        playerStateScript = GetComponent<player_state>();
         movingScript = GetComponent<moving>();
         throwingScript = GetComponent<throwing>();
-
-        //splashSound = GetComponent<AudioSource>();
+		
 		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
 
         //get reference to the animator located on the beaver_sprite child object
@@ -94,13 +97,14 @@ public class dash : MonoBehaviour {
                     //stop the player dashing animation
                     animator.SetBool("is_dashing", false);
                     //changing player state
-                    checkPlayerStateScript.SetIsDashing(false);
+                    playerStateScript.SetIsDashing(false);
 
                     dashTimer = maxDash;
-                    r_body.velocity = savedVelocity;
+                    //r_body.velocity = savedVelocity;
                     dashState = DashState.Cooldown;
                 }
                 break;
+
             case DashState.Cooldown:
                 
                 dashTimer -= Time.deltaTime;
@@ -110,34 +114,35 @@ public class dash : MonoBehaviour {
                     dashState = DashState.Ready;
                 }
                 break;
+
             case DashState.Ready:
                 //if dash button is pressed, set velocity... 
                 if (dashInputScript.GetDashButton())
                 {
-                    if (!checkPlayerStateScript.GetHasPearl() && !checkPlayerStateScript.GetIsHit())
+                    if (!playerStateScript.GetHasPearl() && !playerStateScript.GetIsHit())
                     {
-                        savedVelocity = r_body.velocity;
+                       // savedVelocity = r_body.velocity;
 
 
-                        //find the angle to throw based on the angle found for the pearl_offest
+                        //find the angle to dash based on the angle player is facing
                         Vector3 dir;
                         if (movingScript.GetFacingRight())
                         {
-                            dir = Quaternion.AngleAxis(movingScript.GetFacingAngle() - 90f, Vector3.forward) * Vector3.up;
+                            dir = Quaternion.AngleAxis(playerStateScript.GetFacingAngle() - 90f, Vector3.forward) * Vector3.up;
                         }
                         else
                         {
-                            dir = Quaternion.AngleAxis(movingScript.GetFacingAngle() - 270f, Vector3.forward) * Vector3.up;
+                            dir = Quaternion.AngleAxis(playerStateScript.GetFacingAngle() - 270f, Vector3.forward) * Vector3.up;
                         }
 
 
-                        //apply force to the pearl in that direction
+                        //apply force to the player in that direction
                         GetComponent<Rigidbody2D>().AddForce(dir * dashVelocity);
 
                         //adding the dash burst to the player velocity
                         //r_body.AddForce(new Vector2(dashVelocity * 1f, dashVelocity * 1f));
                         //changing player state
-                        checkPlayerStateScript.SetIsDashing(true);
+                        playerStateScript.SetIsDashing(true);
 
                         dashState = DashState.Dashing;
 
@@ -159,16 +164,17 @@ public class dash : MonoBehaviour {
         {
             enemyPlayer = col.gameObject; //current player is beaverSprite
 
-            get_input enemyScript = enemyPlayer.GetComponent<get_input>();
+            enemyInputScript = enemyPlayer.GetComponent<get_input>();
+			enemyStateScript = enemyPlayer.GetComponent<player_state>();
 
             //only want players of opposite teams
             if (dashInputScript.GetTeam(dashInputScript.GetPlayerID())
-                != enemyScript.GetTeam(enemyScript.GetPlayerID()))
+                != enemyInputScript.GetTeam(enemyInputScript.GetPlayerID()))
             {
                 //TODO: case for both have dash on
-                if (enemyPlayer.GetComponent<player_state>().GetIsDashing() == true) //enemy has dash on
+                if (enemyStateScript.GetIsDashing() == true) //enemy has dash on
                 {
-                    //get player to blink red... could also pass int for taking breath away
+                    //player becomes immobile and drops the pearl in the direction of impact
                     Damage();
 
                     //knockback the other player (This player)
@@ -183,21 +189,25 @@ public class dash : MonoBehaviour {
 
     void Damage()
     {
-        checkPlayerStateScript.SetIsHit(true);
+        playerStateScript.SetIsHit(true);
 
         movingScript.enabled = false; // disables movement, dashing, throwing
         throwingScript.enabled = false;
         animator.SetTrigger ("breathing_in"); // sets animator trigger so that suffocation animation is played
 
-        throwingScript.ThrowPearl(movingScript.GetFacingAngle(), dropPearlForce);
+		//throw the pearl in the direction of enemy dash
+        throwingScript.ThrowPearl(enemyStateScript.GetFacingAngle(), dropPearlForce);
+
+		//become able to move again
         Invoke("RestartState", 1.5f);
+
         //player flashes red
         //playerHit.GetComponent<Animation>().Play("Player_RedFlash");
     }
 
     void RestartState()
     {
-        checkPlayerStateScript.SetIsHit(false);
+        playerStateScript.SetIsHit(false);
 
         movingScript.enabled = true; // disables movement, dashing, throwing
         throwingScript.enabled = true;

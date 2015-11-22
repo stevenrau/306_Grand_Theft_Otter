@@ -5,11 +5,13 @@ public class beaver_breathing : MonoBehaviour {
 
 	private float suffocate_time = 2f; // Time spent in the suffocation animation
 	private float floating_speed = -1f; // the value the Gravity is set to when floating up 
+	private bool isSuffocating;
 
 	// the scripts that will be disabled when suffocated
-	moving movement;
-	dash dashing;
-	throwing Throwing;
+	moving movingScript;
+	dash dashScript;
+	throwing throwingScript;
+
 	Animator animator;
 	private ParticleSystem Bubbles; // The particle System that emits bubbles
 	Rigidbody2D rBody; // the ridgit body of the palyer
@@ -19,6 +21,7 @@ public class beaver_breathing : MonoBehaviour {
 	player_state playerStateScript;
 
 	float boostVelocity = 1000f;
+	float dropPearlForce = 100f;
 
 	GameObject beaverMouth; // the gameobject that flips left and right. Its children include, the beaver mouth
 
@@ -35,10 +38,11 @@ public class beaver_breathing : MonoBehaviour {
 		// get Player name form patent object 
 		Player_name = gameObject.transform.name;
 
+
 		//gettign the scripts that will be disabled
-		movement = GetComponent<moving> ();
-		dashing = GetComponent<dash> ();
-		Throwing = GetComponent<throwing> ();
+		movingScript = GetComponent<moving> ();
+		dashScript = GetComponent<dash> ();
+		throwingScript = GetComponent<throwing> ();
 
 		//getting the particle system
 		Bubbles = beaverMouth.GetComponentInChildren<ParticleSystem> ();
@@ -46,6 +50,8 @@ public class beaver_breathing : MonoBehaviour {
 		//setting the emmision to 0
 		Bubbles.emissionRate = 0;
 
+		//initially not suffocating
+		isSuffocating = false;
 
 		// gettign the ridgit body of the Player
 		rBody = GetComponent<Rigidbody2D> ();
@@ -60,18 +66,19 @@ public class beaver_breathing : MonoBehaviour {
 		//Check if the Bsave is at surface. Thsi is a temporary solution the OnTriggerEnter method is a little bit more elegant 
 		// but will only work right when the mouth peace flips with the beaver sprite whoch it hopefully will. 
 		
-		if (playerStateScript.GetCanBreathe()) {
+		if (transform.position.y >= constants.breathingSurface) {
+			isSuffocating = false;
+			print("isSuffocating set false");
 			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
-			movement.enabled = true; // enable movement again (same for dashing and throwing) 
-			dashing.enabled = true;
-			Throwing.enabled = true;		
+			movingScript.enabled = true; // enable movement again (same for dashing and throwing) 
+			dashScript.enabled = true;
+			throwingScript.enabled = true;		
 			} 
 
 		else {
 			animator.SetBool ("at_surface", false);
 			check_breathing ();
-			}
-	
+		}
 	}
 
 
@@ -85,30 +92,15 @@ public class beaver_breathing : MonoBehaviour {
 				print ("1 breathing in");
 				breath_count += 1;
 			}
-			else {
-
-			}
+		
 			if (Input.GetKey ("o")) {
 				breath_count = 0;
 				print ("1 breathing out");
 				Bubbles.Emit (5);
 
-				//increase player speed if they are breathing out
-				//find the angle to throw based on the angle found for the pearl_offest
-				Vector3 dir;
-				if (movement.GetFacingRight())
-				{
-					dir = Quaternion.AngleAxis( (movement.GetFacingAngle() - 90f), Vector3.forward) * Vector3.up;
+				if(!isSuffocating){
+					ApplySpeedBoost(); //boost of speed if breahting out
 				}
-				else
-				{
-					dir = Quaternion.AngleAxis((movement.GetFacingAngle() - 270f), Vector3.forward) * Vector3.up;
-				}
-
-				//apply force to the pearl in that direction
-				GetComponent<Rigidbody2D>().AddForce(dir * boostVelocity);
-
-
 			}
 		}
 
@@ -117,12 +109,13 @@ public class beaver_breathing : MonoBehaviour {
 			if (Input.GetKey ("k")){
 				breath_count += 1;
 			}
-			else{
-
-			}
 			if (Input.GetKey ("l")) {
 				breath_count = 0;
-				Bubbles.Emit (3);
+				Bubbles.Emit (5);
+
+				if(!isSuffocating){
+					ApplySpeedBoost(); //boost of speed if breahting out
+				}
 			}
 		}
 
@@ -131,11 +124,35 @@ public class beaver_breathing : MonoBehaviour {
 		suffocate ();
 	}
 
+	void ApplySpeedBoost(){
+
+		//increase player speed if they are breathing out
+		//find the angle to apply force based on the angle the beaver is facing
+		Vector3 dir;
+		if (movingScript.GetFacingRight ()) {
+			dir = Quaternion.AngleAxis ((playerStateScript.GetFacingAngle () - 90f), Vector3.forward) * Vector3.up;
+		} else {
+			dir = Quaternion.AngleAxis ((playerStateScript.GetFacingAngle () - 270f), Vector3.forward) * Vector3.up;
+		}
+		
+		//apply force to the pearl in that direction
+		GetComponent<Rigidbody2D> ().AddForce (dir * boostVelocity);
+	}
+
 
 	void suffocate(){
-		movement.enabled = false; // disables movement, dashing, throwing
-		dashing.enabled = false;
-		Throwing.enabled = false;
+
+		isSuffocating = true;
+		print("isSuffocating set true");
+		//breath_count = 0;
+
+		//drop the pearl, 180 = downwards, 
+		throwingScript.ThrowPearl (180.0f, dropPearlForce);
+		playerStateScript.SetHasPearl (false);
+
+		movingScript.enabled = false; // disables movement, dashing, throwing
+		dashScript.enabled = false;
+		throwingScript.enabled = false;
 		animator.SetTrigger ("breathing_in"); // sets animator trigger so that suffocation animation is played
 		Invoke ("floating", suffocate_time); // switch to floating after "suffocate_time" amount of seconds		
 		}

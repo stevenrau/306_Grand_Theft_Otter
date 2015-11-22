@@ -33,13 +33,16 @@ public class collision_detection : MonoBehaviour {
             playerStateScript.SetHasPearl(true);
 		}
    
+		if (other.tag == "Platform") {
+			playerStateScript.SetIsTouchingPlatform(true);
+			
+		}
+
 	}
 
 	void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.tag == "Platform") {
-
-				//print("platform trigger stay");
 				playerStateScript.SetIsTouchingPlatform(true);
 		
 		}
@@ -49,8 +52,6 @@ public class collision_detection : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.tag == "Platform") {
-
-				//print("platform trigger exit");
 				playerStateScript.SetIsTouchingPlatform(false);
 
 		}

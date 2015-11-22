@@ -34,23 +34,7 @@ public class pearl_behaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		// draw ray cast, if going to collide then reduce velocity.
-
-        if (transform.position.x < -8.5)
-        {
-            Transform temp = transform;
-            transform.position = new Vector2(-4,temp.position.y);
-               
-        }
-
-        if (transform.position.x > 8.5)
-        {
-            Transform temp = transform;
-            transform.position = new Vector2(4, temp.position.y);
-
-        }
-
-
+		
         if (respawn) {
 			transform.position = spawnPoint.transform.position;
 			animator.SetTrigger ("has_respawned");

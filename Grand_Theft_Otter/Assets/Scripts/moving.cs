@@ -6,19 +6,15 @@ public class moving : MonoBehaviour {
     Rigidbody2D rBody; //the body of the player
     Animator animator; //the animator for the beaver sprite
 
-	float waterGravity = -0.1f;
-	float landGravity = 1f;
-	float airGravity = 3f;
+	float waterGravity = -0.1f; // gravity when in water
+	float landGravity = 1f; //gravity when out of water and touching a platform
+	float airGravity = 3f; // gravity when out of water, but not touching a platform
 
-	float platformSurface = 3.5f;
+	float platformSurface = 3.8f; // the y coordinate when landGravity should be on, also walking animation
+	float waterSurface = 3.3f; // the y coordinate where heavy gravity applies
+	//float breathingSurface = 3.1f; 
 
-	float waterSurface = 3.3f;
-	float breathingSurface = 3.1f;
-	//float deckSurface = 4.1f;
-
-    public float moveForce = 100f;
-	//float waterMoveForce = 100f;
-	//float landMoveForce = 100f;
+    public float moveForce = 100f; //determines the speed of the player when moving with the analog stick
 
     public float maxSpeed;
     public bool facingRight; //is the player facing right
@@ -28,8 +24,8 @@ public class moving : MonoBehaviour {
 
     float leftAnalogThresh; //the analog stick must be moved more than this to trigger moving animation
 
-	// script
-	get_input throwInputScript;
+	// other scripts
+	get_input moveInputScript;
 	player_state playerStateScript;
 	
 
@@ -42,7 +38,7 @@ public class moving : MonoBehaviour {
 		beaverSprite = transform.GetChild(1).gameObject;
         animator = beaverSprite.GetComponent<Animator>();
 
-        throwInputScript = gameObject.GetComponent<get_input>();
+        moveInputScript = gameObject.GetComponent<get_input>();
 		playerStateScript = gameObject.GetComponent<player_state>();
         
         facingAngle = 0.0f;
@@ -53,7 +49,6 @@ public class moving : MonoBehaviour {
 
 		animator.SetBool ("on_land", true);
 		animator.SetBool ("is_moving", false);
-		playerStateScript.SetIsOnLand (false);
     }
 	
 	// Update is called once per frame
@@ -61,11 +56,11 @@ public class moving : MonoBehaviour {
         //move the player position 
 
         //for xbox controller
-		float h = throwInputScript.GetMoveHorizontalAxis(); //mov_horiz
-		float v = throwInputScript.GetMoveVerticalAxis();  //mov_vert
+		float h = moveInputScript.GetMoveHorizontalAxis(); //mov_horiz
+		float v = moveInputScript.GetMoveVerticalAxis();  //mov_vert
 
 		//check if can breathe
-		if (transform.position.y >= breathingSurface) 
+		if (transform.position.y >= constants.breathingSurface) 
 		{
 			playerStateScript.SetCanBreathe (true);
 			beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
@@ -79,9 +74,12 @@ public class moving : MonoBehaviour {
 		//check if in water or at surface
 		if (transform.position.y >= waterSurface) 
 		{
-			animator.SetBool ("on_land", true);
-			if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
+			animator.SetBool ("on_land", false);
 
+			//check if walking on platform
+			if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
+				animator.SetBool ("on_land", true);
+				v = 0; //do not allow vertical movement when on the platform
 				rBody.gravityScale = landGravity;
 			}
 			else{
@@ -93,14 +91,6 @@ public class moving : MonoBehaviour {
 			rBody.gravityScale = waterGravity;
 			animator.SetBool ("on_land", false);
 		}
-
-		//check if walking on platform
-		//if (transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
-		//	moveForce = landMoveForce;
-		//} 
-		//else {
-		//	moveForce = waterMoveForce;
-		//}
 
 
         //set animation if stick is moved enough
@@ -172,11 +162,15 @@ public class moving : MonoBehaviour {
             if (facingRight)
             {
                 facingAngle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+
             }
             else
             {
                 facingAngle = (Mathf.Atan2(y, x) * Mathf.Rad2Deg) + 180;
+
             }
+
+			playerStateScript.SetFacingAngle(facingAngle);
 
             //beaver_sprite.transform.rotation = Quaternion.AngleAxis(facing_angle, Vector3.forward);
             transform.rotation = Quaternion.AngleAxis(facingAngle, Vector3.forward);
@@ -202,8 +196,8 @@ public class moving : MonoBehaviour {
         return facingRight;
     }
 
-	public float GetFacingAngle() {
-		return facingAngle;
-	}
+	//public float GetFacingAngle() {
+	//	return facingAngle;
+	//}
 }
  

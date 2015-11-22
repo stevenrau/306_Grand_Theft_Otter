@@ -21,6 +21,9 @@ public class player_state : MonoBehaviour {
     // Is player hit?
     private bool isHit;
 
+	//number from 0 to 360. what way is the player moving
+	private float facingAngle;
+
     // Use this for initialization
     void Start () {
 	
@@ -34,8 +37,6 @@ public class player_state : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-
 	}
 
 
@@ -98,6 +99,18 @@ public class player_state : MonoBehaviour {
 	public bool GetIsTouchingPlatform()
 	{
 		return isTouchingPlatform;
+	}
+
+
+
+	public void SetFacingAngle(float angle)
+	{
+		this.facingAngle = angle;
+	}
+	
+	public float GetFacingAngle()
+	{
+		return this.facingAngle;
 	}
 
 }
