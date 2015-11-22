@@ -32,23 +32,49 @@ public class collision_detection : MonoBehaviour {
 
             playerStateScript.SetHasPearl(true);
 		}
+   
+	}
 
-		if (other.tag == "Breathable") 
-		{
-			print ("can beathe");
-			playerStateScript.SetCanBreathe(true);
+	void OnTriggerStay2D(Collider2D other)
+	{
+		if (other.tag == "Platform") {
+
+				//print("platform trigger stay");
+				playerStateScript.SetIsTouchingPlatform(true);
+		
 		}
-
-        
+		
 	}
 
 	void OnTriggerExit2D(Collider2D other)
 	{
-		if (other.tag == "Breathable")
-		{
-			print ("can not beathe");
-			playerStateScript.SetCanBreathe(false);
+		if (other.tag == "Platform") {
+
+				//print("platform trigger exit");
+				playerStateScript.SetIsTouchingPlatform(false);
+
 		}
+		
+	}
+
+
+
+	void OnCollisionEnter2D(Collision2D other)
+	{
+		//if (other.tag == "Platform") {
+			//print("platform collider enter");
+			//playerStateScript.SetIsTouchingPlatform(true);
+		//}
+		
+	}
+
+	void OnCollisionExit2D(Collision2D other)
+	{
+		//if (other.tag == "Platform") {
+			//print("platform collider exit");
+			//playerStateScript.SetIsTouchingPlatform(false);
+		//}
+
 	}
 
 	

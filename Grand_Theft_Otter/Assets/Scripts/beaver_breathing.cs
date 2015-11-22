@@ -3,11 +3,8 @@ using System.Collections;
 
 public class beaver_breathing : MonoBehaviour {
 
-	private bool is_under_water = true;
-	private float T;
 	private float suffocate_time = 2f; // Time spent in the suffocation animation
 	private float floating_speed = -1f; // the value the Gravity is set to when floating up 
-	private float normal_gravity = 0.2f; // normal gravity scale of beaver
 
 	// the scripts that will be disabled when suffocated
 	moving movement;
@@ -19,30 +16,31 @@ public class beaver_breathing : MonoBehaviour {
 	private string Player_name; // player name (eg. "Beaver1)
 	private int breath_count = 0; //counting subsequent breathing_in frames
 	private int breath_threshhold = 4; // How many subsequent breathing_in frames until suffocating. 
-	static bool at_surface; //bool that indicates if beaver is at surface
+	player_state playerStateScript;
+
+	float boostVelocity = 1000f;
 
 	GameObject beaverMouth; // the gameobject that flips left and right. Its children include, the beaver mouth
 
 
 	void Start () {
 
+		//get the state script
+		playerStateScript = GetComponent<player_state> ();
+
+		//get the
 		GameObject beaverSprite = transform.GetChild (1).gameObject;
 		beaverMouth = transform.GetChild (1).gameObject;
 
 		// get Player name form patent object 
-		//Player_name = gameObject.transform.parent.name;
 		Player_name = gameObject.transform.name;
 
 		//gettign the scripts that will be disabled
-		//movement = GetComponentInParent<moving> ();
-		//dashing = GetComponentInParent<dash> ();
-		//Throwing = GetComponentInParent<throwing> ();
 		movement = GetComponent<moving> ();
 		dashing = GetComponent<dash> ();
 		Throwing = GetComponent<throwing> ();
 
 		//getting the particle system
-		//Bubbles = GetComponentInChildren<ParticleSystem>();
 		Bubbles = beaverMouth.GetComponentInChildren<ParticleSystem> ();
 
 		//setting the emmision to 0
@@ -50,64 +48,30 @@ public class beaver_breathing : MonoBehaviour {
 
 
 		// gettign the ridgit body of the Player
-		//rBody = GetComponentInParent<Rigidbody2D>();
 		rBody = GetComponent<Rigidbody2D> ();
 
 
-		// getting the animator. The "foreach" is nessesary because the animator is not in the partent but in the sibling object "beaver"
-		// and I didnt find an easier way to get an component form a sibling. 
-		//foreach (Transform child in transform.parent) {
-		//	if (child.name == "Beaver")
-		//		animator = child.GetComponent<Animator> ();
-		//}
+		// getting the animator.
 		animator = transform.GetChild (1).gameObject.GetComponent<Animator> ();
 	}
-/*   
-	void OnTriggerEnter2D (Collider2D other)
-	{
-		if (other.gameObject.tag == "sky") {
-			at_surface = true;
-			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
-			movement.enabled = true;
-			dashing.enabled = true;
-			Throwing.enabled = true;		
-			rBody.gravityScale = normal_gravity; // Changes gravity back to noraml (from floating)
-		} 
-	}
 
-
-	void OnTriggerExit2D (Collider2D another)
-	{
-		if (another.gameObject.tag == "water") {
-			at_surface = false;
-			animator.SetBool ("at_surface", false);
-		} 
-	}
-*/
 
 	void Update () {
 		//Check if the Bsave is at surface. Thsi is a temporary solution the OnTriggerEnter method is a little bit more elegant 
 		// but will only work right when the mouth peace flips with the beaver sprite whoch it hopefully will. 
-		if (rBody.position.y > 2.8) {
-			at_surface = true;
+		
+		if (playerStateScript.GetCanBreathe()) {
 			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
 			movement.enabled = true; // enable movement again (same for dashing and throwing) 
 			dashing.enabled = true;
 			Throwing.enabled = true;		
-			rBody.gravityScale = normal_gravity; // Changes gravity back to noraml (from floating)
 			} 
 
 		else {
-			at_surface = false;
-			animator.SetBool ("at_surface", false); 
-			}
-
-
-		// If the beave is under water: chekc for breathing input
-		if (at_surface == false) {
+			animator.SetBool ("at_surface", false);
 			check_breathing ();
 			}
-			
+	
 	}
 
 
@@ -127,7 +91,24 @@ public class beaver_breathing : MonoBehaviour {
 			if (Input.GetKey ("o")) {
 				breath_count = 0;
 				print ("1 breathing out");
-				Bubbles.Emit (3);
+				Bubbles.Emit (5);
+
+				//increase player speed if they are breathing out
+				//find the angle to throw based on the angle found for the pearl_offest
+				Vector3 dir;
+				if (movement.GetFacingRight())
+				{
+					dir = Quaternion.AngleAxis( (movement.GetFacingAngle() - 90f), Vector3.forward) * Vector3.up;
+				}
+				else
+				{
+					dir = Quaternion.AngleAxis((movement.GetFacingAngle() - 270f), Vector3.forward) * Vector3.up;
+				}
+
+				//apply force to the pearl in that direction
+				GetComponent<Rigidbody2D>().AddForce(dir * boostVelocity);
+
+
 			}
 		}
 

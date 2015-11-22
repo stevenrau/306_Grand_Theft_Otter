@@ -6,12 +6,20 @@ public class moving : MonoBehaviour {
     Rigidbody2D rBody; //the body of the player
     Animator animator; //the animator for the beaver sprite
 
-	float waterGravity = 0.2f;
-	float landGravity = 1.2f;
-	float waterSurface = 2.8f;
-	float deckSurface = 4.1f;
+	float waterGravity = -0.1f;
+	float landGravity = 1f;
+	float airGravity = 3f;
 
-    public float moveForce;
+	float platformSurface = 3.5f;
+
+	float waterSurface = 3.3f;
+	float breathingSurface = 3.1f;
+	//float deckSurface = 4.1f;
+
+    public float moveForce = 100f;
+	//float waterMoveForce = 100f;
+	//float landMoveForce = 100f;
+
     public float maxSpeed;
     public bool facingRight; //is the player facing right
     public float facingAngle; //the angle the beaver is looking( what way its head is pointing)
@@ -56,49 +64,48 @@ public class moving : MonoBehaviour {
 		float h = throwInputScript.GetMoveHorizontalAxis(); //mov_horiz
 		float v = throwInputScript.GetMoveVerticalAxis();  //mov_vert
 
-        
-
-		//temporary for testing
-		if (playerStateScript.GetCanBreathe()) {
-			//beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
-			//beaverSprite.GetComponent<SpriteRenderer> ().color = new Color(0.0f, 0.0f, 0.3f, 0.2f);
-		} else {
-			//beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
-			//beaverSprite.GetComponent<SpriteRenderer> ().color = new Color(0.17f,0.20f,0.20f,1f);
+		//check if can breathe
+		if (transform.position.y >= breathingSurface) 
+		{
+			playerStateScript.SetCanBreathe (true);
+			beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
+		} 
+		else 
+		{
+			playerStateScript.SetCanBreathe (false);
+			beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
 		}
 
-		//check if on land or swimming
-		if (transform.position.y >= waterSurface)
+		//check if in water or at surface
+		if (transform.position.y >= waterSurface) 
 		{
-			animator.SetBool ("on_land", false);
-			playerStateScript.SetIsOnLand (false);
-			//beaverSprite.GetComponent<SpriteRenderer>().color = Color.magenta;
-			rBody.gravityScale = landGravity;
+			animator.SetBool ("on_land", true);
+			if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
 
-			if(transform.position.y >= deckSurface)
-			{
-				animator.SetBool ("on_land", true);
-				playerStateScript.SetIsOnLand (true);
 				rBody.gravityScale = landGravity;
-				//beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
-				v = 0.0f;
+			}
+			else{
+				rBody.gravityScale = airGravity;
 			}
 		} 
-		else
+		else 
 		{
-			animator.SetBool ("on_land", false);
-			playerStateScript.SetIsOnLand (false);
-			//beaverSprite.GetComponent<SpriteRenderer>().color =new Color(0.0f, 0.5f, 0.0f, 0.8f);
 			rBody.gravityScale = waterGravity;
-
+			animator.SetBool ("on_land", false);
 		}
 
+		//check if walking on platform
+		//if (transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
+		//	moveForce = landMoveForce;
+		//} 
+		//else {
+		//	moveForce = waterMoveForce;
+		//}
 
 
         //set animation if stick is moved enough
 		if ((Mathf.Abs(h) > leftAnalogThresh) || (Mathf.Abs(v) > leftAnalogThresh))
         {
-
             //show the player moving animation
             animator.SetBool("is_moving", true);
 

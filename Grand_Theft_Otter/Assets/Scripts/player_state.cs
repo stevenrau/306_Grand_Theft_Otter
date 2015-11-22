@@ -12,6 +12,9 @@ public class player_state : MonoBehaviour {
     // Is the player dashing?
     bool isDashing;
 
+	// Is the player touching the wooden platforms?
+	bool isTouchingPlatform;
+
     // Does player have pearl?
     private bool hasPearl;
 
@@ -86,5 +89,15 @@ public class player_state : MonoBehaviour {
         return isHit;
     }
 
+
+	public void SetIsTouchingPlatform(bool touching)
+	{
+		isTouchingPlatform = touching;
+	}
+	
+	public bool GetIsTouchingPlatform()
+	{
+		return isTouchingPlatform;
+	}
 
 }
