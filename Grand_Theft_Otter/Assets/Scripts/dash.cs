@@ -30,6 +30,7 @@ public class dash : MonoBehaviour {
     private float dashVelocity = 5000f;
     public Vector2 savedVelocity;
 
+	float dropPearlForce= 400;
     Rigidbody2D r_body;
 
     //getting scripts
@@ -188,7 +189,7 @@ public class dash : MonoBehaviour {
         throwingScript.enabled = false;
         animator.SetTrigger ("breathing_in"); // sets animator trigger so that suffocation animation is played
 
-        throwingScript.ThrowPearl();
+        throwingScript.ThrowPearl(movingScript.GetFacingAngle(), dropPearlForce);
         Invoke("RestartState", 1.5f);
         //player flashes red
         //playerHit.GetComponent<Animation>().Play("Player_RedFlash");

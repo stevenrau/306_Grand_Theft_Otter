@@ -18,7 +18,7 @@ public class throwing : MonoBehaviour {
     player_state playerStateScript;
 
     //  float throw_angle; // the angle the pearl will be thrown
-    public float throwForce;
+    float throwForce = 800;
 
     void Start () {
 
@@ -45,14 +45,15 @@ public class throwing : MonoBehaviour {
         if (throwInputScript.GetThrowingButton())
         {
             //print(throw_bumper);
-            ThrowPearl(); //will throw in the direction the pearl is currently pointing
+			ThrowPearl(aimingDirScript.GetThrowAngle(), throwForce); //will throw in the direction the pearl is currently pointing
         }
     }
 
     /***************************************************************************************
-    * disables the rendering of the offset pearl, generates a new pearl, and adds a force to the new pearl
+    * disables the rendering of the offset pearl, generates a new pearl, and adds a force to the new pearl, 
+    * and applies it in the direction specified by angle.
     * ************************************************************************************/
-    public void ThrowPearl()
+    public void ThrowPearl(float angle, float force)
     {
 
         //if the beaver is currently holding a pearl
@@ -78,10 +79,11 @@ public class throwing : MonoBehaviour {
             thrownPearl.transform.position = new Vector2(transform.position.x, transform.position.y);
 
             //find the angle to throw based on the angle found for the pearl_offest
-			Vector3 dir = Quaternion.AngleAxis(aimingDirScript.GetThrowAngle(), Vector3.forward) * Vector3.up;
+			//Vector3 dir = Quaternion.AngleAxis(aimingDirScript.GetThrowAngle(), Vector3.forward) * Vector3.up;
+			Vector3 dir = Quaternion.AngleAxis(angle, Vector3.forward) * Vector3.up;
 
             //apply force to the pearl in that direction
-            thrownPearl.GetComponent<Rigidbody2D>().AddForce(dir * throwForce);
+            thrownPearl.GetComponent<Rigidbody2D>().AddForce(dir * force);
         }
         
 

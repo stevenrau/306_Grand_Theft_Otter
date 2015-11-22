@@ -174,14 +174,13 @@ public class game_setup : MonoBehaviour {
 		beaver1.transform.position = new Vector2 (startPos1.x, startPos1.y);
 		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = team1Color;
 
-		/*
+
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
 		beaver2.GetComponent<get_input>().SetPlayerID ("2");
 		beaver2.transform.position = new Vector2 (startPos2.x, startPos2.y);
 		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = team2Color;
-
-*/
+		
 		/*
 		//TODO change the prefab type of these other players
 		//player 3
