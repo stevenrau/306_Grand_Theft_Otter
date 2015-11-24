@@ -58,13 +58,6 @@ public class pearl_behaviour : MonoBehaviour {
 		respawn = true;
 	}
 
-	public void ScoreAndAnimate()
-	{
-		animator.SetTrigger ("score");
-
-		Invoke ("SetRespawnTrue", 2.0f);
-	}
-
 	// returns the beaver that instantiated this pearl
 	public GameObject GetBeaver()
 	{
