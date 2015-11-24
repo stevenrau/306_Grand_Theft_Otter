@@ -14,6 +14,10 @@ public class pearl_behaviour : MonoBehaviour {
 	private bool hasLeftBeaver = false;	//Check if pearl has exited beaver's collider
 
 	Animator animator; 				//the animator for the pearl
+	Rigidbody2D rBody; //the rigid body of this pearl
+
+	//used to check if in water or in air, also to check if out of bounds
+	Vector2 pos;
 
 	void Awake()
 	{
@@ -27,6 +31,7 @@ public class pearl_behaviour : MonoBehaviour {
 	{
 		transform = GetComponent<Transform> ();
 		animator = GetComponent<Animator>();
+		rBody = GetComponent<Rigidbody2D> ();
 
 		prevPos = this.transform.position;
 	}
@@ -51,6 +56,22 @@ public class pearl_behaviour : MonoBehaviour {
 		}
 
 		prevPos = this.transform.position;
+
+		pos = transform.position;
+
+		//change the gravity of the pearl if it has left the water
+		if (pos.y >= constants.waterSurface) {
+			rBody.gravityScale = constants.pearlAirGravity;
+		} 
+		else {
+			rBody.gravityScale = constants.pearlWaterGravity;
+		}
+
+
+		//respawn the pearl if somehow it got out of the play area
+		if (pos.x > constants.rightBoundary || pos.x < constants.leftBoundary || pos.y < constants.bottomBoundary) {
+			SetRespawnTrue();
+		}
 	}
 
 	void SetRespawnTrue()
@@ -83,5 +104,14 @@ public class pearl_behaviour : MonoBehaviour {
 	{
 		this.beaver = beav;
 	}
+
+
+	void OnCollisionEnter2D(Collision2D col){
+
+		if (col.gameObject.tag == "Wall") {
+			print ("collison with wall");
+		}
+	}
+
 
 }
