@@ -5,9 +5,9 @@
 
 // FOR ALPHA
 Bugs: 
--> pearl spawn location
--> gravity in and out of the water [John & Ansgar]
-  - Possible solns: colider dampen?, tweak gravity points?
+-> pearl spawn location (going through walls)
+DONE gravity in and out of the water [John & Ansgar]
+  - minor tweaking
 
 Menus:
 -> Main menu [Breanne]
@@ -16,17 +16,21 @@ Menus:
 -> goal to strive for [Breanne]
 
 Animations:
--> clam anim and scoring [Steven]
+DONE clam anim and scoring [Steven]
 -> sky (non-prioity)
 -> differentiate between teams [Benj]
--> visual/auido triggers to determine when you can and cannot breath [Benj]
+-> visual/auido triggers to determine when you can and cannot breath (at mouth)
 
 Game Mechanic:
--> adding force while breathing out [John & Ansgar]
+DONE adding force while breathing out [John & Ansgar]
+-> add input for player 3, 4 [Benj]
+-> wrap beaver instantions with ifs and a for
+-> can't breath under deck (need buddy's help) [John]
+-> breath at mouth
 
 Sounds:
--> Sound Object/Controller [John]
--> audio trigger to know when you can and cannot breath
+DONE Sound Object/Controller [John]
+-> audio trigger to know when you can and cannot breath (Just by Anim?)
 -> genearl sounds
 
 
