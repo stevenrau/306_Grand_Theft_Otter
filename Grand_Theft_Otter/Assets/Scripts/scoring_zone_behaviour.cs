@@ -6,21 +6,15 @@ public class scoring_zone_behaviour : MonoBehaviour {
 	// Clam animator
 	Animator animator;
 
-	private int leftScore = 0;
-	private int rightScore = 0;
-	
-	private int maxScore = 5;
-	
-	GameObject damRampLeft;
-	GameObject damRampRight;
+	// the script that keeps track of scores for the round
+	score_keeper scoreKeeperScript;
 
-
-    void Start()
-    {
+	void Start()
+	{
 		animator = gameObject.GetComponentInParent<Animator>();
-		damRampLeft = GameObject.Find ("Dam_Ramp_Left");
-		damRampRight = GameObject.Find ("Dam_Ramp_Right");
-    }
+		scoreKeeperScript = GameObject.Find ("Score_Keeper").GetComponent<score_keeper> ();
+
+	}
 
     void OnTriggerEnter2D(Collider2D other)
 	{
@@ -32,11 +26,11 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 			if (gameObject.tag == "Left_Clam")
 			{
-				IncrementLeftScore();
+				scoreKeeperScript.IncrementLeftScore();
 			}
 			else if (gameObject.tag == "Right_Clam")
 			{
-				IncrementRightScore ();
+				scoreKeeperScript.IncrementRightScore ();
 			}
 
 			animator.SetTrigger("scored");
@@ -57,11 +51,11 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 				if (gameObject.tag == "Left_Clam")
 				{
-					IncrementLeftScore();
+					scoreKeeperScript.IncrementLeftScore();
 				}
 				else if (gameObject.tag == "Right_Clam")
 				{
-					IncrementRightScore ();
+					scoreKeeperScript.IncrementRightScore ();
 				}
 
 				animator.SetTrigger("scored");
@@ -72,26 +66,8 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		}
 	}
 
-	//keep score and build the bridge further with each point scored
-	public void IncrementLeftScore()
-	{
-		if (leftScore < maxScore) {
-			leftScore++;
-			//enable the next section of the bridge
-			damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
-		}
-		print ("Left score: " + leftScore);
-	}
-	
-	public void IncrementRightScore()
-	{
-		if (rightScore < maxScore) {
-			rightScore++;
-			//enable the next section of the bridge
-			damRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
-		}
-		print ("Right score: " + rightScore);
-	}
+
+
 
 	void CreateNewPearl()
 	{

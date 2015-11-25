@@ -15,6 +15,13 @@ public class game_setup : MonoBehaviour {
 		Debug.Log ("Screen Dimensions: "+ Screen.width + " x " + Screen.height);
 
 		/***************************************************************************************
+		 * Load the Score Keeper
+		 * ************************************************************************************/
+		GameObject scoreKeeper = Instantiate (Resources.Load ("Score_Keeper")) as GameObject;
+		scoreKeeper.name = "Score_Keeper";
+
+
+		/***************************************************************************************
 		 * Load the Sound Player
 		 * ************************************************************************************/
 		GameObject soundPlayer = Instantiate (Resources.Load ("Sound_Player")) as GameObject;
