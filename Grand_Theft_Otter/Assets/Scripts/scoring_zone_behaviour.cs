@@ -3,8 +3,8 @@ using System.Collections;
 
 public class scoring_zone_behaviour : MonoBehaviour {
 
-    player_state playerStateScript;
-	game_setup gameSetupScript;
+	// Clam animator
+	Animator animator;
 
 	private int leftScore = 0;
 	private int rightScore = 0;
@@ -17,8 +17,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
     void Start()
     {
-        playerStateScript = gameObject.GetComponent<player_state>();
-		gameSetupScript = GameObject.Find ("game_setup").GetComponent<game_setup> ();
+		animator = gameObject.GetComponentInParent<Animator>();
 		damRampLeft = GameObject.Find ("Dam_Ramp_Left");
 		damRampRight = GameObject.Find ("Dam_Ramp_Right");
     }
@@ -29,42 +28,46 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 		if (other.tag == "Pearl") 
 		{
-			pearl_behaviour pearlScript = other.gameObject.GetComponent<pearl_behaviour> ();
-			pearlScript.ScoreAndAnimate ();
+			Destroy(other.gameObject);
 
-			if (gameObject.name == "left_score_zone")
+			if (gameObject.tag == "Left_Clam")
 			{
 				IncrementLeftScore();
 			}
-			if (gameObject.name == "right_score_zone")
+			else if (gameObject.tag == "Right_Clam")
 			{
 				IncrementRightScore ();
 			}
+
+			animator.SetTrigger("scored");
+
+			//Wait a little bit before spawning a new pearl
+			Invoke("CreateNewPearl", 1.5f);
 		} 
 		else if (other.tag == "Player") 
 		{
-			collision_detection playerScript = other.gameObject.GetComponentInParent<collision_detection>(); 
+			player_state playerStateScript = other.gameObject.GetComponentInParent<player_state>();
+			collision_detection playerCollisionScript = other.gameObject.GetComponentInParent<collision_detection>(); 
 
 			if (playerStateScript.GetHasPearl ()) 
 			{
-				playerScript.HidePearl ();
+				playerCollisionScript.HidePearl ();
 
                 playerStateScript.SetHasPearl(false);
 
-				//Load the scored pearl object
-				Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity);
-
-				//Wait a little bit before spawning a new pearl
-				Invoke("CreateNewPearl", 1.5f);
-
-				if (gameObject.name == "left_score_zone")
+				if (gameObject.tag == "Left_Clam")
 				{
 					IncrementLeftScore();
 				}
-				if (gameObject.name == "right_score_zone")
+				else if (gameObject.tag == "Right_Clam")
 				{
 					IncrementRightScore ();
 				}
+
+				animator.SetTrigger("scored");
+
+				//Wait a little bit before spawning a new pearl
+				Invoke("CreateNewPearl", 1.5f);
 			}
 		}
 	}
