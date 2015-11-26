@@ -8,8 +8,12 @@ using System.Collections;
 
 public class constants : MonoBehaviour {
 
-	// beaver colors
-	public static Color team1Color = new Color(0.6f,0.8f,0.6f,1f); // a little greenish;
+    //user game choices
+    public static bool fourPlayers;
+    public static bool hasTech;
+
+    // beaver colors
+    public static Color team1Color = new Color(0.6f,0.8f,0.6f,1f); // a little greenish;
 	public static Color team2Color = new Color(0.8f,0.6f,0.6f,1f); //a little redish;
 
 	public static Color team1ColorWater = new Color(0.3f,0.5f,1.0f,1f);

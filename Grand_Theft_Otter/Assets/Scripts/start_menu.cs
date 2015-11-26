@@ -9,9 +9,6 @@ using System.Collections;
 
 public class start_menu : MonoBehaviour
 {
-    //want to be able to access these values from outside this scene, eg in the game_setup script
-    public static bool fourPlayers;
-    public static bool hasTech;
 
     /********************************************************************
     * gamechoices screen:
@@ -35,7 +32,11 @@ public class start_menu : MonoBehaviour
         /********************************************************************
         * gamechoices screen:
         *********************************************************************/
+        playerReg2 = startText.GetComponent<Button>();
+        playerReg4 = exitText.GetComponent<Button>();
 
+        playerTech2 = startText.GetComponent<Button>();
+        playerTech4 = exitText.GetComponent<Button>();
 
         /********************************************************************
         * startscreen:
@@ -46,7 +47,47 @@ public class start_menu : MonoBehaviour
         //quitMenu.enabled = false;
 
     }
-    
+
+    /********************************************************************
+    * Setting up game play according to user choices; sending to Game
+    *********************************************************************/
+
+    public void ChoicePlayerReg2() //no tech 2 player
+    {
+        constants.fourPlayers = false;
+        constants.hasTech = false;
+        Application.LoadLevel(2); //"2" is set in build settings
+
+    }
+
+    public void ChoicePlayerReg4() //no tech 4 player
+    {
+        constants.fourPlayers = true;
+        constants.hasTech = false;
+        Application.LoadLevel(2); //"2" is set in build settings
+
+    }
+
+    public void ChoicePlayerTech2() //tech 2 player
+    {
+        constants.fourPlayers = false;
+        constants.hasTech = true;
+        Application.LoadLevel(2); //"2" is set in build settings
+
+    }
+
+    public void ChoicePlayerTech4() //tech 4 player
+    {
+        constants.fourPlayers = true;
+        constants.hasTech = true;
+        Application.LoadLevel(2); //"2" is set in build settings
+
+    }
+
+    /********************************************************************
+    * Taking user to next screen 
+    *********************************************************************/
+
     //With use of XBOX controller instead of mouse, the next two functions that pop up the canvas
     //for a quit menu check are complicated because the event system no longer works
     //public void ExitPress() //this function will be used on our Exit button

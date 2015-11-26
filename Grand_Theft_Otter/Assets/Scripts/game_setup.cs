@@ -166,37 +166,55 @@ public class game_setup : MonoBehaviour {
 		Vector2 startPos3 = startObject3.transform.position;
 		Vector2 startPos4 = startObject4.transform.position;
 
-		//Color team1Color = new Color(0.6f,0.8f,0.6f,1f); //a little greenish
-		//Color team2Color = new Color(0.8f,0.55f,0.55f,1f); //a little redish
+        //Color team1Color = new Color(0.6f,0.8f,0.6f,1f); //a little greenish
+        //Color team2Color = new Color(0.8f,0.55f,0.55f,1f); //a little redish
 
-		GameObject beaver1 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
-        beaver1.name = "Beaver1";
-		beaver1.GetComponent<get_input>().SetPlayerID ("1");
-		beaver1.transform.position = new Vector2 (startPos1.x, startPos1.y);
-		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team1Color;
+        if (constants.fourPlayers) // 4 player game *with tech* !?
+        {
+
+            GameObject beaver1 = Instantiate(Resources.Load("Beaver_Player")) as GameObject;
+            beaver1.name = "Beaver1";
+            beaver1.GetComponent<get_input>().SetPlayerID("1");
+            beaver1.transform.position = new Vector2(startPos1.x, startPos1.y);
+            beaver1.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = constants.team1Color;
 
 
-		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
-		beaver2.name = "Beaver2";
-		beaver2.GetComponent<get_input>().SetPlayerID ("2");
-		beaver2.transform.position = new Vector2 (startPos2.x, startPos2.y);
-		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team2Color;
-		
+            GameObject beaver2 = Instantiate(Resources.Load("Beaver_Player")) as GameObject;
+            beaver2.name = "Beaver2";
+            beaver2.GetComponent<get_input>().SetPlayerID("2");
+            beaver2.transform.position = new Vector2(startPos2.x, startPos2.y);
+            beaver2.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = constants.team2Color;
 
-		//player 3
-		GameObject beaver3 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject; 
-		beaver3.name = "Beaver3";
-		beaver3.GetComponent<get_input>().SetPlayerID ("1"); //should be 3
-		beaver3.transform.position = new Vector2 (startPos3.x, startPos3.y);
-		beaver3.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team1Color;
 
-		//player 4
-		GameObject beaver4 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
-		beaver4.name = "Beaver4";
-		beaver4.GetComponent<get_input>().SetPlayerID ("2"); //should be 4
-		beaver4.transform.position = new Vector2 (startPos4.x, startPos4.y);
-		beaver4.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team2Color;
+            //player 3
+            GameObject beaver3 = Instantiate(Resources.Load("Beaver_Player")) as GameObject;
+            beaver3.name = "Beaver3";
+            beaver3.GetComponent<get_input>().SetPlayerID("1"); //should be 3
+            beaver3.transform.position = new Vector2(startPos3.x, startPos3.y);
+            beaver3.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = constants.team1Color;
 
+            //player 4
+            GameObject beaver4 = Instantiate(Resources.Load("Beaver_Player")) as GameObject;
+            beaver4.name = "Beaver4";
+            beaver4.GetComponent<get_input>().SetPlayerID("2"); //should be 4
+            beaver4.transform.position = new Vector2(startPos4.x, startPos4.y);
+            beaver4.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = constants.team2Color;
+        }
+        else //2 player *with tech* !?
+        {
+            GameObject beaver1 = Instantiate(Resources.Load("Beaver_Player")) as GameObject;
+            beaver1.name = "Beaver1";
+            beaver1.GetComponent<get_input>().SetPlayerID("1");
+            beaver1.transform.position = new Vector2(startPos1.x, startPos1.y);
+            beaver1.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = constants.team1Color;
+
+
+            GameObject beaver2 = Instantiate(Resources.Load("Beaver_Player")) as GameObject;
+            beaver2.name = "Beaver2";
+            beaver2.GetComponent<get_input>().SetPlayerID("2");
+            beaver2.transform.position = new Vector2(startPos2.x, startPos2.y);
+            beaver2.transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = constants.team2Color;
+        }
     }
 	
 	// Update is called once per frame
