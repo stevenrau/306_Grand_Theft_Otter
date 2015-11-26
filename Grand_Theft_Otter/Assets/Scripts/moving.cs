@@ -11,7 +11,7 @@ public class moving : MonoBehaviour {
 	float airGravity = 3f; // gravity when out of water, but not touching a platform
 
 	float platformSurface = 3.8f; // the y coordinate when landGravity should be on, also walking animation
-	float waterSurface = 3.3f; // the y coordinate where heavy gravity applies
+	//float waterSurface = 3.3f; // the y coordinate where heavy gravity applies
 	//float breathingSurface = 3.1f; 
 
     public float moveForce = 100f; //determines the speed of the player when moving with the analog stick
@@ -72,7 +72,7 @@ public class moving : MonoBehaviour {
 		}
 
 		//check if in water or at surface
-		if (transform.position.y >= waterSurface) 
+		if (transform.position.y >= constants.waterSurface) 
 		{
 			animator.SetBool ("on_land", false);
 

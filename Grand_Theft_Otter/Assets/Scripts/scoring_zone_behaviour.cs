@@ -3,25 +3,18 @@ using System.Collections;
 
 public class scoring_zone_behaviour : MonoBehaviour {
 
-    player_state playerStateScript;
-	game_setup gameSetupScript;
+	// Clam animator
+	Animator animator;
 
-	private int leftScore = 0;
-	private int rightScore = 0;
-	
-	private int maxScore = 5;
-	
-	GameObject damRampLeft;
-	GameObject damRampRight;
+	// the script that keeps track of scores for the round
+	score_keeper scoreKeeperScript;
 
+	void Start()
+	{
+		animator = gameObject.GetComponentInParent<Animator>();
+		scoreKeeperScript = GameObject.Find ("Score_Keeper").GetComponent<score_keeper> ();
 
-    void Start()
-    {
-        playerStateScript = gameObject.GetComponent<player_state>();
-		gameSetupScript = GameObject.Find ("game_setup").GetComponent<game_setup> ();
-		damRampLeft = GameObject.Find ("Dam_Ramp_Left");
-		damRampRight = GameObject.Find ("Dam_Ramp_Right");
-    }
+	}
 
     void OnTriggerEnter2D(Collider2D other)
 	{
@@ -29,66 +22,52 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 		if (other.tag == "Pearl") 
 		{
-			pearl_behaviour pearlScript = other.gameObject.GetComponent<pearl_behaviour> ();
-			pearlScript.ScoreAndAnimate ();
+			Destroy(other.gameObject);
 
-			if (gameObject.name == "left_score_zone")
+			if (gameObject.tag == "Left_Clam")
 			{
-				IncrementLeftScore();
+				scoreKeeperScript.IncrementLeftScore();
 			}
-			if (gameObject.name == "right_score_zone")
+			else if (gameObject.tag == "Right_Clam")
 			{
-				IncrementRightScore ();
+				scoreKeeperScript.IncrementRightScore ();
 			}
+
+			animator.SetTrigger("scored");
+
+			//Wait a little bit before spawning a new pearl
+			Invoke("CreateNewPearl", 1.5f);
 		} 
 		else if (other.tag == "Player") 
 		{
-			collision_detection playerScript = other.gameObject.GetComponentInParent<collision_detection>(); 
+			player_state playerStateScript = other.gameObject.GetComponentInParent<player_state>();
+			collision_detection playerCollisionScript = other.gameObject.GetComponentInParent<collision_detection>(); 
 
 			if (playerStateScript.GetHasPearl ()) 
 			{
-				playerScript.HidePearl ();
+				playerCollisionScript.HidePearl ();
 
                 playerStateScript.SetHasPearl(false);
 
-				//Load the scored pearl object
-				Instantiate (Resources.Load ("Pearl_Scored"), gameObject.transform.position, Quaternion.identity);
+				if (gameObject.tag == "Left_Clam")
+				{
+					scoreKeeperScript.IncrementLeftScore();
+				}
+				else if (gameObject.tag == "Right_Clam")
+				{
+					scoreKeeperScript.IncrementRightScore ();
+				}
+
+				animator.SetTrigger("scored");
 
 				//Wait a little bit before spawning a new pearl
 				Invoke("CreateNewPearl", 1.5f);
-
-				if (gameObject.name == "left_score_zone")
-				{
-					IncrementLeftScore();
-				}
-				if (gameObject.name == "right_score_zone")
-				{
-					IncrementRightScore ();
-				}
 			}
 		}
 	}
 
-	//keep score and build the bridge further with each point scored
-	public void IncrementLeftScore()
-	{
-		if (leftScore < maxScore) {
-			leftScore++;
-			//enable the next section of the bridge
-			damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
-		}
-		print ("Left score: " + leftScore);
-	}
-	
-	public void IncrementRightScore()
-	{
-		if (rightScore < maxScore) {
-			rightScore++;
-			//enable the next section of the bridge
-			damRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
-		}
-		print ("Right score: " + rightScore);
-	}
+
+
 
 	void CreateNewPearl()
 	{

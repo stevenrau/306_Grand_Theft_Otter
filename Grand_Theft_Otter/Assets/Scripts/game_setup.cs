@@ -15,6 +15,13 @@ public class game_setup : MonoBehaviour {
 		Debug.Log ("Screen Dimensions: "+ Screen.width + " x " + Screen.height);
 
 		/***************************************************************************************
+		 * Load the Score Keeper
+		 * ************************************************************************************/
+		GameObject scoreKeeper = Instantiate (Resources.Load ("Score_Keeper")) as GameObject;
+		scoreKeeper.name = "Score_Keeper";
+
+
+		/***************************************************************************************
 		 * Load the Sound Player
 		 * ************************************************************************************/
 		GameObject soundPlayer = Instantiate (Resources.Load ("Sound_Player")) as GameObject;
@@ -95,45 +102,43 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 
 		//Load the five left clams
-		GameObject clamLeft1 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		GameObject clamLeft1 = Instantiate (Resources.Load ("Left_Clam")) as GameObject;
 		clamLeft1.name = "clam_left_1";
 
 		Transform clamTransform = clamLeft1.transform;
-		GameObject clamLeft2 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		GameObject clamLeft2 = Instantiate (Resources.Load ("Left_Clam")) as GameObject;
 		clamLeft2.name = "clam_left_2";
 		clamLeft2.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 1.25f, clamTransform.position.x);
-		GameObject clamLeft3 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		GameObject clamLeft3 = Instantiate (Resources.Load ("Left_Clam")) as GameObject;
 		clamLeft3.name = "clam_left_3";
 		clamLeft3.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 2.5f, clamTransform.position.x);
-		GameObject clamLeft4 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		GameObject clamLeft4 = Instantiate (Resources.Load ("Left_Clam")) as GameObject;
 		clamLeft4.name = "clam_left_4";
 		clamLeft4.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 3.75f, clamTransform.position.x);
-		GameObject clamLeft5 = Instantiate (Resources.Load ("Clam")) as GameObject;
+		GameObject clamLeft5 = Instantiate (Resources.Load ("Left_Clam")) as GameObject;
 		clamLeft5.name = "clam_left_5";
 		clamLeft5.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 5f, clamTransform.position.x);
 
 
 		//Load the five right clams, using the first left clam as the initial reference
-		GameObject clamRight1 = Instantiate (Resources.Load ("Clam")) as GameObject;
-		clamRight1.name = "clam_left_1";
-		clamRight1.transform.position = new Vector3(-clamTransform.position.x, clamTransform.position.y, clamTransform.position.x);
-		clamRight1.transform.localScale = new Vector2(-clamTransform.localScale.x, clamTransform.localScale.y);
+		GameObject clamRight1 = Instantiate (Resources.Load ("Right_Clam")) as GameObject;
+		clamRight1.name = "clam_right_1";
 		
 		clamTransform = clamRight1.transform;
-		GameObject clamRight2 = Instantiate (Resources.Load ("Clam")) as GameObject;
-		clamRight2.name = "clam_left_2";
+		GameObject clamRight2 = Instantiate (Resources.Load ("Right_Clam")) as GameObject;
+		clamRight2.name = "clam_right_2";
 		clamRight2.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 1.25f, clamTransform.position.x);
 		clamRight2.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
-		GameObject clamRight3 = Instantiate (Resources.Load ("Clam")) as GameObject;
-		clamRight3.name = "clam_left_3";
+		GameObject clamRight3 = Instantiate (Resources.Load ("Right_Clam")) as GameObject;
+		clamRight3.name = "clam_right_3";
 		clamRight3.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 2.5f, clamTransform.position.x);
 		clamRight3.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
-		GameObject clamRight4 = Instantiate (Resources.Load ("Clam")) as GameObject;
-		clamRight4.name = "clam_left_4";
+		GameObject clamRight4 = Instantiate (Resources.Load ("Right_Clam")) as GameObject;
+		clamRight4.name = "clam_right_4";
 		clamRight4.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 3.75f, clamTransform.position.x);
 		clamRight4.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
-		GameObject clamRight5 = Instantiate (Resources.Load ("Clam")) as GameObject;
-		clamRight5.name = "clam_left_5";
+		GameObject clamRight5 = Instantiate (Resources.Load ("Right_Clam")) as GameObject;
+		clamRight5.name = "clam_right_5";
 		clamRight5.transform.position = new Vector3(clamTransform.position.x, clamTransform.position.y - 5f, clamTransform.position.x);
 		clamRight5.transform.localScale = new Vector2(clamTransform.localScale.x, clamTransform.localScale.y);
 
