@@ -19,8 +19,7 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 		GameObject scoreKeeper = Instantiate (Resources.Load ("Score_Keeper")) as GameObject;
 		scoreKeeper.name = "Score_Keeper";
-
-
+		
 		/***************************************************************************************
 		 * Load the Sound Player
 		 * ************************************************************************************/
@@ -87,8 +86,9 @@ public class game_setup : MonoBehaviour {
 		damRampRight.transform.localScale = new Vector2(-leftTransform.localScale.x, leftTransform.localScale.y);
 
 		/***************************************************************************************
-		 * Load the scoring zones
+		 * Load the scoring zones ( now in the clams)
 		 * ************************************************************************************/
+		/*
 		GameObject scoringZoneLeft = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
 		scoringZoneLeft.name = "left_score_zone";
 		GameObject scoringZoneRight = Instantiate (Resources.Load ("Scoring_Zone")) as GameObject;
@@ -96,6 +96,7 @@ public class game_setup : MonoBehaviour {
 		leftTransform = scoringZoneLeft.transform;
 		scoringZoneRight.transform.position = new Vector3(Mathf.Abs (leftTransform.position.x), leftTransform.position.y, leftTransform.position.z);
 		scoringZoneRight.transform.localScale = new Vector2(-scoringZoneLeft.transform.localScale.x, scoringZoneLeft.transform.localScale.y);
+		*/
 
 		/***************************************************************************************
 		 * Load the clams
@@ -165,38 +166,36 @@ public class game_setup : MonoBehaviour {
 		Vector2 startPos3 = startObject3.transform.position;
 		Vector2 startPos4 = startObject4.transform.position;
 
-		Color team1Color = new Color(0.6f,0.8f,0.6f,1f); //a little greenish
-		Color team2Color = new Color(0.8f,0.55f,0.55f,1f); //a little redish
+		//Color team1Color = new Color(0.6f,0.8f,0.6f,1f); //a little greenish
+		//Color team2Color = new Color(0.8f,0.55f,0.55f,1f); //a little redish
 
 		GameObject beaver1 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
         beaver1.name = "Beaver1";
 		beaver1.GetComponent<get_input>().SetPlayerID ("1");
 		beaver1.transform.position = new Vector2 (startPos1.x, startPos1.y);
-		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = team1Color;
+		beaver1.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team1Color;
 
 
 		GameObject beaver2 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver2.name = "Beaver2";
 		beaver2.GetComponent<get_input>().SetPlayerID ("2");
 		beaver2.transform.position = new Vector2 (startPos2.x, startPos2.y);
-		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = team2Color;
+		beaver2.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team2Color;
 		
-		/*
-		//TODO change the prefab type of these other players
+
 		//player 3
 		GameObject beaver3 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject; 
 		beaver3.name = "Beaver3";
-		beaver3.GetComponent<get_input>().SetPlayerID ("3");
+		beaver3.GetComponent<get_input>().SetPlayerID ("1"); //should be 3
 		beaver3.transform.position = new Vector2 (startPos3.x, startPos3.y);
-		beaver3.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = team1Color;
+		beaver3.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team1Color;
 
 		//player 4
 		GameObject beaver4 = Instantiate (Resources.Load ("Beaver_Player")) as GameObject;
 		beaver4.name = "Beaver4";
-		beaver4.GetComponent<get_input>().SetPlayerID ("4");
+		beaver4.GetComponent<get_input>().SetPlayerID ("2"); //should be 4
 		beaver4.transform.position = new Vector2 (startPos4.x, startPos4.y);
-		beaver4.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = team2Color;
-		*/
+		beaver4.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = constants.team2Color;
 
     }
 	

@@ -10,7 +10,7 @@ public class moving : MonoBehaviour {
 	float landGravity = 1f; //gravity when out of water and touching a platform
 	float airGravity = 3f; // gravity when out of water, but not touching a platform
 
-	float platformSurface = 3.8f; // the y coordinate when landGravity should be on, also walking animation
+	float platformSurface = 4.0f; // the y coordinate when landGravity should be on, also walking animation
 	//float waterSurface = 3.3f; // the y coordinate where heavy gravity applies
 	//float breathingSurface = 3.1f; 
 
@@ -21,6 +21,7 @@ public class moving : MonoBehaviour {
     public float facingAngle; //the angle the beaver is looking( what way its head is pointing)
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it
+	GameObject beaverMouth;
 
     float leftAnalogThresh; //the analog stick must be moved more than this to trigger moving animation
 
@@ -38,6 +39,9 @@ public class moving : MonoBehaviour {
 		beaverSprite = transform.GetChild(1).gameObject;
         animator = beaverSprite.GetComponent<Animator>();
 
+		//reference to the beaver mouth (to determine if can breath)
+		beaverMouth = beaverSprite.transform.GetChild (1).gameObject;
+	
         moveInputScript = gameObject.GetComponent<get_input>();
 		playerStateScript = gameObject.GetComponent<player_state>();
         
@@ -60,15 +64,29 @@ public class moving : MonoBehaviour {
 		float v = moveInputScript.GetMoveVerticalAxis();  //mov_vert
 
 		//check if can breathe
-		if (transform.position.y >= constants.breathingSurface) 
+		if (beaverMouth.transform.position.y >= constants.waterSurface) 
 		{
 			playerStateScript.SetCanBreathe (true);
-			beaverSprite.GetComponent<SpriteRenderer>().color = Color.green;
+			if("1" == GetComponent<get_input>().GetTeam(GetComponent<get_input>().GetPlayerID())){
+				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team1Color;
+			}
+			else{
+				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team2Color;
+			}
+
 		} 
 		else 
 		{
 			playerStateScript.SetCanBreathe (false);
-			beaverSprite.GetComponent<SpriteRenderer>().color = Color.red;
+
+			if("1" == GetComponent<get_input>().GetTeam(GetComponent<get_input>().GetPlayerID())){
+				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team1ColorWater;
+			}
+			else{
+				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team2ColorWater;
+			}
+
+
 		}
 
 		//check if in water or at surface
