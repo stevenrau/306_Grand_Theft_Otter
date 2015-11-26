@@ -32,11 +32,11 @@ public class start_menu : MonoBehaviour
         /********************************************************************
         * gamechoices screen:
         *********************************************************************/
-        playerReg2 = startText.GetComponent<Button>();
-        playerReg4 = exitText.GetComponent<Button>();
+        playerReg2 = playerReg2.GetComponent<Button>();
+        playerReg4 = playerReg4.GetComponent<Button>();
 
-        playerTech2 = startText.GetComponent<Button>();
-        playerTech4 = exitText.GetComponent<Button>();
+        playerTech2 = playerTech2.GetComponent<Button>();
+        playerTech4 = playerTech4.GetComponent<Button>();
 
         /********************************************************************
         * startscreen:
