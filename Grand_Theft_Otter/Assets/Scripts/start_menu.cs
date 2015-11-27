@@ -9,38 +9,14 @@ using System.Collections;
 
 public class start_menu : MonoBehaviour
 {
-
-    /********************************************************************
-    * gamechoices screen:
-    *********************************************************************/
-
-    public Button playerReg2;
-    public Button playerReg4;  
-
-    public Button playerTech2;
-    public Button playerTech4;
-
-    /********************************************************************
-    * startscreen:
-    *********************************************************************/
+    
     //public Canvas quitMenu; // no longer popping up
     public Button startText;
     public Button exitText;
 
     void Start()
     {
-        /********************************************************************
-        * gamechoices screen:
-        *********************************************************************/
-        playerReg2 = playerReg2.GetComponent<Button>();
-        playerReg4 = playerReg4.GetComponent<Button>();
-
-        playerTech2 = playerTech2.GetComponent<Button>();
-        playerTech4 = playerTech4.GetComponent<Button>();
-
-        /********************************************************************
-        * startscreen:
-        *********************************************************************/
+        
         //quitMenu = quitMenu.GetComponent<Canvas>();
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
@@ -48,41 +24,8 @@ public class start_menu : MonoBehaviour
 
     }
 
-    /********************************************************************
-    * Setting up game play according to user choices; sending to Game
-    *********************************************************************/
 
-    public void ChoicePlayerReg2() //no tech 2 player
-    {
-        constants.fourPlayers = false;
-        constants.hasTech = false;
-        Application.LoadLevel(2); //"2" is set in build settings
-
-    }
-
-    public void ChoicePlayerReg4() //no tech 4 player
-    {
-        constants.fourPlayers = true;
-        constants.hasTech = false;
-        Application.LoadLevel(2); //"2" is set in build settings
-
-    }
-
-    public void ChoicePlayerTech2() //tech 2 player
-    {
-        constants.fourPlayers = false;
-        constants.hasTech = true;
-        Application.LoadLevel(2); //"2" is set in build settings
-
-    }
-
-    public void ChoicePlayerTech4() //tech 4 player
-    {
-        constants.fourPlayers = true;
-        constants.hasTech = true;
-        Application.LoadLevel(2); //"2" is set in build settings
-
-    }
+    
 
     /********************************************************************
     * Taking user to next screen 
