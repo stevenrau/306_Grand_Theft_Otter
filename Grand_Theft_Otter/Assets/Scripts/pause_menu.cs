@@ -4,6 +4,9 @@ using System.Collections;
 
 public class pause_menu : MonoBehaviour {
 
+    //private int numPlayers;
+    private GameObject theGame;
+
     private GameObject PauseUI;
 
     private bool paused = false;
@@ -13,44 +16,92 @@ public class pause_menu : MonoBehaviour {
     public Button mainMenu;
     public Button quit;
 
-    //get_input pauseInputScript;
+    //GameObject[] beaverPlayer;
+
+    //// the scripts that will be disabled when paused
+    //moving[] movingScript;
+    //dash[] dashScript;
+    //throwing[] throwingScript;
 
     void Start()
     {
-        resume = resume.GetComponent<Button>();
+        //resume = resume.GetComponent<Button>();
         restart = restart.GetComponent<Button>();
         mainMenu = mainMenu.GetComponent<Button>();
         quit = quit.GetComponent<Button>();
 
-        PauseUI = GameObject.Find("pause_menu");
-
-        //pauseInputScript = GetComponent<get_input>(); 
+        PauseUI = GameObject.Find("pause_menu").transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         PauseUI.SetActive(false);
+        theGame = GameObject.Find("game_setup");
+
+        //if(constants.fourPlayers)
+        //{
+        //    numPlayers = 4;
+        //}
+        
+        //beaverPlayer = new GameObject[numPlayers];
+        //movingScript = new moving[numPlayers];
+        //dashScript = new dash[numPlayers];
+        //throwingScript = new throwing[numPlayers];
+        
+        //beaverPlayer = GameObject.FindGameObjectsWithTag("Player");
+
+        ////scripts that will be disabled
+        //for (int i = 0; i < numPlayers; i++)
+        //{
+        //    movingScript[i] = beaverPlayer[i].GetComponent<moving>();
+        //    dashScript[i] = beaverPlayer[i].GetComponent<dash>();
+        //    throwingScript[i] = beaverPlayer[i].GetComponent<throwing>();
+        //}
+        
+
+        
 
     }
 
     void Update()
     {
-
         //if (pauseInputScript.GetStartButton())
         if (Input.GetButtonDown("Pause"))
         {
             paused = !paused;
-            if (paused)
+
+            if (paused) //paused is on
             {
                 PauseUI.SetActive(true);
+
                 //stop time
                 Time.timeScale = 0;
             }
-            else if (!paused)
+            else if (!paused) //game resumes
             {
                 PauseUI.SetActive(false);
+
                 //set time back to normal
                 Time.timeScale = 1;
             }
+
+            //PlayerFreeze(paused);
         }
         
     }
+
+    /********************************************************************
+    * Sprites need to freeze and not be controlled by button presses
+    *********************************************************************/
+
+    //public void PlayerFreeze(bool isPaused)
+    //{
+    //    //disable player controls 
+    //    for(int i = 0; i < numPlayers; i++)
+    //    {
+    //        movingScript[i].enabled = isPaused;
+    //        dashScript[i].enabled = isPaused;
+    //        throwingScript[i].enabled = isPaused;
+    //    }
+        
+    //}
+
 
     /********************************************************************
     * Setting up pause button functionality
@@ -60,6 +111,8 @@ public class pause_menu : MonoBehaviour {
     {
 
         paused = !paused;
+        //PlayerFreeze(paused);
+
         if (paused)
         {
             PauseUI.SetActive(true);
@@ -77,14 +130,15 @@ public class pause_menu : MonoBehaviour {
 
     public void PressedRestart() 
     {
-
-        Application.LoadLevel(2);
+        //Destroy(theGame);
+        //theGame = Instantiate (Resources.Load ("game_setup")) as GameObject;
+        Application.LoadLevel(1);
 
     }
 
     public void PressedMainMenu() 
     {
-
+        //Destroy(theGame);
         Application.LoadLevel(0);
 
     }
