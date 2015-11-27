@@ -2,3 +2,4 @@
 /Grand_Theft_Otter/Temp
 *.unity*
 !startmenu.unity*
+!gamechoices.unity*
