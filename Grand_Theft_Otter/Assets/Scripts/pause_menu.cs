@@ -1,27 +1,117 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class pause_menu : MonoBehaviour {
 
-    public GameObject PauseUI;
+    //private int numPlayers;
+    private GameObject theGame;
+
+    private GameObject PauseUI;
 
     private bool paused = false;
 
-    //get_input pauseInputScript;
+    public Button resume;
+    public Button restart;
+    public Button mainMenu;
+    public Button quit;
+
+    //GameObject[] beaverPlayer;
+
+    //// the scripts that will be disabled when paused
+    //moving[] movingScript;
+    //dash[] dashScript;
+    //throwing[] throwingScript;
 
     void Start()
     {
-        //pauseInputScript = GetComponent<get_input>(); how to access the script from a different gameObject?
+        //resume = resume.GetComponent<Button>();
+        restart = restart.GetComponent<Button>();
+        mainMenu = mainMenu.GetComponent<Button>();
+        quit = quit.GetComponent<Button>();
+
+        PauseUI = GameObject.Find("pause_menu").transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         PauseUI.SetActive(false);
+        theGame = GameObject.Find("game_setup");
+
+        //if(constants.fourPlayers)
+        //{
+        //    numPlayers = 4;
+        //}
+        
+        //beaverPlayer = new GameObject[numPlayers];
+        //movingScript = new moving[numPlayers];
+        //dashScript = new dash[numPlayers];
+        //throwingScript = new throwing[numPlayers];
+        
+        //beaverPlayer = GameObject.FindGameObjectsWithTag("Player");
+
+        ////scripts that will be disabled
+        //for (int i = 0; i < numPlayers; i++)
+        //{
+        //    movingScript[i] = beaverPlayer[i].GetComponent<moving>();
+        //    dashScript[i] = beaverPlayer[i].GetComponent<dash>();
+        //    throwingScript[i] = beaverPlayer[i].GetComponent<throwing>();
+        //}
+        
+
+        
+
     }
 
     void Update()
     {
         //if (pauseInputScript.GetStartButton())
-        if(Input.GetButton("Pause"))
+        if (Input.GetButtonDown("Pause"))
         {
             paused = !paused;
+
+            if (paused) //paused is on
+            {
+                PauseUI.SetActive(true);
+
+                //stop time
+                Time.timeScale = 0;
+            }
+            else if (!paused) //game resumes
+            {
+                PauseUI.SetActive(false);
+
+                //set time back to normal
+                Time.timeScale = 1;
+            }
+
+            //PlayerFreeze(paused);
         }
+        
+    }
+
+    /********************************************************************
+    * Sprites need to freeze and not be controlled by button presses
+    *********************************************************************/
+
+    //public void PlayerFreeze(bool isPaused)
+    //{
+    //    //disable player controls 
+    //    for(int i = 0; i < numPlayers; i++)
+    //    {
+    //        movingScript[i].enabled = isPaused;
+    //        dashScript[i].enabled = isPaused;
+    //        throwingScript[i].enabled = isPaused;
+    //    }
+        
+    //}
+
+
+    /********************************************************************
+    * Setting up pause button functionality
+    *********************************************************************/
+
+    public void PressedResume() 
+    {
+
+        paused = !paused;
+        //PlayerFreeze(paused);
 
         if (paused)
         {
@@ -29,12 +119,35 @@ public class pause_menu : MonoBehaviour {
             //stop time
             Time.timeScale = 0;
         }
-
-        if (!paused)
+        else if (!paused)
         {
             PauseUI.SetActive(false);
             //set time back to normal
             Time.timeScale = 1;
         }
+
     }
+
+    public void PressedRestart() 
+    {
+        //Destroy(theGame);
+        //theGame = Instantiate (Resources.Load ("game_setup")) as GameObject;
+        Application.LoadLevel(1);
+
+    }
+
+    public void PressedMainMenu() 
+    {
+        //Destroy(theGame);
+        Application.LoadLevel(0);
+
+    }
+
+    public void PressedQuit()
+    {
+
+        Application.Quit();
+
+    }
+
 }

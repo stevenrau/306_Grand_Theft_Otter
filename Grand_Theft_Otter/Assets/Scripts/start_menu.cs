@@ -9,44 +9,28 @@ using System.Collections;
 
 public class start_menu : MonoBehaviour
 {
-    //want to be able to access these values from outside this scene, eg in the game_setup script
-    public static bool fourPlayers;
-    public static bool hasTech;
-
-    /********************************************************************
-    * gamechoices screen:
-    *********************************************************************/
-
-    public Button playerReg2;
-    public Button playerReg4;  
-
-    public Button playerTech2;
-    public Button playerTech4;
-
-    /********************************************************************
-    * startscreen:
-    *********************************************************************/
+    
     //public Canvas quitMenu; // no longer popping up
     public Button startText;
     public Button exitText;
 
     void Start()
     {
-        /********************************************************************
-        * gamechoices screen:
-        *********************************************************************/
-
-
-        /********************************************************************
-        * startscreen:
-        *********************************************************************/
+        
         //quitMenu = quitMenu.GetComponent<Canvas>();
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
         //quitMenu.enabled = false;
 
     }
+
+
     
+
+    /********************************************************************
+    * Taking user to next screen 
+    *********************************************************************/
+
     //With use of XBOX controller instead of mouse, the next two functions that pop up the canvas
     //for a quit menu check are complicated because the event system no longer works
     //public void ExitPress() //this function will be used on our Exit button

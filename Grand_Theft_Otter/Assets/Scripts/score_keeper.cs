@@ -27,6 +27,10 @@ public class score_keeper : MonoBehaviour {
 			//enable the next section of the bridge
 			damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
 		}
+        else if (leftScore == maxScore)
+        {
+            Application.LoadLevel(3);
+        }
 		//print ("Left score: " + leftScore);
 	}
 	
@@ -37,8 +41,12 @@ public class score_keeper : MonoBehaviour {
 			//enable the next section of the bridge
 			damRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
 		}
-		//print ("Right score: " + rightScore);
-	}
+        else if (rightScore == maxScore)
+        {
+            Application.LoadLevel(4);
+        }
+        //print ("Right score: " + rightScore);
+    }
 
 	public void ResetScores(){
 		leftScore = 0;
