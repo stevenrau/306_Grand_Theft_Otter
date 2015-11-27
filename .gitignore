@@ -3,3 +3,5 @@
 *.unity*
 !startmenu.unity*
 !gamechoices.unity*
+!resultmenuteam1.unity*
+!resultmenuteam2.unity*

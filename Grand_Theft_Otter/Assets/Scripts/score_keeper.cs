@@ -24,10 +24,11 @@ public class score_keeper : MonoBehaviour {
 	{
 		if (leftScore < maxScore) {
 			leftScore++;
-			//enable the next section of the bridge
-			damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
+            //enable the next section of the bridge
+            damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
 		}
-        else if (leftScore == maxScore)
+
+        if (leftScore == maxScore)
         {
             Application.LoadLevel(3);
         }
@@ -41,7 +42,8 @@ public class score_keeper : MonoBehaviour {
 			//enable the next section of the bridge
 			damRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
 		}
-        else if (rightScore == maxScore)
+
+        if (rightScore == maxScore)
         {
             Application.LoadLevel(4);
         }
