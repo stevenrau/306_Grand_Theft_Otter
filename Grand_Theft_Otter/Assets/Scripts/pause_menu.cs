@@ -11,10 +11,10 @@ public class pause_menu : MonoBehaviour {
 
     private bool paused = false;
 
-    public Button resume;
-    public Button restart;
-    public Button mainMenu;
-    public Button quit;
+    //public Button resume;
+    private Button restart;
+    private Button mainMenu;
+    private Button quit;
 
     //GameObject[] beaverPlayer;
 
@@ -25,25 +25,27 @@ public class pause_menu : MonoBehaviour {
 
     void Start()
     {
-        //resume = resume.GetComponent<Button>();
-        restart = restart.GetComponent<Button>();
-        mainMenu = mainMenu.GetComponent<Button>();
-        quit = quit.GetComponent<Button>();
 
         PauseUI = GameObject.Find("pause_menu").transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         PauseUI.SetActive(false);
-        theGame = GameObject.Find("game_setup");
+
+        //resume = resume.GetComponent<Button>();
+        restart = PauseUI.transform.GetChild(1).gameObject.GetComponent<Button>();
+        mainMenu = PauseUI.transform.GetChild(2).gameObject.GetComponent<Button>();
+        quit = PauseUI.transform.GetChild(3).gameObject.GetComponent<Button>();
+
+        //theGame = GameObject.Find("game_setup");
 
         //if(constants.fourPlayers)
         //{
         //    numPlayers = 4;
         //}
-        
+
         //beaverPlayer = new GameObject[numPlayers];
         //movingScript = new moving[numPlayers];
         //dashScript = new dash[numPlayers];
         //throwingScript = new throwing[numPlayers];
-        
+
         //beaverPlayer = GameObject.FindGameObjectsWithTag("Player");
 
         ////scripts that will be disabled
@@ -53,9 +55,9 @@ public class pause_menu : MonoBehaviour {
         //    dashScript[i] = beaverPlayer[i].GetComponent<dash>();
         //    throwingScript[i] = beaverPlayer[i].GetComponent<throwing>();
         //}
-        
 
-        
+
+
 
     }
 
@@ -132,6 +134,7 @@ public class pause_menu : MonoBehaviour {
     {
         //Destroy(theGame);
         //theGame = Instantiate (Resources.Load ("game_setup")) as GameObject;
+        Time.timeScale = 1;
         Application.LoadLevel(1);
 
     }
@@ -139,6 +142,7 @@ public class pause_menu : MonoBehaviour {
     public void PressedMainMenu() 
     {
         //Destroy(theGame);
+        Time.timeScale = 1;
         Application.LoadLevel(0);
 
     }

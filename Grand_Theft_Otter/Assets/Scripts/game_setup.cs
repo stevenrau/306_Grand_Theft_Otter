@@ -14,10 +14,18 @@ public class game_setup : MonoBehaviour {
 	{
 		Debug.Log ("Screen Dimensions: "+ Screen.width + " x " + Screen.height);
 
-		/***************************************************************************************
+        /***************************************************************************************
+		 * Load the Pause Menu
+		 * ************************************************************************************/
+        GameObject pauseMenu = Instantiate(Resources.Load("pause_menu")) as GameObject;
+        pauseMenu.name = "pause_menu";
+        //pauseMenu.SetActive(false); 
+        
+
+        /***************************************************************************************
 		 * Load the Score Keeper
 		 * ************************************************************************************/
-		GameObject scoreKeeper = Instantiate (Resources.Load ("Score_Keeper")) as GameObject;
+        GameObject scoreKeeper = Instantiate (Resources.Load ("Score_Keeper")) as GameObject;
 		scoreKeeper.name = "Score_Keeper";
 		
 		/***************************************************************************************
