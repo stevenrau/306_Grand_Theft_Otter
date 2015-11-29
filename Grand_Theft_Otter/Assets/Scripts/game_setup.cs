@@ -255,7 +255,9 @@ public class game_setup : MonoBehaviour {
 		GameObject newBeaver = Instantiate (Resources.Load (type)) as GameObject;
 		string name = "Beaver" + playerID;
 		newBeaver.name = name;
-		newBeaver.GetComponent<get_input> ().SetPlayerID (playerID);
+		//newBeaver.GetComponent<get_input> ().SetPlayerID (playerID);
+		newBeaver.GetComponent<player_state> ().SetPlayerID (playerID);
+
 		newBeaver.transform.position = new Vector2 (startPos.x, startPos.y);
 		newBeaver.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = teamColor;
 		return newBeaver;

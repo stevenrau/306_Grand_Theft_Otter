@@ -24,6 +24,12 @@ public class player_state : MonoBehaviour {
 	//number from 0 to 360. what way is the player moving
 	private float facingAngle;
 
+	// a number from 1 to 4 to determine the player number
+	private string playerID;
+
+	// what team is this beaver on
+	private string teamNumber;
+
     // Use this for initialization
     void Start () {
 	
@@ -111,6 +117,28 @@ public class player_state : MonoBehaviour {
 	public float GetFacingAngle()
 	{
 		return this.facingAngle;
+	}
+
+
+	public void SetPlayerID(string id)
+	{
+		this.playerID = id;
+	}
+	
+	public string GetPlayerID()
+	{
+		return this.playerID;
+	}
+
+
+	public void SetTeamNumber(string team)
+	{
+		this.teamNumber = team;
+	}
+	
+	public string GetTeamNumber()
+	{
+		return this.teamNumber;
 	}
 
 }
