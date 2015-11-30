@@ -13,7 +13,6 @@ public class scoring_zone_behaviour : MonoBehaviour {
 	{
 		animator = gameObject.GetComponentInParent<Animator>();
 		scoreKeeperScript = GameObject.Find ("Score_Keeper").GetComponent<score_keeper> ();
-
 	}
 
     void OnTriggerEnter2D(Collider2D other)
