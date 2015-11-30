@@ -8,6 +8,8 @@ public class collision_detection : MonoBehaviour {
 
 	player_state playerStateScript;
 
+    score_keeper scoreScript;
+
 	// Use this for initialization
 	void Start() {
 		//get references to the child objects
@@ -17,7 +19,9 @@ public class collision_detection : MonoBehaviour {
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
 
 		playerStateScript = gameObject.GetComponent<player_state>();
-	}
+        scoreScript = GameObject.FindGameObjectWithTag("Score_Keeper").GetComponent<score_keeper>();
+        
+    }
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -38,6 +42,21 @@ public class collision_detection : MonoBehaviour {
 			
 		}
 
+        Debug.Log(scoreScript.getLeftScore());
+        Debug.Log(scoreScript.getRightScore());
+        Debug.Log(scoreScript.getMaxScore());
+
+        if (other.tag == "Boat") // check if they have 5 platforms and if yes they win
+        {
+            if (scoreScript.getLeftScore() == scoreScript.getMaxScore()) // team 1 set to win
+            {
+                Application.LoadLevel(3);
+            }
+            if (scoreScript.getRightScore() == scoreScript.getMaxScore()) // team 2 set to win
+            {
+                Application.LoadLevel(4);
+            }
+        }
 	}
 
 	void OnTriggerStay2D(Collider2D other)
