@@ -186,24 +186,24 @@ public class game_setup : MonoBehaviour {
 		if (constants.fourPlayers) {
 			if (constants.hasTech) {
 //			if (true) {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color);
-				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color, constants.player2Color);
+				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color, constants.player3Color);
+				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color, constants.player4Color);
 			} else {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color);
-				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
+				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color, constants.player3Color);
+				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color, constants.player4Color);
 			}
 		} else {
 //			if (constants.hasTech) {
 			if (true) {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color, constants.player2Color);
 			} else {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
 			}
 
 		}
@@ -256,7 +256,7 @@ public class game_setup : MonoBehaviour {
 //        }
     }
 
-	GameObject createBeaver(string playerID, Vector2 startPos, string type, Color teamColor) {
+	GameObject createBeaver(string playerID, Vector2 startPos, string type, Color teamColor, Color playerColor) {
 		GameObject newBeaver = Instantiate (Resources.Load (type)) as GameObject;
 		string name = "Beaver" + playerID;
 		newBeaver.name = name;
@@ -265,6 +265,7 @@ public class game_setup : MonoBehaviour {
 
 		newBeaver.transform.position = new Vector2 (startPos.x, startPos.y);
 		newBeaver.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = teamColor;
+		newBeaver.transform.GetChild(1).GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = playerColor;
 		return newBeaver;
 	}
 
