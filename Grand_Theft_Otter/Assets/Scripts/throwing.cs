@@ -17,6 +17,9 @@ public class throwing : MonoBehaviour {
 	collision_detection colDetectScript;
     player_state playerStateScript;
 
+	sound_player soundPlayer;
+	public AudioClip throwSound;
+
     //  float throw_angle; // the angle the pearl will be thrown
     float throwForce = 800;
 
@@ -33,6 +36,8 @@ public class throwing : MonoBehaviour {
         aimingDirScript = gameObject.GetComponent<aiming>();
 		colDetectScript = transform.GetComponent<collision_detection> ();
         playerStateScript = GetComponent<player_state>();
+
+		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
 
     }
 	
@@ -59,6 +64,7 @@ public class throwing : MonoBehaviour {
         //if the beaver is currently holding a pearl
         if (pearlRenderer.enabled)
         {
+			soundPlayer.PlayClip(throwSound, 1.0f);
             playerStateScript.SetHasPearl(false);
 
             //remove it from his grasp visually

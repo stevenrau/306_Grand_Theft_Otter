@@ -16,6 +16,7 @@ public class sound_player : MonoBehaviour {
 	void Start ()
     {
         source = GetComponent<AudioSource>(); //get the reference to the audio source
+
 	}
 	
     //simply play a one shot clip at a given volume
