@@ -8,6 +8,10 @@ public class collision_detection : MonoBehaviour {
 
 	player_state playerStateScript;
 
+	// when this number is 0, then the beaver is not touching a platform
+	// works similar to a semaphore like a semaphore
+	int numberOfPlatformsTouching;
+
 	// Use this for initialization
 	void Start() {
 		//get references to the child objects
@@ -17,7 +21,20 @@ public class collision_detection : MonoBehaviour {
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
 
 		playerStateScript = gameObject.GetComponent<player_state>();
+
+		numberOfPlatformsTouching = 0;
+
 	}
+
+	void Update(){
+
+		if (numberOfPlatformsTouching == 0) {
+			playerStateScript.SetIsTouchingPlatform(false);
+		} else {
+			playerStateScript.SetIsTouchingPlatform(true);
+		}
+	}
+
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -34,7 +51,8 @@ public class collision_detection : MonoBehaviour {
 		}
    
 		if (other.tag == "Platform") {
-			playerStateScript.SetIsTouchingPlatform(true);
+			numberOfPlatformsTouching++;
+			//playerStateScript.SetIsTouchingPlatform(true);
 			
 		}
 
@@ -43,7 +61,7 @@ public class collision_detection : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D other)
 	{
 		if (other.tag == "Platform") {
-				playerStateScript.SetIsTouchingPlatform(true);
+				//playerStateScript.SetIsTouchingPlatform(true);
 		
 		}
 		
@@ -52,7 +70,8 @@ public class collision_detection : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.tag == "Platform") {
-				playerStateScript.SetIsTouchingPlatform(false);
+			numberOfPlatformsTouching--;
+			//playerStateScript.SetIsTouchingPlatform(false);
 
 		}
 		

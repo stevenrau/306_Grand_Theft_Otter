@@ -215,8 +215,11 @@ public class moving : MonoBehaviour {
 
         facingRight = !facingRight;
 
+		transform.rotation = Quaternion.identity;
+
+
         Vector3 tmp = beaverSprite.transform.localScale;
-        tmp.x = tmp.x * -1;
+        tmp.x = tmp.x * -1f;
         beaverSprite.transform.localScale = tmp;
     }
 
