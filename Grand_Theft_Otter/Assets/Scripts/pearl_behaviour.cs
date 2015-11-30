@@ -22,7 +22,7 @@ public class pearl_behaviour : MonoBehaviour {
 	void Awake()
 	{
 		//Instantiate the spawn point and set it to the global var
-		spawnPoint = GameObject.Find ("Pearl_Spawn");
+
 		//spawnPoint = Instantiate(Resources.Load("Pearl_Spawn")) as GameObject;
 	}
 
@@ -34,6 +34,9 @@ public class pearl_behaviour : MonoBehaviour {
 		rBody = GetComponent<Rigidbody2D> ();
 
 		prevPos = this.transform.position;
+		spawnPoint = GameObject.Find ("Pearl_Spawn");
+
+
 	}
 	
 	// Update is called once per frame
@@ -70,7 +73,7 @@ public class pearl_behaviour : MonoBehaviour {
 
 		//respawn the pearl if somehow it got out of the play area
 		if (pos.x > constants.rightBoundary || pos.x < constants.leftBoundary || pos.y < constants.bottomBoundary) {
-			SetRespawnTrue();
+			Invoke("SetRespawnTrue", 1.5f);
 		}
 	}
 
@@ -99,12 +102,14 @@ public class pearl_behaviour : MonoBehaviour {
 	}
 
 
+	/*
 	void OnCollisionEnter2D(Collision2D col){
 
 		if (col.gameObject.tag == "Wall") {
 			print ("collison with wall");
 		}
 	}
+	*/
 
 
 }

@@ -164,12 +164,11 @@ public class dash : MonoBehaviour {
         {
             enemyPlayer = col.gameObject; //current player is beaverSprite
 
-            enemyInputScript = enemyPlayer.GetComponent<get_input>();
+           // enemyInputScript = enemyPlayer.GetComponent<get_input>();
 			enemyStateScript = enemyPlayer.GetComponent<player_state>();
 
             //only want players of opposite teams
-            if (dashInputScript.GetTeam(dashInputScript.GetPlayerID())
-                != enemyInputScript.GetTeam(enemyInputScript.GetPlayerID()))
+            if (playerStateScript.GetTeamNumber()!= enemyStateScript.GetTeamNumber())
             {
                 //TODO: case for both have dash on
                 if (enemyStateScript.GetIsDashing() == true) //enemy has dash on

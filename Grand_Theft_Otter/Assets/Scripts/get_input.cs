@@ -8,6 +8,9 @@ public class get_input : MonoBehaviour
     // to determine which platform compatability
     private bool isPC = true;
 
+	//the script that will store team number
+	private player_state playerStateScript;
+
     // to determine which controller is mapped
     public string playerID;
 
@@ -26,6 +29,9 @@ public class get_input : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+		//grab reference to state script
+		playerStateScript = GetComponent<player_state> ();
+
 		// check the os to ensure that the proper control scheme is used
         RuntimePlatform os = Application.platform;
         print(os.ToString());
@@ -45,7 +51,8 @@ public class get_input : MonoBehaviour
             print("it's Other!!");
         }
 
-		SetPlayerID (playerID);
+		//SetPlayerID (playerID);
+		SetPlayerID (playerStateScript.GetPlayerID ());
     }
 
 
@@ -121,6 +128,17 @@ public class get_input : MonoBehaviour
     {
         playerID = id;
 
+		//set team number now for easy access later
+		if(id == "1" || id == "3")
+		{
+			playerStateScript.SetTeamNumber("1");  // team 1 is controllers 1 and 2
+
+		}
+		else
+		{
+			playerStateScript.SetTeamNumber("2"); // team 2 is controllers 3 and 4
+		}
+
         movHorz = "left_analog_horizontal_" + playerID;
         movVert = "left_analog_vertical_" + playerID;
 
@@ -151,20 +169,7 @@ public class get_input : MonoBehaviour
         return playerID;
     }
 
-    // returns the team the player is on : 1 or 2
-    public string GetTeam(string player)
-    {
-        if(player == "1" || player == "3")
-        {
-            return "1"; // team 1 is controllers 1 and 2
-        }
-        else
-        {
-            return "2"; // team 2 is controllers 3 and 4
-        }
-            
-    }
-
+   
     // returns the platform type
     public bool PlatformIsPC()
     {

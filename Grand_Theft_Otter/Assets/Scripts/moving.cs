@@ -53,6 +53,11 @@ public class moving : MonoBehaviour {
 
 		animator.SetBool ("on_land", true);
 		animator.SetBool ("is_moving", false);
+
+		//team 2 faces left to start
+		if (playerStateScript.GetTeamNumber () == "2") {
+			Flip ();
+		}
     }
 	
 	// Update is called once per frame
@@ -63,11 +68,11 @@ public class moving : MonoBehaviour {
 		float h = moveInputScript.GetMoveHorizontalAxis(); //mov_horiz
 		float v = moveInputScript.GetMoveVerticalAxis();  //mov_vert
 
-		//check if can breathe
+		//check if can breathe and set their color
 		if (beaverMouth.transform.position.y >= constants.waterSurface) 
 		{
 			playerStateScript.SetCanBreathe (true);
-			if("1" == GetComponent<get_input>().GetTeam(GetComponent<get_input>().GetPlayerID())){
+			if("1" == playerStateScript.GetTeamNumber()){
 				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team1Color;
 			}
 			else{
@@ -79,7 +84,7 @@ public class moving : MonoBehaviour {
 		{
 			playerStateScript.SetCanBreathe (false);
 
-			if("1" == GetComponent<get_input>().GetTeam(GetComponent<get_input>().GetPlayerID())){
+			if("1" == playerStateScript.GetTeamNumber()){
 				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team1ColorWater;
 			}
 			else{
@@ -95,10 +100,16 @@ public class moving : MonoBehaviour {
 			animator.SetBool ("on_land", false);
 
 			//check if walking on platform
-			if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
-				animator.SetBool ("on_land", true);
-				v = 0; //do not allow vertical movement when on the platform
+			//if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
+			if(playerStateScript.GetIsTouchingPlatform()) 
+			{
 				rBody.gravityScale = landGravity;
+				if(transform.position.y >= platformSurface)
+				{
+					animator.SetBool ("on_land", true);
+					v = 0; //do not allow vertical movement when on the platform
+				}
+
 			}
 			else{
 				rBody.gravityScale = airGravity;
