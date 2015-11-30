@@ -25,6 +25,8 @@ public class beaver_breathing : MonoBehaviour {
 
 	GameObject beaverMouth; // the gameobject that flips left and right. Its children include, the beaver mouth
 
+	sound_player soundPlayer;
+	public AudioClip Bubble_sound;
 
 	void Start () {
 
@@ -59,6 +61,9 @@ public class beaver_breathing : MonoBehaviour {
 
 		// getting the animator.
 		animator = transform.GetChild (1).gameObject.GetComponent<Animator> ();
+
+		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
+
 	}
 
 
@@ -97,6 +102,7 @@ public class beaver_breathing : MonoBehaviour {
 				breath_count = 0;
 				//print ("1 breathing out");
 				Bubbles.Emit (5);
+				soundPlayer.PlayClip(Bubble_sound, 1.0f);
 
 				if(!isSuffocating){
 					ApplySpeedBoost(); //boost of speed if breahting out
@@ -112,6 +118,7 @@ public class beaver_breathing : MonoBehaviour {
 			if (Input.GetKey ("l")) {
 				breath_count = 0;
 				Bubbles.Emit (5);
+				soundPlayer.PlayClip(Bubble_sound, 1.0f);
 
 				if(!isSuffocating){
 					ApplySpeedBoost(); //boost of speed if breahting out
