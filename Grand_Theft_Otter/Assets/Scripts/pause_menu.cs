@@ -149,7 +149,7 @@ public class pause_menu : MonoBehaviour {
 
     public void PressedQuit()
     {
-
+        Time.timeScale = 1;
         Application.Quit();
 
     }
