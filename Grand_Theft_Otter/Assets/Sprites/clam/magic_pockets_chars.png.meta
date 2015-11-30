@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a69eb7a78d7745a42896ccae9e328b24
-timeCreated: 1447827428
+timeCreated: 1448823131
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,13 @@ TextureImporter:
     21300006: magic_pockets_chars_3
     21300008: magic_pockets_chars_4
     21300010: magic_pockets_chars_5
+    21300012: magic_pockets_chars_6
+    21300014: magic_pockets_chars_7
+    21300016: magic_pockets_chars_8
+    21300018: magic_pockets_chars_9
+    21300020: magic_pockets_chars_10
+    21300022: magic_pockets_chars_11
+    21300024: magic_pockets_chars_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -103,6 +110,86 @@ TextureImporter:
         y: 192
         width: 32
         height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 134
+        width: 32
+        height: 26
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_6
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 132
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_7
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 130
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_8
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 129
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_9
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 128
+        width: 16
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_10
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 128
+        width: 28
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_11
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 129
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: magic_pockets_chars_12
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 132
+        width: 30
+        height: 28
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

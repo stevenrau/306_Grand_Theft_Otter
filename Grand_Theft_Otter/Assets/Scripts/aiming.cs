@@ -32,7 +32,8 @@ public class aiming : MonoBehaviour {
 		anim = pearlOffset.GetComponent<Animator> ();
 		
 		throwAngle = 0.0f;
-		aimingThreshold = 0.20f;
+		aimingThreshold = 0.001f; // if this value is too high the aiming tends to snap to the NSEW directions (0.2 was too high)
+
 	}
 
 	// Update is called once per frame
