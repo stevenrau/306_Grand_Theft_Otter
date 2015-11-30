@@ -68,7 +68,7 @@ public class beaver_breathing : MonoBehaviour {
 		
 		if (transform.position.y >= constants.breathingSurface) {
 			isSuffocating = false;
-			print("isSuffocating set false");
+			//print("isSuffocating set false");
 			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
 			movingScript.enabled = true; // enable movement again (same for dashing and throwing) 
 			dashScript.enabled = true;
@@ -89,13 +89,13 @@ public class beaver_breathing : MonoBehaviour {
 		// Beaver 1
 		if (Player_name == "Beaver1"){
 			if (Input.GetKey ("i")){
-				print ("1 breathing in");
+				//print ("1 breathing in");
 				breath_count += 1;
 			}
 		
 			if (Input.GetKey ("o")) {
 				breath_count = 0;
-				print ("1 breathing out");
+				//print ("1 breathing out");
 				Bubbles.Emit (5);
 
 				if(!isSuffocating){
@@ -143,7 +143,7 @@ public class beaver_breathing : MonoBehaviour {
 	void suffocate(){
 
 		isSuffocating = true;
-		print("isSuffocating set true");
+		//print("isSuffocating set true");
 		//breath_count = 0;
 
 		//drop the pearl, 180 = downwards, 
