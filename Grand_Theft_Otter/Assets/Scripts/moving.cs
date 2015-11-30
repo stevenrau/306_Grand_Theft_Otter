@@ -53,6 +53,11 @@ public class moving : MonoBehaviour {
 
 		animator.SetBool ("on_land", true);
 		animator.SetBool ("is_moving", false);
+
+		//team 2 faces left to start
+		if (playerStateScript.GetTeamNumber () == "2") {
+			Flip ();
+		}
     }
 	
 	// Update is called once per frame
