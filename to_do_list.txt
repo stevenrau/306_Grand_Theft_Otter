@@ -10,10 +10,13 @@ DONE gravity in and out of the water [John & Ansgar]
   - minor tweaking
 
 Menus:
--> Main menu [Breanne]
-  - option menu (2 player, 4 player)
--> end scene [Breanne]
--> goal to strive for [Breanne]
+DONE Main menu [Breanne]
+DONE  - option menu (2 player, 4 player)
+DONE end scene [Breanne]
+DONE goal to strive for [Breanne]
+Future Qs: 
+Team to touch the fish wins – what if not winning team climbs finished platform first? Colliders?
+Idea for boat to start off in the distance and get closer with points scored
 
 Animations:
 DONE clam anim and scoring [Steven]

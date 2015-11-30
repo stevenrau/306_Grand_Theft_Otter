@@ -20,7 +20,12 @@ public class game_setup : MonoBehaviour {
         GameObject pauseMenu = Instantiate(Resources.Load("pause_menu")) as GameObject;
         pauseMenu.name = "pause_menu";
         //pauseMenu.SetActive(false); 
-        
+
+        /***************************************************************************************
+		 * Load the Boat
+		 * ************************************************************************************/
+        GameObject boat = Instantiate(Resources.Load("Boat")) as GameObject;
+        boat.name = "Boat";
 
         /***************************************************************************************
 		 * Load the Score Keeper
