@@ -12,6 +12,17 @@ public class collision_detection : MonoBehaviour {
 	// works similar to a semaphore like a semaphore
 	int numberOfPlatformsTouching;
 
+
+
+	//needed for collision with enemy / dashing beaver
+	GameObject enemyPlayer;
+	player_state enemyStateScript;
+	damage damageScript;
+
+	//to stop motion when colliding with jelly
+	Rigidbody2D rBody;
+
+
 	// Use this for initialization
 	void Start() {
 		//get references to the child objects
@@ -24,6 +35,9 @@ public class collision_detection : MonoBehaviour {
 
 		numberOfPlatformsTouching = 0;
 
+		damageScript = GetComponent<damage> ();
+
+		rBody = GetComponent<Rigidbody2D> ();
 	}
 
 	void Update(){
@@ -35,26 +49,68 @@ public class collision_detection : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D col)
+	{
+		if (!playerStateScript.GetIsSuffocating ()) {
+			//figure out what player/team this instance is, and check if it's colliding with the enemy team players
+			if (col.gameObject.tag == "Player") {
+				enemyPlayer = col.gameObject; //current player is beaverSprite
+			
+				// enemyInputScript = enemyPlayer.GetComponent<get_input>();
+				enemyStateScript = enemyPlayer.GetComponent<player_state> ();
+			
+				//only want players of opposite teams
+				if (playerStateScript.GetTeamNumber () != enemyStateScript.GetTeamNumber ()) {
+					//TODO: case for both have dash on
+					if (enemyStateScript.GetIsDashing () == true) { //enemy has dash on
+						//player becomes immobile and drops the pearl in the direction of impact
+						damageScript.Damage ();
+					
+						//knockback the other player (This player)
+						//StartCoroutine(Knockback(beaverSprite, 1f, 350, beaverSprite.transform.position));
+					}
+				
+				}
+			
+			}
+
+		}
+
+	}
+
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.tag == "Pearl") {
-			
-			//  GameObject pearlOffset = player.transform.GetChild(0).gameObject;
-			//pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
-			pearlRenderer.enabled = true;
-			pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
-			
-			Destroy(other.gameObject);
+		if (!playerStateScript.GetIsSuffocating ()) {
+			if (other.tag == "Jellyfish") {
 
-            playerStateScript.SetHasPearl(true);
-		}
-   
-		if (other.tag == "Platform") {
-			numberOfPlatformsTouching++;
-			//playerStateScript.SetIsTouchingPlatform(true);
+				//stop moving 
+				rBody.velocity = new Vector2 (0.0f, 0.0f);
+
+				//play lighnight effects
 			
+				damageScript.Damage ();
+			}
+
+			if (other.tag == "Pearl") {
+			
+				//  GameObject pearlOffset = player.transform.GetChild(0).gameObject;
+				//pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
+				pearlRenderer.enabled = true;
+				pearlOffset.GetComponent<SpriteRenderer> ().enabled = true;
+			
+				Destroy (other.gameObject);
+
+				playerStateScript.SetHasPearl (true);
+			}
 		}
+
+			if (other.tag == "Platform") {
+				numberOfPlatformsTouching++;
+				//playerStateScript.SetIsTouchingPlatform(true);
+			
+			}
+		
 
 	}
 
@@ -79,14 +135,7 @@ public class collision_detection : MonoBehaviour {
 
 
 
-	void OnCollisionEnter2D(Collision2D other)
-	{
-		//if (other.tag == "Platform") {
-			//print("platform collider enter");
-			//playerStateScript.SetIsTouchingPlatform(true);
-		//}
-		
-	}
+
 
 	void OnCollisionExit2D(Collision2D other)
 	{

@@ -14,7 +14,7 @@ public class moving : MonoBehaviour {
 	//float waterSurface = 3.3f; // the y coordinate where heavy gravity applies
 	//float breathingSurface = 3.1f; 
 
-    public float moveForce = 100f; //determines the speed of the player when moving with the analog stick
+    public float moveForce; //determines the speed of the player when moving with the analog stick
 
     public float maxSpeed;
     public bool facingRight; //is the player facing right
@@ -50,6 +50,8 @@ public class moving : MonoBehaviour {
         facingRight = true; //facing right initially
 
         leftAnalogThresh = 0.001f;
+
+		moveForce = constants.moveForceNormal;
 
 		animator.SetBool ("on_land", true);
 		animator.SetBool ("is_moving", false);
@@ -94,33 +96,29 @@ public class moving : MonoBehaviour {
 
 		}
 
-		//check if in water or at surface
-		if (transform.position.y >= constants.waterSurface) 
-		{
-			animator.SetBool ("on_land", false);
+		if (!playerStateScript.GetIsSuffocating ()) {
+			//check if in water or at surface
+			if (transform.position.y >= constants.waterSurface) {
+				animator.SetBool ("on_land", false);
 
-			//check if walking on platform
-			//if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
-			if(playerStateScript.GetIsTouchingPlatform()) 
-			{
-				rBody.gravityScale = landGravity;
-				if(transform.position.y >= platformSurface)
-				{
-					animator.SetBool ("on_land", true);
-					v = 0; //do not allow vertical movement when on the platform
+				//check if walking on platform
+				//if( transform.position.y >= platformSurface && playerStateScript.GetIsTouchingPlatform()) {
+				if (playerStateScript.GetIsTouchingPlatform ()) {
+					rBody.gravityScale = landGravity;
+					if (transform.position.y >= platformSurface) {
+						animator.SetBool ("on_land", true);
+						v = 0; //do not allow vertical movement when on the platform
+					}
+
+				} else {
+					rBody.gravityScale = airGravity;
 				}
+			} else {
+				rBody.gravityScale = waterGravity;
+				animator.SetBool ("on_land", false);
+			}
 
-			}
-			else{
-				rBody.gravityScale = airGravity;
-			}
-		} 
-		else 
-		{
-			rBody.gravityScale = waterGravity;
-			animator.SetBool ("on_land", false);
 		}
-
 
         //set animation if stick is moved enough
 		if ((Mathf.Abs(h) > leftAnalogThresh) || (Mathf.Abs(v) > leftAnalogThresh))
@@ -227,6 +225,10 @@ public class moving : MonoBehaviour {
     {
         return facingRight;
     }
+
+	public void SetMoveForce(float force){
+		this.moveForce = force;
+	}
 
 	//public float GetFacingAngle() {
 	//	return facingAngle;

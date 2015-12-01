@@ -19,13 +19,15 @@ public class aiming : MonoBehaviour {
 
 	//the script that listens for input from the right analog stick
 	get_input inputScript;
-	
+	player_state playerStateScript;
+
 
 
 	// Use this for initialization
 	void Start () {
 		inputScript = gameObject.GetComponent<get_input>();
-	
+		playerStateScript = gameObject.GetComponent<player_state>();
+
 		pearlOffset = transform.GetChild(0).gameObject;
 
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
@@ -61,6 +63,8 @@ public class aiming : MonoBehaviour {
 			} else {
 				throwAngle = ((Mathf.Atan2 (y, x) * Mathf.Rad2Deg) - 90);			// for MAC
 			}
+
+			playerStateScript.SetAimingAngle(throwAngle);
 
 			//point the aiming guide in the direction 
 			pearlOffset.transform.rotation = Quaternion.AngleAxis (throwAngle, Vector3.forward);

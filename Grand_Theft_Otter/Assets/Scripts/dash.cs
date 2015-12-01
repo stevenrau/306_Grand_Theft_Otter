@@ -30,14 +30,14 @@ public class dash : MonoBehaviour {
     private float dashVelocity = 5000f;
     //public Vector2 savedVelocity;
 
-	float dropPearlForce= 400;
+	//float dropPearlForce= 400f;
     Rigidbody2D r_body;
 
     //getting scripts
     get_input dashInputScript;
     player_state playerStateScript;
     moving movingScript;
-    throwing throwingScript;
+   // throwing throwingScript;
 
 
 
@@ -73,7 +73,7 @@ public class dash : MonoBehaviour {
         dashInputScript = GetComponent<get_input>();
         playerStateScript = GetComponent<player_state>();
         movingScript = GetComponent<moving>();
-        throwingScript = GetComponent<throwing>();
+       // throwingScript = GetComponent<throwing>();
 		
 		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
 
@@ -159,6 +159,7 @@ public class dash : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D col)
     {
+		/*
         //figure out what player/team this instance is, and check if it's colliding with the enemy team players
         if (col.gameObject.tag == "Player")
         {
@@ -183,9 +184,11 @@ public class dash : MonoBehaviour {
             }
             
         }
+        */
 
     }
 
+	/*
     void Damage()
     {
         playerStateScript.SetIsHit(true);
@@ -214,6 +217,7 @@ public class dash : MonoBehaviour {
         animator.SetTrigger("revived");
     } 
 
+
     //knockback the player that was hit - either current player or enemy 
     IEnumerator Knockback(GameObject playerHit, float knockDur, float knockbackPwr, Vector3 knockbackDir)
     {
@@ -233,7 +237,7 @@ public class dash : MonoBehaviour {
         yield return 0;
 
     }
-
+*/
     
 }
 

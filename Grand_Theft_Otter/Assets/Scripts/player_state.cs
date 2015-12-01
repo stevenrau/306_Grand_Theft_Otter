@@ -9,6 +9,8 @@ public class player_state : MonoBehaviour {
 	// Is the player touching the air?
     bool canBreathe;
 
+	bool isSuffocating;
+
     // Is the player dashing?
     bool isDashing;
 
@@ -23,6 +25,9 @@ public class player_state : MonoBehaviour {
 
 	//number from 0 to 360. what way is the player moving
 	private float facingAngle;
+
+	//what way is the player currently aiming
+	private float aimingAngle;
 
 	// a number from 1 to 4 to determine the player number
 	private string playerID;
@@ -53,6 +58,15 @@ public class player_state : MonoBehaviour {
 
 	public bool GetCanBreathe() {
 			return this.canBreathe;
+	}
+
+	public void SetIsSuffocating(bool newValue)
+	{
+		this.isSuffocating = newValue;
+	}
+	
+	public bool GetIsSuffocating() {
+		return this.isSuffocating;
 	}
 
 
@@ -118,6 +132,18 @@ public class player_state : MonoBehaviour {
 	{
 		return this.facingAngle;
 	}
+
+
+	public void SetAimingAngle(float angle)
+	{
+		this.aimingAngle = angle;
+	}
+	
+	public float GetAimingAngle()
+	{
+		return this.aimingAngle;
+	}
+
 
 
 	public void SetPlayerID(string id)

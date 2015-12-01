@@ -34,7 +34,14 @@ public class constants : MonoBehaviour {
 	public static float pearlWaterGravity = 0.2f;
 	public static float pearlAirGravity = 3.0f;
 
+	//different player moving speeds
+	public static float moveForceNormal = 100.0f ;
+	public static float moveForceSlow = 15.0f;
 
+	//gravities in different locations
+	public static float waterGravity = -0.1f; // gravity when in water
+	public static float landGravity = 1f; //gravity when out of water and touching a platform
+	public static float airGravity = 3f; // gravity when out of water, but not touching a platform
 
 
 }
