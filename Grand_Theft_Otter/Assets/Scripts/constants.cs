@@ -18,8 +18,12 @@ public class constants : MonoBehaviour {
 
 	public static Color player1Color = new Color(0.8f,0.4f,0.4f,1f); // a little redish;
 	public static Color player2Color = new Color(0.4f,0.8f,0.4f,1f); // a little greenish;
-	public static Color player3Color = new Color(0.4f,0.4f,0.8f,1f); // a little blueish;
-	public static Color player4Color = new Color(1f,0.8f,0.2f,1f); // a little ?????;
+	public static Color player3Color = new Color(0.1f,0.4f,0.9f,1f); // a little blueish;
+	public static Color player4Color = new Color(1f,0.8f,0.3f,1f); // a little ?????;
+//	public static Color player1Color = new Color(1f,0f,0f,1f); // a little redish;
+//	public static Color player2Color = new Color(0f,1f,0f,1f); // a little greenish;
+//	public static Color player3Color = new Color(0f,0f,1f,1f); // a little blueish;
+//	public static Color player4Color = new Color(1f,0.92f,0.016f,1f); // a little ?????;
 
 
 	public static Color team1ColorWater = new Color(0.3f,0.5f,1.0f,1f);
