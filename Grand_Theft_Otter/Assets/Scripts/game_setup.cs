@@ -162,6 +162,16 @@ public class game_setup : MonoBehaviour {
 		GameObject floor = Instantiate (Resources.Load ("Floor")) as GameObject;
 
 		/***************************************************************************************
+		 * Load the obstacles
+		 * ************************************************************************************/
+		GameObject obstacleTopRight = Instantiate (Resources.Load ("Obstacle_Top_Right")) as GameObject;
+		GameObject obstacleTopLeft = Instantiate (Resources.Load ("Obstacle_Top_Left")) as GameObject;
+		GameObject obstacleBottomRight = Instantiate (Resources.Load ("Obstacle_Bottom_Right")) as GameObject;
+		GameObject obstacleBottomLeft = Instantiate (Resources.Load ("Obstacle_Bottom_Left")) as GameObject;
+		GameObject obstacleEllipse = Instantiate (Resources.Load ("Obstacle_Ellipse")) as GameObject;
+		GameObject obstacleCurve = Instantiate (Resources.Load ("Obstacle_Curve")) as GameObject;
+
+		/***************************************************************************************
 		 * Load the pearl
 		 * ************************************************************************************/
 		GameObject pearl = Instantiate (Resources.Load ("Pearl")) as GameObject;
