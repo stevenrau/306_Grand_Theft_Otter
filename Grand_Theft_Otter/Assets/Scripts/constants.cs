@@ -8,6 +8,9 @@ using System.Collections;
 
 public class constants : MonoBehaviour {
 
+    //counter for rolling through the instructions scenes
+    public static int sceneCounter = 5; 
+
     //user game choices
     public static bool fourPlayers;
     public static bool hasTech;
