@@ -52,4 +52,11 @@ public class game_choices : MonoBehaviour {
         Application.LoadLevel(2); //"2" is set in build settings
 
     }
+
+    public void clickedMainMenu() 
+    {
+
+        Application.LoadLevel(0); // set in build settings
+
+    }
 }
