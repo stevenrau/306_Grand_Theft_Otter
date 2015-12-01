@@ -199,8 +199,8 @@ public class game_setup : MonoBehaviour {
 		} else {
 //			if (constants.hasTech) {
 			if (true) {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color, constants.player1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color, constants.player2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
 			} else {
 				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
 				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
