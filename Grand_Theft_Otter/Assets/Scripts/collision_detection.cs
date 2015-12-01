@@ -8,7 +8,6 @@ public class collision_detection : MonoBehaviour {
 
 	player_state playerStateScript;
 
-<<<<<<< HEAD
 	// when this number is 0, then the beaver is not touching a platform
 	// works similar to a semaphore like a semaphore
 	int numberOfPlatformsTouching;

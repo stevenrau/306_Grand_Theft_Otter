@@ -25,13 +25,12 @@ public class beaver_breathing : MonoBehaviour {
 	float dropPearlForce = 100f;
 
 	GameObject beaverMouth; // the gameobject that flips left and right. Its children include, the beaver mouth
-<<<<<<< HEAD
+
 	GameObject beaverPearlCollider; //will be disabled when floating
-=======
 
 	sound_player soundPlayer;
 	public AudioClip Bubble_sound;
->>>>>>> f8d6be027e199a44443da00c6118de63931da33b
+
 
 	void Start () {
 
