@@ -91,6 +91,10 @@ public class beaver_breathing : MonoBehaviour {
 			playerStateScript.SetIsSuffocating(false);
 			//print("isSuffocating set false");
 
+			// reset the beaver to be in the normal layer where they can interact with obstacles
+			transform.FindChild("Beaver").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
+		 	beaverMouth.transform.FindChild("beaver_mouth").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
+
 			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
 			//movingScript.enabled = true; // enable movement again (same for dashing and throwing) 
 			movingScript.SetMoveForce(constants.moveForceNormal);
@@ -173,6 +177,10 @@ public class beaver_breathing : MonoBehaviour {
 		playerStateScript.SetIsSuffocating (true);
 		//print("isSuffocating set true");
 		breath_count = 0;
+
+		// the beaver should pass through obstacles when they are suffocating
+		transform.FindChild("Beaver").gameObject.layer = LayerMask.NameToLayer("Suffocating"); //The beaver collider
+		beaverMouth.transform.FindChild("beaver_mouth").gameObject.layer = LayerMask.NameToLayer("Suffocating"); // The mouth collider
 
 		//drop the pearl, 180 = downwards, 
 		throwingScript.ThrowPearl (180.0f, dropPearlForce);
