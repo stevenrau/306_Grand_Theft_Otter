@@ -8,6 +8,7 @@ public class collision_detection : MonoBehaviour {
 
 	player_state playerStateScript;
 
+<<<<<<< HEAD
 	// when this number is 0, then the beaver is not touching a platform
 	// works similar to a semaphore like a semaphore
 	int numberOfPlatformsTouching;
@@ -21,6 +22,8 @@ public class collision_detection : MonoBehaviour {
 
 	//to stop motion when colliding with jelly
 	Rigidbody2D rBody;
+
+    score_keeper scoreScript;
 
 
 	// Use this for initialization
@@ -38,7 +41,10 @@ public class collision_detection : MonoBehaviour {
 		damageScript = GetComponent<damage> ();
 
 		rBody = GetComponent<Rigidbody2D> ();
-	}
+		
+        scoreScript = GameObject.FindGameObjectWithTag("Score_Keeper").GetComponent<score_keeper>();
+        
+    }
 
 	void Update(){
 
@@ -104,13 +110,28 @@ public class collision_detection : MonoBehaviour {
 				playerStateScript.SetHasPearl (true);
 			}
 		}
-
+		
 			if (other.tag == "Platform") {
 				numberOfPlatformsTouching++;
 				//playerStateScript.SetIsTouchingPlatform(true);
 			
 			}
-		
+
+        Debug.Log(scoreScript.getLeftScore());
+        Debug.Log(scoreScript.getRightScore());
+        Debug.Log(scoreScript.getMaxScore());
+
+        if (other.tag == "Boat") // check if they have 5 platforms and if yes they win
+        {
+            if (scoreScript.getLeftScore() == scoreScript.getMaxScore()) // team 1 set to win
+            {
+                Application.LoadLevel(3);
+            }
+            if (scoreScript.getRightScore() == scoreScript.getMaxScore()) // team 2 set to win
+            {
+                Application.LoadLevel(4);
+            }
+        }
 
 	}
 

@@ -16,7 +16,8 @@ public class start_menu : MonoBehaviour
 
     void Start()
     {
-        
+        //  making sure the instruction scene index is correct
+        constants.sceneCounter = 5;
         //quitMenu = quitMenu.GetComponent<Canvas>();
         startText = startText.GetComponent<Button>();
         exitText = exitText.GetComponent<Button>();
@@ -57,7 +58,7 @@ public class start_menu : MonoBehaviour
 
     public void StartInstructions() //this function used on "Instructions" button click
     {
-        Application.LoadLevel(2); // "2" is set in build settings
+        Application.LoadLevel(5); // "2" is set in build settings
     }
 
     public void ExitGame() //This function will be used on our "Yes" button in our Quit menu

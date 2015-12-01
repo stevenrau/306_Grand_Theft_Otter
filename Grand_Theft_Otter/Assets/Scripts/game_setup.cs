@@ -20,7 +20,12 @@ public class game_setup : MonoBehaviour {
         GameObject pauseMenu = Instantiate(Resources.Load("pause_menu")) as GameObject;
         pauseMenu.name = "pause_menu";
         //pauseMenu.SetActive(false); 
-        
+
+        /***************************************************************************************
+		 * Load the Boat
+		 * ************************************************************************************/
+        GameObject boat = Instantiate(Resources.Load("Boat")) as GameObject;
+        boat.name = "Boat";
 
         /***************************************************************************************
 		 * Load the Score Keeper
@@ -157,6 +162,16 @@ public class game_setup : MonoBehaviour {
 		GameObject floor = Instantiate (Resources.Load ("Floor")) as GameObject;
 
 		/***************************************************************************************
+		 * Load the obstacles
+		 * ************************************************************************************/
+		GameObject obstacleTopRight = Instantiate (Resources.Load ("Obstacle_Top_Right")) as GameObject;
+		GameObject obstacleTopLeft = Instantiate (Resources.Load ("Obstacle_Top_Left")) as GameObject;
+		GameObject obstacleBottomRight = Instantiate (Resources.Load ("Obstacle_Bottom_Right")) as GameObject;
+		GameObject obstacleBottomLeft = Instantiate (Resources.Load ("Obstacle_Bottom_Left")) as GameObject;
+		GameObject obstacleEllipse = Instantiate (Resources.Load ("Obstacle_Ellipse")) as GameObject;
+		GameObject obstacleCurve = Instantiate (Resources.Load ("Obstacle_Curve")) as GameObject;
+
+		/***************************************************************************************
 		 * Load the pearl
 		 * ************************************************************************************/
 		GameObject pearl = Instantiate (Resources.Load ("Pearl")) as GameObject;
@@ -181,24 +196,24 @@ public class game_setup : MonoBehaviour {
 		if (constants.fourPlayers) {
 			if (constants.hasTech) {
 //			if (true) {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color);
-				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color, constants.player2Color);
+				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color, constants.player3Color);
+				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color, constants.player4Color);
 			} else {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color);
-				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
+				GameObject beaver3 = createBeaver ("3", startPos3, "Beaver_Player_Scuba", constants.team1Color, constants.player3Color);
+				GameObject beaver4 = createBeaver ("4", startPos4, "Beaver_Player_Scuba", constants.team2Color, constants.player4Color);
 			}
 		} else {
 //			if (constants.hasTech) {
 			if (true) {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
 			} else {
-				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color);
-				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color);
+				GameObject beaver1 = createBeaver ("1", startPos1, "Beaver_Player_Scuba", constants.team1Color, constants.player1Color);
+				GameObject beaver2 = createBeaver ("2", startPos2, "Beaver_Player_Scuba", constants.team2Color, constants.player2Color);
 			}
 
 		}
@@ -251,7 +266,7 @@ public class game_setup : MonoBehaviour {
 //        }
     }
 
-	GameObject createBeaver(string playerID, Vector2 startPos, string type, Color teamColor) {
+	GameObject createBeaver(string playerID, Vector2 startPos, string type, Color teamColor, Color playerColor) {
 		GameObject newBeaver = Instantiate (Resources.Load (type)) as GameObject;
 		string name = "Beaver" + playerID;
 		newBeaver.name = name;
@@ -260,6 +275,7 @@ public class game_setup : MonoBehaviour {
 
 		newBeaver.transform.position = new Vector2 (startPos.x, startPos.y);
 		newBeaver.transform.GetChild (1).gameObject.GetComponent<SpriteRenderer> ().color = teamColor;
+		newBeaver.transform.GetChild(1).GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = playerColor;
 		return newBeaver;
 	}
 

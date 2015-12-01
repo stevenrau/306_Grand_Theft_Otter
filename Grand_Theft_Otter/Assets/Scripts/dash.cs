@@ -43,6 +43,7 @@ public class dash : MonoBehaviour {
 
 	sound_player soundPlayer;
 	public AudioClip dashSound;
+	public AudioClip hitSound;
 	//AudioSource splashSound;
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it
@@ -176,6 +177,7 @@ public class dash : MonoBehaviour {
                 {
                     //player becomes immobile and drops the pearl in the direction of impact
                     Damage();
+					soundPlayer.PlayClip(hitSound, 1.0f);
 
                     //knockback the other player (This player)
                     //StartCoroutine(Knockback(beaverSprite, 1f, 350, beaverSprite.transform.position));

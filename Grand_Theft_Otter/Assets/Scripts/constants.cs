@@ -8,6 +8,9 @@ using System.Collections;
 
 public class constants : MonoBehaviour {
 
+    //counter for rolling through the instructions scenes
+    public static int sceneCounter = 5; 
+
     //user game choices
     public static bool fourPlayers;
     public static bool hasTech;
@@ -15,6 +18,16 @@ public class constants : MonoBehaviour {
     // beaver colors
     public static Color team1Color = new Color(0.6f,0.8f,0.6f,1f); // a little greenish;
 	public static Color team2Color = new Color(0.8f,0.6f,0.6f,1f); //a little redish;
+
+	public static Color player1Color = new Color(0.8f,0.4f,0.4f,1f); // a little redish;
+	public static Color player2Color = new Color(0.4f,0.8f,0.4f,1f); // a little greenish;
+	public static Color player3Color = new Color(0.1f,0.4f,0.9f,1f); // a little blueish;
+	public static Color player4Color = new Color(1f,0.8f,0.3f,1f); // a little ?????;
+//	public static Color player1Color = new Color(1f,0f,0f,1f); // a little redish;
+//	public static Color player2Color = new Color(0f,1f,0f,1f); // a little greenish;
+//	public static Color player3Color = new Color(0f,0f,1f,1f); // a little blueish;
+//	public static Color player4Color = new Color(1f,0.92f,0.016f,1f); // a little ?????;
+
 
 	public static Color team1ColorWater = new Color(0.3f,0.5f,1.0f,1f);
 	public static Color team2ColorWater= new Color(0.5f,0.3f,1.0f,1f);

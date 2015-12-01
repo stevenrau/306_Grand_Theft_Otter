@@ -28,10 +28,10 @@ public class score_keeper : MonoBehaviour {
             damRampLeft.transform.GetChild (leftScore - 1).gameObject.SetActive (true);
 		}
 
-        if (leftScore == maxScore)
-        {
-            Application.LoadLevel(3);
-        }
+        //if (leftScore == maxScore)
+        //{
+        //    Application.LoadLevel(3);
+        //}
 		//print ("Left score: " + leftScore);
 	}
 	
@@ -43,10 +43,10 @@ public class score_keeper : MonoBehaviour {
 			damRampRight.transform.GetChild (rightScore - 1).gameObject.SetActive (true);
 		}
 
-        if (rightScore == maxScore)
-        {
-            Application.LoadLevel(4);
-        }
+        //if (rightScore == maxScore)
+        //{
+        //    Application.LoadLevel(4);
+        //}
         //print ("Right score: " + rightScore);
     }
 
@@ -54,4 +54,19 @@ public class score_keeper : MonoBehaviour {
 		leftScore = 0;
 		rightScore = 0;
 	}
+
+    public int getLeftScore()
+    {
+        return leftScore;
+    }
+
+    public int getRightScore()
+    {
+        return rightScore;
+    }
+
+    public int getMaxScore()
+    {
+        return maxScore;
+    }
 }
