@@ -25,7 +25,7 @@ public class game_choices : MonoBehaviour {
     {
         constants.fourPlayers = false;
         constants.hasTech = false;
-        Application.LoadLevel(2); //"2" is set in build settings
+        Application.LoadLevel(11); //set in build settings
 
     }
 
@@ -33,7 +33,7 @@ public class game_choices : MonoBehaviour {
     {
         constants.fourPlayers = true;
         constants.hasTech = false;
-        Application.LoadLevel(2); //"2" is set in build settings
+        Application.LoadLevel(11); //"2" is set in build settings
 
     }
 
@@ -41,7 +41,7 @@ public class game_choices : MonoBehaviour {
     {
         constants.fourPlayers = false;
         constants.hasTech = true;
-        Application.LoadLevel(2); //"2" is set in build settings
+        Application.LoadLevel(11); //"2" is set in build settings
 
     }
 
@@ -49,7 +49,7 @@ public class game_choices : MonoBehaviour {
     {
         constants.fourPlayers = true;
         constants.hasTech = true;
-        Application.LoadLevel(2); //"2" is set in build settings
+        Application.LoadLevel(11); //"2" is set in build settings
 
     }
 
