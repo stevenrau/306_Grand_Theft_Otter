@@ -126,11 +126,19 @@ public class collision_detection : MonoBehaviour {
             {
                 if (scoreScript.getLeftScore() == scoreScript.getMaxScore()) // team 1 set to win
                 {
-                    Application.LoadLevel(3);
+                    if (playerStateScript.GetTeamNumber() == "1")
+                    {
+                        Application.LoadLevel(3);
+                    }
+                    
                 }
                 if (scoreScript.getRightScore() == scoreScript.getMaxScore()) // team 2 set to win
                 {
-                    Application.LoadLevel(4);
+                    if (playerStateScript.GetTeamNumber() == "2")
+                    {
+                        Application.LoadLevel(4);
+                    }
+                    
                 }
             }
             
