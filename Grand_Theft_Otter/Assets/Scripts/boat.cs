@@ -3,18 +3,26 @@ using System.Collections;
 
 public class boat : MonoBehaviour {
 
-    GameObject boatSprite;
+    SpriteRenderer boatSprite;
     Animator boatAnim;
 
+
     score_keeper scoreScript;
+
+    Collider2D[] boatColliders;
 
 	// Use this for initialization
 	void Start () {
 
-        boatSprite = transform.gameObject;
-        boatAnim = boatSprite.GetComponent<Animator>();
+        boatSprite = GetComponent<SpriteRenderer>();
+        boatSprite.sortingOrder = -1;
+        boatAnim = GetComponent<Animator>();
 
         scoreScript = GameObject.FindGameObjectWithTag("Score_Keeper").GetComponent<score_keeper>();
+
+        boatColliders = GetComponents<Collider2D>();
+        boatColliders[0].enabled = false;
+        boatColliders[1].enabled = false;
 
     }
 	
@@ -34,6 +42,9 @@ public class boat : MonoBehaviour {
         if (scoreScript.getLeftScore() == 5 || scoreScript.getRightScore() == 5)
         {
             boatAnim.SetInteger("maxPoints", 5);
+            boatSprite.sortingOrder = 1;
+            boatColliders[0].enabled = true;
+            boatColliders[1].enabled = true;
         }
 
     }

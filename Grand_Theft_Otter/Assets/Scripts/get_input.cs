@@ -6,7 +6,7 @@ public class get_input : MonoBehaviour
 {
 
     // to determine which platform compatability
-    private bool isPC = true;
+    private bool isPC;
 
 	//the script that will store team number
 	private player_state playerStateScript;
