@@ -82,29 +82,28 @@ public class beaver_breathing : MonoBehaviour {
 			rBody.gravityScale = constants.waterGravity;
 		}
 		//if (transform.position.y >= constants.breathingSurface) {
-		if(playerStateScript.GetCanBreathe() && playerStateScript.GetIsSuffocating()){
+		if (playerStateScript.GetCanBreathe () && playerStateScript.GetIsSuffocating ()) {
 
 			//set gravity back
 			rBody.gravityScale = constants.airGravity;
 
 			//isSuffocating = false;
-			playerStateScript.SetIsSuffocating(false);
+			playerStateScript.SetIsSuffocating (false);
 			//print("isSuffocating set false");
 
 			// reset the beaver to be in the normal layer where they can interact with obstacles
-			transform.FindChild("Beaver").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
-		 	beaverMouth.transform.FindChild("beaver_mouth").gameObject.layer = LayerMask.NameToLayer("Non_Interactable");
+			transform.FindChild ("Beaver").gameObject.layer = LayerMask.NameToLayer ("Non_Interactable");
+			beaverMouth.transform.FindChild ("beaver_mouth").gameObject.layer = LayerMask.NameToLayer ("Non_Interactable");
 
 			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
 			//movingScript.enabled = true; // enable movement again (same for dashing and throwing) 
-			movingScript.SetMoveForce(constants.moveForceNormal);
+			movingScript.SetMoveForce (constants.moveForceNormal);
 			dashScript.enabled = true;
 			throwingScript.enabled = true;	
 			colDetectScript.enabled = true;
-			beaverPearlCollider.GetComponent<Collider2D>().enabled = true;
-			} 
-
-		else if (!playerStateScript.GetIsSuffocating()){
+			beaverPearlCollider.GetComponent<Collider2D> ().enabled = true;
+		}
+		else if (!playerStateScript.GetIsSuffocating() && !playerStateScript.GetCanBreathe()){
 			animator.SetBool ("at_surface", false);
 			check_breathing ();
 		}
