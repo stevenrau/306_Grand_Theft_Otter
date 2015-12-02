@@ -43,7 +43,7 @@ public class dash : MonoBehaviour {
 
 	sound_player soundPlayer;
 	public AudioClip dashSound;
-	public AudioClip hitSound;
+
 	//AudioSource splashSound;
 
     GameObject beaverSprite; //the child object of player that displays the beaver and animates it

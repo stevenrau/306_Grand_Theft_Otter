@@ -11,17 +11,30 @@ public class score_keeper : MonoBehaviour {
 	
 	static GameObject damRampLeft;
 	static GameObject damRampRight;
+
+	sound_player soundPlayer;
+	public AudioClip scoreSound1;
+	public AudioClip scoreSound2;
+
 	
 	
 	void Start()
 	{
 		damRampLeft = GameObject.Find ("Dam_Ramp_Left");
 		damRampRight = GameObject.Find ("Dam_Ramp_Right");
+
+		soundPlayer = GameObject.Find ("Sound_Player(Clone)").GetComponent<sound_player>();
 	}
 
 	//increase score and build the bridge further with each point scored
 	public void IncrementLeftScore()
 	{
+		if (Random.value > 0.5) {
+			soundPlayer.PlayClip(scoreSound1, 1.0f);
+			
+		}
+		else 			
+			soundPlayer.PlayClip(scoreSound2, 1.0f);
 		if (leftScore < maxScore) {
 			leftScore++;
             //enable the next section of the bridge
@@ -37,6 +50,13 @@ public class score_keeper : MonoBehaviour {
 	
 	public void IncrementRightScore()
 	{
+
+		if (Random.value > 0.5) 
+				soundPlayer.PlayClip(scoreSound1, 1.0f);
+				
+		else 				
+				soundPlayer.PlayClip(scoreSound2, 1.0f);
+
 		if (rightScore < maxScore) {
 			rightScore++;
 			//enable the next section of the bridge
