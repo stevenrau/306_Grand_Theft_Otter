@@ -122,14 +122,18 @@ public class collision_detection : MonoBehaviour {
 
         if (other.tag == "Boat") // check if they have 5 platforms and if yes they win
         {
-            if (scoreScript.getLeftScore() == scoreScript.getMaxScore()) // team 1 set to win
+            if (other.isTrigger)
             {
-                Application.LoadLevel(3);
+                if (scoreScript.getLeftScore() == scoreScript.getMaxScore()) // team 1 set to win
+                {
+                    Application.LoadLevel(3);
+                }
+                if (scoreScript.getRightScore() == scoreScript.getMaxScore()) // team 2 set to win
+                {
+                    Application.LoadLevel(4);
+                }
             }
-            if (scoreScript.getRightScore() == scoreScript.getMaxScore()) // team 2 set to win
-            {
-                Application.LoadLevel(4);
-            }
+            
         }
 
 	}
