@@ -104,7 +104,8 @@ public class beaver_breathing : MonoBehaviour {
 			beaverPearlCollider.GetComponent<Collider2D>().enabled = true;
 			} 
 
-		else if (!playerStateScript.GetIsSuffocating()){
+		else if (!playerStateScript.GetIsSuffocating() && !playerStateScript.GetCanBreathe())
+        {
 			animator.SetBool ("at_surface", false);
 			check_breathing ();
 		}
