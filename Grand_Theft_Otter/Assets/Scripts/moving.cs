@@ -28,7 +28,13 @@ public class moving : MonoBehaviour {
 	// other scripts
 	get_input moveInputScript;
 	player_state playerStateScript;
-	
+
+	//sound effects
+	sound_player soundPlayer;
+	public AudioClip surfacingSound;
+	public AudioClip divingSound;
+
+
 
     // Use this for initialization
     void Start () {
@@ -56,6 +62,8 @@ public class moving : MonoBehaviour {
 		animator.SetBool ("on_land", true);
 		animator.SetBool ("is_moving", false);
 
+		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
+
 		//team 2 faces left to start
 		if (playerStateScript.GetTeamNumber () == "2") {
 			Flip ();
@@ -73,6 +81,11 @@ public class moving : MonoBehaviour {
 		//check if can breathe and set their color
 		if (beaverMouth.transform.position.y >= constants.waterSurface) 
 		{
+			//if transitioning to can beathe, play sound
+			if(!playerStateScript.GetCanBreathe()){
+				soundPlayer.PlayClip(surfacingSound, 1.0f);
+			}
+
 			playerStateScript.SetCanBreathe (true);
 			if("1" == playerStateScript.GetTeamNumber()){
 				beaverSprite.GetComponent<SpriteRenderer>().color = constants.team1Color;
@@ -84,6 +97,11 @@ public class moving : MonoBehaviour {
 		} 
 		else 
 		{
+			//if transitioning to can't beathe, play sound
+			if(playerStateScript.GetCanBreathe()){
+				soundPlayer.PlayClip(divingSound, 1.0f);
+			}
+
 			playerStateScript.SetCanBreathe (false);
 
 			if("1" == playerStateScript.GetTeamNumber()){

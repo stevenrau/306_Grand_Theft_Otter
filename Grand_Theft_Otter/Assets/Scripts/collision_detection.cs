@@ -25,6 +25,9 @@ public class collision_detection : MonoBehaviour {
 
     score_keeper scoreScript;
 
+	//for sound effects
+	sound_player soundPlayer;
+	public AudioClip shockSound;
 
 	// Use this for initialization
 	void Start() {
@@ -45,6 +48,8 @@ public class collision_detection : MonoBehaviour {
         scoreScript = GameObject.FindGameObjectWithTag("Score_Keeper").GetComponent<score_keeper>();
         
 		statusAnim = GetComponent<Animator> ();
+
+		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
 
     }
 
@@ -99,7 +104,8 @@ public class collision_detection : MonoBehaviour {
 				statusAnim.SetTrigger("shocked");
 
 				//play electric shock sound
-			
+				soundPlayer.PlayClip(shockSound, 1.0f);
+
 				damageScript.Damage ();
 			}
 
