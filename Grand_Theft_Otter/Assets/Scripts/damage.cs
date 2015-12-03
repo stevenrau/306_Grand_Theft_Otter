@@ -12,6 +12,8 @@ public class damage : MonoBehaviour {
 	float dropPearlForce= 400f;
 
 	Animator animator;
+	sound_player soundPlayer;
+	public AudioClip hitSound;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +23,8 @@ public class damage : MonoBehaviour {
 		throwingScript = GetComponent<throwing>();
 
 		animator = transform.GetChild(1).gameObject.GetComponent<Animator> ();
+
+		soundPlayer = GameObject.FindGameObjectWithTag ("Sound_Player").GetComponent<sound_player>();
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,7 @@ public class damage : MonoBehaviour {
 	public void Damage()
 	{
 		playerStateScript.SetIsHit(true);
-		
+		soundPlayer.PlayClip(hitSound, 0.8f);
 		movingScript.enabled = false; // disables movement, dashing, throwing
 		throwingScript.enabled = false;
 		animator.SetTrigger ("breathing_in"); // sets animator trigger so that suffocation animation is played

@@ -101,9 +101,11 @@ public class beaver_breathing : MonoBehaviour {
 			dashScript.enabled = true;
 			throwingScript.enabled = true;	
 			colDetectScript.enabled = true;
+
 			beaverPearlCollider.GetComponent<Collider2D> ().enabled = true;
 		}
 		else if (!playerStateScript.GetIsSuffocating() && !playerStateScript.GetCanBreathe()){
+
 			animator.SetBool ("at_surface", false);
 			check_breathing ();
 		}
