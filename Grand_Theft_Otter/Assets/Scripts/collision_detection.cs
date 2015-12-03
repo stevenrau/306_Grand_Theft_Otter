@@ -13,6 +13,7 @@ public class collision_detection : MonoBehaviour {
 	int numberOfPlatformsTouching;
 
 
+	Animator statusAnim; // used to show effects on the beaver (exists on the parent object called beaver)
 
 	//needed for collision with enemy / dashing beaver
 	GameObject enemyPlayer;
@@ -43,6 +44,8 @@ public class collision_detection : MonoBehaviour {
 		
         scoreScript = GameObject.FindGameObjectWithTag("Score_Keeper").GetComponent<score_keeper>();
         
+		statusAnim = GetComponent<Animator> ();
+
     }
 
 	void Update(){
@@ -92,7 +95,10 @@ public class collision_detection : MonoBehaviour {
 				//stop moving 
 				rBody.velocity = new Vector2 (0.0f, 0.0f);
 
-				//play lighnight effects
+				//play electric shock effects
+				statusAnim.SetTrigger("shocked");
+
+				//play electric shock sound
 			
 				damageScript.Damage ();
 			}
@@ -166,17 +172,6 @@ public class collision_detection : MonoBehaviour {
 	}
 
 
-
-
-
-	void OnCollisionExit2D(Collision2D other)
-	{
-		//if (other.tag == "Platform") {
-			//print("platform collider exit");
-			//playerStateScript.SetIsTouchingPlatform(false);
-		//}
-
-	}
 
 	
 	public void HidePearl()

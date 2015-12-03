@@ -1,0 +1,595 @@
+fileFormatVersion: 2
+guid: d6f38a6be14890c42802e991f400474d
+timeCreated: 1449107677
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: LightningAnimation_0
+    21300002: LightningAnimation_1
+    21300004: LightningAnimation_2
+    21300006: LightningAnimation_3
+    21300008: LightningAnimation_4
+    21300010: LightningAnimation_5
+    21300012: LightningAnimation_6
+    21300014: LightningAnimation_7
+    21300016: LightningAnimation_8
+    21300018: LightningAnimation_9
+    21300020: LightningAnimation_10
+    21300022: LightningAnimation_11
+    21300024: LightningAnimation_12
+    21300026: LightningAnimation_13
+    21300028: LightningAnimation_14
+    21300030: LightningAnimation_15
+    21300032: LightningAnimation_16
+    21300034: LightningAnimation_17
+    21300036: LightningAnimation_18
+    21300038: LightningAnimation_19
+    21300040: LightningAnimation_20
+    21300042: LightningAnimation_21
+    21300044: LightningAnimation_22
+    21300046: LightningAnimation_23
+    21300048: LightningAnimation_24
+    21300050: LightningAnimation_25
+    21300052: LightningAnimation_26
+    21300054: LightningAnimation_27
+    21300056: LightningAnimation_28
+    21300058: LightningAnimation_29
+    21300060: LightningAnimation_30
+    21300062: LightningAnimation_31
+    21300064: LightningAnimation_32
+    21300066: LightningAnimation_33
+    21300068: LightningAnimation_34
+    21300070: LightningAnimation_35
+    21300072: LightningAnimation_36
+    21300074: LightningAnimation_37
+    21300076: LightningAnimation_38
+    21300078: LightningAnimation_39
+    21300080: LightningAnimation_40
+    21300082: LightningAnimation_41
+    21300084: LightningAnimation_42
+    21300086: LightningAnimation_43
+    21300088: LightningAnimation_44
+    21300090: LightningAnimation_45
+    21300092: LightningAnimation_46
+    21300094: LightningAnimation_47
+    21300096: LightningAnimation_48
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 80
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: LightningAnimation_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 392
+        width: 67
+        height: 87
+      alignment: 9
+      pivot: {x: .515432239, y: .500000358}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_1
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 393
+        width: 71
+        height: 87
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_2
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 393
+        width: 76
+        height: 87
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_3
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 389
+        width: 87
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 389
+        width: 85
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 291
+        width: 75
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_6
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 302
+        width: 79
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_7
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 327
+        width: 4
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_8
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 331
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_9
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 315
+        width: 12
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_10
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 334
+        width: 17
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_11
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 320
+        width: 55
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_12
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 319
+        width: 45
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_13
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 313
+        width: 4
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_14
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 318
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_15
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 314
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_16
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 232
+        width: 52
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_17
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 222
+        width: 84
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_18
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 204
+        width: 87
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_19
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 195
+        width: 62
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_20
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 267
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_21
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 197
+        width: 66
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_22
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 167
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_23
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 106
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_24
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 147
+        width: 7
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_25
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 116
+        width: 59
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_26
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 123
+        width: 28
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_27
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 139
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_28
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 143
+        width: 9
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_29
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 158
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_30
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 107
+        width: 49
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_31
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 131
+        width: 20
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_32
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 127
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_33
+      rect:
+        serializedVersion: 2
+        x: 421
+        y: 135
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_34
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 139
+        width: 19
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_35
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 119
+        width: 8
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_36
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 122
+        width: 19
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_37
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 43
+        width: 38
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_38
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 68
+        width: 19
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_39
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 64
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_40
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 63
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_41
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 34
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_42
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 33
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_43
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 25
+        width: 13
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_44
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 32
+        width: 17
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_45
+      rect:
+        serializedVersion: 2
+        x: 204
+        y: 38
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_46
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 26
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_47
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 28
+        width: 10
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightningAnimation_48
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 34
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

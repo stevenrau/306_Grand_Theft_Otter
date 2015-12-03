@@ -16,21 +16,22 @@ public class constants : MonoBehaviour {
     public static bool hasTech;
 
     // beaver colors
-    public static Color team1Color = new Color(0.6f,0.8f,0.6f,1f); // a little greenish;
-	public static Color team2Color = new Color(0.8f,0.6f,0.6f,1f); //a little redish;
+    public static Color team1Color = new Color(0.6f,0.85f,0.6f,1f); // a little greenish;
+	public static Color team2Color = new Color(0.85f,0.6f,0.6f,1f); //a little redish;
 
-	public static Color player1Color = new Color(0.8f,0.4f,0.4f,1f); // a little redish;
-	public static Color player2Color = new Color(0.4f,0.8f,0.4f,1f); // a little greenish;
-	public static Color player3Color = new Color(0.1f,0.4f,0.9f,1f); // a little blueish;
-	public static Color player4Color = new Color(1f,0.8f,0.3f,1f); // a little ?????;
+	public static Color player1Color = new Color(0.85f,1.0f,0.85f,1f); // a light green helmet;
+	public static Color player2Color = new Color(1.0f,0.7f,0.7f,1f); // a light red helmet;
+	public static Color player3Color = new Color(0.0f,0.7f,0.2f,1f); // a green helmet;
+	public static Color player4Color = new Color(1.0f,0.2f,0.2f,1f); // a red helmet;
+
 //	public static Color player1Color = new Color(1f,0f,0f,1f); // a little redish;
 //	public static Color player2Color = new Color(0f,1f,0f,1f); // a little greenish;
 //	public static Color player3Color = new Color(0f,0f,1f,1f); // a little blueish;
 //	public static Color player4Color = new Color(1f,0.92f,0.016f,1f); // a little ?????;
 
 
-	public static Color team1ColorWater = new Color(0.3f,0.5f,1.0f,1f);
-	public static Color team2ColorWater= new Color(0.5f,0.3f,1.0f,1f);
+	public static Color team1ColorWater = new Color(0.3f,0.45f,0.9f,1f); //darker green with blue for underwater (0.3f,0.5f,0.9f,1f)
+	public static Color team2ColorWater= new Color(0.45f,0.3f,0.9f,1f); // darker red with blue for undewater (0.5f,0.3f,0.9f,1f)
 
 	//the level boundaries
 	public static float leftBoundary = -8.88f;

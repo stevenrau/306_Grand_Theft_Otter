@@ -37,6 +37,7 @@ public class tutorial_countdown : MonoBehaviour {
     {
         if (!everyoneReady)
         {
+
             if (Input.GetButtonDown("tutorialReady_1"))
             {
                 txt.text = resetTxt;
@@ -68,7 +69,7 @@ public class tutorial_countdown : MonoBehaviour {
                 {
                     everyoneReady = true;
                     txt.text = resetTxt;
-                    txt.text = "All Players Ready. Game Starting In... ";
+                    //txt.text = "All Players Ready. Game Starting In... ";
                     Invoke("startCountDown", 0.5f);
                 }
             }
@@ -78,11 +79,18 @@ public class tutorial_countdown : MonoBehaviour {
                 {
                     everyoneReady = true;
                     txt.text = resetTxt;
-                    txt.text = "All Players Ready. Game Starting In... ";
+                    //txt.text = "All Players Ready. Game Starting In... ";
                     Invoke("startCountDown", 0.1f);
                 }
 
             }
+
+			if(Input.GetKeyDown("space")){
+				everyoneReady = true;
+				//txt.text = "Starting without everyone ready... ";
+				Invoke("startCountDown", 0.1f);
+			}
+
 
         }
     }
