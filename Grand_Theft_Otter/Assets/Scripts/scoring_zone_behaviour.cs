@@ -23,7 +23,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		scoreKeeperScript = GameObject.Find ("Score_Keeper").GetComponent<score_keeper> ();
 
 
-		soundPlayer = GameObject.Find ("Sound_Player(Clone)").GetComponent<sound_player>();
+		soundPlayer = GameObject.Find ("Sound_Player").GetComponent<sound_player>();
 
 		spawnPoint = GameObject.Find ("Pearl_Spawn");
          
