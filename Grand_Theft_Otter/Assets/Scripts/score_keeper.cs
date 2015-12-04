@@ -23,7 +23,7 @@ public class score_keeper : MonoBehaviour {
 		damRampLeft = GameObject.Find ("Dam_Ramp_Left");
 		damRampRight = GameObject.Find ("Dam_Ramp_Right");
 
-		soundPlayer = GameObject.Find ("Sound_Player(Clone)").GetComponent<sound_player>();
+		soundPlayer = GameObject.Find ("Sound_Player").GetComponent<sound_player>();
 	}
 
 	//increase score and build the bridge further with each point scored

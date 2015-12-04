@@ -37,6 +37,7 @@ public class game_setup : MonoBehaviour {
 		 * Load the Sound Player
 		 * ************************************************************************************/
 		GameObject soundPlayer = Instantiate (Resources.Load ("Sound_Player")) as GameObject;
+		soundPlayer.name = "Sound_Player";
 
 		/***************************************************************************************
 		 * Load the Water Background
