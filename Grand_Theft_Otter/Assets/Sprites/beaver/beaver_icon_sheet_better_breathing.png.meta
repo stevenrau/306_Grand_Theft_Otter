@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 4372b67a979b84a41b448b06b19aea74
-timeCreated: 1449176128
+timeCreated: 1449284822
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,10 +11,16 @@ TextureImporter:
     21300008: icon_breath_3
     21300010: icon_breath_4
     21300012: icon_breath_5
-    21300014: icon_breath_0
+    21300014: icon_breath_in_0
     21300016: icon_held_0
     21300018: icon_held_1
     21300020: icon_held_2
+    21300022: icon_breath_in_1
+    21300024: icon_breath_in_2
+    21300026: icon_breath_in_3
+    21300028: icon_breath_in_4
+    21300030: icon_breath_in_5
+    21300032: icon_breath_in_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -66,7 +72,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 344
-        width: 62
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -74,9 +80,9 @@ TextureImporter:
     - name: icon_dead
       rect:
         serializedVersion: 2
-        x: 92
-        y: 345
-        width: 62
+        x: 90
+        y: 344
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -84,9 +90,9 @@ TextureImporter:
     - name: icon_breath_1
       rect:
         serializedVersion: 2
-        x: 168
-        y: 345
-        width: 62
+        x: 180
+        y: 344
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -94,9 +100,9 @@ TextureImporter:
     - name: icon_breath_2
       rect:
         serializedVersion: 2
-        x: 239
-        y: 345
-        width: 62
+        x: 270
+        y: 344
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -104,9 +110,9 @@ TextureImporter:
     - name: icon_breath_3
       rect:
         serializedVersion: 2
-        x: 248
-        y: 279
-        width: 62
+        x: 270
+        y: 285
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -114,9 +120,9 @@ TextureImporter:
     - name: icon_breath_4
       rect:
         serializedVersion: 2
-        x: 253
-        y: 217
-        width: 62
+        x: 270
+        y: 225
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -124,19 +130,19 @@ TextureImporter:
     - name: icon_breath_5
       rect:
         serializedVersion: 2
-        x: 175
-        y: 217
-        width: 62
+        x: 180
+        y: 225
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: icon_breath_0
+    - name: icon_breath_in_0
       rect:
         serializedVersion: 2
-        x: 94
-        y: 218
-        width: 62
+        x: 0
+        y: 225
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -144,9 +150,9 @@ TextureImporter:
     - name: icon_held_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 282
-        width: 62
+        x: 0
+        y: 285
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -154,9 +160,9 @@ TextureImporter:
     - name: icon_held_1
       rect:
         serializedVersion: 2
-        x: 100
-        y: 281
-        width: 62
+        x: 90
+        y: 285
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -164,9 +170,69 @@ TextureImporter:
     - name: icon_held_2
       rect:
         serializedVersion: 2
-        x: 178
-        y: 278
-        width: 62
+        x: 180
+        y: 285
+        width: 90
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_in_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 165
+        width: 90
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_in_2
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 225
+        width: 90
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_in_3
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 165
+        width: 90
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_in_4
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 165
+        width: 90
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_in_5
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 165
+        width: 90
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_in_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 105
+        width: 90
         height: 55
       alignment: 0
       pivot: {x: .5, y: .5}
