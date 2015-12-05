@@ -29,13 +29,10 @@ public class icon_indicator : MonoBehaviour {
 			breatheOut= "l";
 		}
 
-//		if (!constants.hasTech) {
-//			beaverIcon.enabled = false;
-//		}
-
-//		iconAnim.SetBool ("isDead", false);
-
-	
+		if (!constants.hasTech) {
+			beaverIcon.enabled = false;
+			transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = false;
+		}	
 	}
 	
 	// Update is called once per frame
