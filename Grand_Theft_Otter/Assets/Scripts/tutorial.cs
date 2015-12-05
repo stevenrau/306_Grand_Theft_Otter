@@ -46,7 +46,7 @@ public class tutorial : MonoBehaviour
         /***************************************************************************************
 		 * Load the Sky Background
 		 * ************************************************************************************/
-        GameObject sky = Instantiate(Resources.Load("Night_Sky")) as GameObject;
+        GameObject sky = Instantiate(Resources.Load("Day_Sky_Clear")) as GameObject;
 
 
         /***************************************************************************************
