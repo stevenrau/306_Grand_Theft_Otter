@@ -5,7 +5,12 @@ using System.Collections;
 public class tutorial_countdown : MonoBehaviour {
 
     Text txt;
-    string resetTxt;
+	public Text txtp1;
+	public Text txtp2;
+	public Text txtp3;
+	public Text txtp4;
+
+	string resetTxt;
     string endTxt;
     public static int countdown;
 
@@ -28,6 +33,11 @@ public class tutorial_countdown : MonoBehaviour {
         resetTxt = "";
         endTxt = "All Players Ready. Game Starting In... ";
 
+		txtp1.text = resetTxt;
+		txtp2.text = resetTxt;
+		txtp3.text = resetTxt;
+		txtp4.text = resetTxt;
+
         countdown = 3;
         
     }
@@ -40,30 +50,37 @@ public class tutorial_countdown : MonoBehaviour {
 
             if (Input.GetButtonDown("tutorialReady_1"))
             {
-                txt.text = resetTxt;
+//                txt.text = resetTxt;
                 player1Ready = true;
-                txt.text = "Player 1 Ready";
+//                txt.text = "Player 1 Ready";
+				txtp1.text = "Player 1 Ready";
             }
             if (Input.GetButtonDown("tutorialReady_2"))
             {
-                txt.text = resetTxt;
+//                txt.text = resetTxt;
                 player2Ready = true;
-                txt.text = "Player 2 Ready";
+//                txt.text = "Player 2 Ready";
+				txtp2.text = "Player 2 Ready";
+
             }
 
             if (constants.fourPlayers)
             {
                 if (Input.GetButtonDown("tutorialReady_3"))
                 {
-                    txt.text = resetTxt;
+//                    txt.text = resetTxt;
                     player3Ready = true;
-                    txt.text = "Player 3 Ready";
+//                    txt.text = "Player 3 Ready";
+					txtp3.text = "Player 3 Ready";
+
                 }
                 if (Input.GetButtonDown("tutorialReady_4"))
                 {
-                    txt.text = resetTxt;
+//                    txt.text = resetTxt;
                     player4Ready = true;
-                    txt.text = "Player 4 Ready";
+//                    txt.text = "Player 4 Ready";
+					txtp4.text = "Player 4 Ready";
+
                 }
                 if (player1Ready && player2Ready && player3Ready && player4Ready)
                 {
@@ -87,6 +104,13 @@ public class tutorial_countdown : MonoBehaviour {
 
 			if(Input.GetKeyDown("space")){
 				everyoneReady = true;
+				txtp1.text = "Player 1 Ready";
+				txtp2.text = "Player 2 Ready";
+				if(constants.fourPlayers) {
+					txtp3.text = "Player 3 Ready";
+					txtp4.text = "Player 4 Ready";
+				}
+
 				//txt.text = "Starting without everyone ready... ";
 				Invoke("startCountDown", 0.1f);
 			}
