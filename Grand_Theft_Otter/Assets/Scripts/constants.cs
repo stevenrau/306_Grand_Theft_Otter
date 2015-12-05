@@ -30,8 +30,8 @@ public class constants : MonoBehaviour {
 //	public static Color player4Color = new Color(1f,0.92f,0.016f,1f); // a little ?????;
 
 
-	public static Color team1ColorWater = new Color(0.3f,0.45f,0.9f,1f); //darker green with blue for underwater (0.3f,0.5f,0.9f,1f)
-	public static Color team2ColorWater= new Color(0.45f,0.3f,0.9f,1f); // darker red with blue for undewater (0.5f,0.3f,0.9f,1f)
+	public static Color team1ColorWater = new Color(0.4f,0.85f,0.4f,1f); //darker green with blue for underwater (0.3f,0.5f,0.9f,1f)
+	public static Color team2ColorWater= new Color(0.85f,0.4f,0.4f,1f); // darker red with blue for undewater (0.5f,0.3f,0.9f,1f)
 
 	//the level boundaries
 	public static float leftBoundary = -8.88f;

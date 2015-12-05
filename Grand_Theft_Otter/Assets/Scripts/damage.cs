@@ -38,7 +38,7 @@ public class damage : MonoBehaviour {
 		soundPlayer.PlayClip(hitSound, 0.8f);
 		movingScript.enabled = false; // disables movement, dashing, throwing
 		throwingScript.enabled = false;
-		animator.SetTrigger ("breathing_in"); // sets animator trigger so that suffocation animation is played
+		animator.SetTrigger ("is_hit"); // sets animator trigger so that suffocation animation is played
 		
 		//throw the pearl in the direction of enemy dash
 		throwingScript.ThrowPearl(playerStateScript.GetAimingAngle(), dropPearlForce);
