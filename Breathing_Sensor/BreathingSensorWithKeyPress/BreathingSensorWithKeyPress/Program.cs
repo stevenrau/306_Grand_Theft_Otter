@@ -36,7 +36,7 @@ namespace BreathingSensorWithKeyPress
         public static float prevDataB = 0.0f;
 
         // How much must the value change to register a key press
-        public static float threshold = 0.05f;
+        public static float threshold = 0.06f;
         
         //an instance of unity that should be currently running, key strokes will be sent to this process
         static Process unityProc;
@@ -176,7 +176,14 @@ namespace BreathingSensorWithKeyPress
                     Console.WriteLine("printing o");
                 }
             }
+            else
+            {
+                //not breathing
+                GenerateKeyStroke("u");
+                Console.WriteLine("printing u");
+            }
 
+            
             //is player B breathing?
             if (Math.Abs(difB) > threshold)
             {
@@ -193,6 +200,13 @@ namespace BreathingSensorWithKeyPress
                     Console.WriteLine("printing l");
                 }
             }
+            else
+            {
+                //not breathing
+                GenerateKeyStroke("j");
+                Console.WriteLine("printing j");
+            }
+            
 
             //update the previous values
             prevDataA = dataA;
@@ -204,7 +218,7 @@ namespace BreathingSensorWithKeyPress
         private static void GenerateKeyStroke(string key)
         {
             IntPtr p = unityProc.MainWindowHandle;
-            SetForegroundWindow(p);
+            //SetForegroundWindow(p);
             SendKeys.SendWait(key);
         }
 

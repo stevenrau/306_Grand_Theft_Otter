@@ -107,7 +107,8 @@ public class beaver_breathing : MonoBehaviour {
 			transform.FindChild ("Beaver").gameObject.layer = LayerMask.NameToLayer ("Non_Interactable");
 			beaverMouth.transform.FindChild ("beaver_mouth").gameObject.layer = LayerMask.NameToLayer ("Non_Interactable");
 
-			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
+			//animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
+			animator.SetTrigger("surface");
 
 			// sets the icon animator to normal
 //			iconIndicator.SetTrigger ("out_of_water");
@@ -145,7 +146,7 @@ public class beaver_breathing : MonoBehaviour {
 //				iconIndicator.SetBool("prevOut", true);
 			}
 		
-			if (Input.GetKey ("o")) {
+			else if (Input.GetKey ("o")) {
 				breath_count = 0;
 				//print ("1 breathing out");
 				Bubbles.Emit (5);
@@ -155,6 +156,10 @@ public class beaver_breathing : MonoBehaviour {
 				if(!playerStateScript.GetIsSuffocating()){
 					ApplySpeedBoost(); //boost of speed if breahting out
 				}
+			}
+			else if (Input.GetKey ("u")) {
+				breath_count = 0;
+
 			}
 		}
 
@@ -166,7 +171,7 @@ public class beaver_breathing : MonoBehaviour {
 				breath_count += 1;
 //				iconIndicator.SetTrigger ("breathing_in");
 			}
-			if (Input.GetKey ("l")) {
+			else if (Input.GetKey ("l")) {
 				breath_count = 0;
 				Bubbles.Emit (5);
 				soundPlayer.PlayClip(Bubble_sound, 1.0f);
@@ -175,6 +180,10 @@ public class beaver_breathing : MonoBehaviour {
 				if(!playerStateScript.GetIsSuffocating()){
 					ApplySpeedBoost(); //boost of speed if breahting out
 				}
+			}
+			else if (Input.GetKey ("j")) {
+				breath_count = 0;
+				
 			}
 		}
 
