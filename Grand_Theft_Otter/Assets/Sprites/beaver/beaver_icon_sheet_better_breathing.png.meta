@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 4372b67a979b84a41b448b06b19aea74
+timeCreated: 1449176128
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: icon_normal
+    21300002: icon_dead
+    21300004: icon_breath_1
+    21300006: icon_breath_2
+    21300008: icon_breath_3
+    21300010: icon_breath_4
+    21300012: icon_breath_5
+    21300014: icon_breath_0
+    21300016: icon_held_0
+    21300018: icon_held_1
+    21300020: icon_held_2
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: icon_normal
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 344
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_dead
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 345
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_1
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 345
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_2
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 345
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_3
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 279
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_4
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 217
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_5
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 217
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_breath_0
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 218
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_held_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 282
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_held_1
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 281
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: icon_held_2
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 278
+        width: 62
+        height: 55
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

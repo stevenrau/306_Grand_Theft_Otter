@@ -13,6 +13,9 @@ public class beaver_breathing : MonoBehaviour {
 	throwing throwingScript;
 	collision_detection colDetectScript;
 
+	// triggers animations on the breathing icon
+//	Animator iconIndicator;
+
 	Animator animator;
 	private ParticleSystem Bubbles; // The particle System that emits bubbles
 	Rigidbody2D rBody; // the ridgit body of the palyer
@@ -53,6 +56,15 @@ public class beaver_breathing : MonoBehaviour {
 		throwingScript = GetComponent<throwing> ();
 		colDetectScript = GetComponent<collision_detection> ();
 
+		//get the scripts to animate the indicator
+
+//		if (Player_name == "Beaver1") {
+//			iconIndicator = GameObject.FindGameObjectWithTag ("iconP1").GetComponent<Animator>();
+//
+//		} else if (Player_name == "Beaver2") {
+//			iconIndicator = GameObject.FindGameObjectWithTag ("iconP2").GetComponent<Animator>();
+//		}
+
 		//getting the particle system
 		Bubbles = beaverMouth.GetComponentInChildren<ParticleSystem> ();
 
@@ -81,7 +93,7 @@ public class beaver_breathing : MonoBehaviour {
 		if (playerStateScript.GetIsSuffocating() && transform.position.y > 2.4f) {
 			rBody.gravityScale = constants.waterGravity;
 		}
-		//if (transform.position.y >= constants.breathingSurface) {
+		// beaver is suffocating and out of water
 		if (playerStateScript.GetCanBreathe () && playerStateScript.GetIsSuffocating ()) {
 
 			//set gravity back
@@ -96,6 +108,11 @@ public class beaver_breathing : MonoBehaviour {
 			beaverMouth.transform.FindChild ("beaver_mouth").gameObject.layer = LayerMask.NameToLayer ("Non_Interactable");
 
 			animator.SetBool ("at_surface", true); // sets animator so that it transitions form foating to idle
+
+			// sets the icon animator to normal
+//			iconIndicator.SetTrigger ("out_of_water");
+//			iconIndicator.SetBool("isDead", false);
+
 			//movingScript.enabled = true; // enable movement again (same for dashing and throwing) 
 			movingScript.SetMoveForce (constants.moveForceNormal);
 			dashScript.enabled = true;
@@ -103,8 +120,9 @@ public class beaver_breathing : MonoBehaviour {
 			colDetectScript.enabled = true;
 
 			beaverPearlCollider.GetComponent<Collider2D> ().enabled = true;
-		}
-		else if (!playerStateScript.GetIsSuffocating() && !playerStateScript.GetCanBreathe()){
+		} 
+		// beaver is fine and under water
+		else if (!playerStateScript.GetIsSuffocating () && !playerStateScript.GetCanBreathe ()) {
 
 			animator.SetBool ("at_surface", false);
 			check_breathing ();
@@ -118,9 +136,13 @@ public class beaver_breathing : MonoBehaviour {
 	//checking the player_name to only react to the right button presses
 		// Beaver 1
 		if (Player_name == "Beaver1"){
+
+//			iconIndicator.SetTrigger ("breath_held");
 			if (Input.GetKey ("i")){
 				//print ("1 breathing in");
 				breath_count += 1;
+//				iconIndicator.SetTrigger ("breathing_in");
+//				iconIndicator.SetBool("prevOut", true);
 			}
 		
 			if (Input.GetKey ("o")) {
@@ -128,6 +150,7 @@ public class beaver_breathing : MonoBehaviour {
 				//print ("1 breathing out");
 				Bubbles.Emit (5);
 				soundPlayer.PlayClip(Bubble_sound, 1.0f);
+//				iconIndicator.SetTrigger ("breathing_out");
 
 				if(!playerStateScript.GetIsSuffocating()){
 					ApplySpeedBoost(); //boost of speed if breahting out
@@ -137,13 +160,17 @@ public class beaver_breathing : MonoBehaviour {
 
 		// Beaver 2
 		if (Player_name == "Beaver2"){
+
+//			iconIndicator.SetTrigger ("breath_held");
 			if (Input.GetKey ("k")){
 				breath_count += 1;
+//				iconIndicator.SetTrigger ("breathing_in");
 			}
 			if (Input.GetKey ("l")) {
 				breath_count = 0;
 				Bubbles.Emit (5);
 				soundPlayer.PlayClip(Bubble_sound, 1.0f);
+//				iconIndicator.SetTrigger ("breathing_out");
 
 				if(!playerStateScript.GetIsSuffocating()){
 					ApplySpeedBoost(); //boost of speed if breahting out
@@ -178,6 +205,10 @@ public class beaver_breathing : MonoBehaviour {
 		playerStateScript.SetIsSuffocating (true);
 		//print("isSuffocating set true");
 		breath_count = 0;
+
+		// trigger the breathing icon to dead
+//		iconIndicator.SetTrigger ("is_dead");
+//		iconIndicator.SetBool("isDead", true);
 
 		// the beaver should pass through obstacles when they are suffocating
 		transform.FindChild("Beaver").gameObject.layer = LayerMask.NameToLayer("Suffocating"); //The beaver collider
