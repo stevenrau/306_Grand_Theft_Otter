@@ -55,6 +55,9 @@ public class game_setup : MonoBehaviour {
 		 * ************************************************************************************/
 		GameObject pearlSpawner = Instantiate (Resources.Load ("Pearl_Spawn")) as GameObject;
 		pearlSpawner.name = "Pearl_Spawn";
+		GameObject pearlSpawner2 = Instantiate (Resources.Load ("Pearl_Spawn")) as GameObject;
+		pearlSpawner2.name = "Pearl_Spawn";
+		pearlSpawner2.transform.position = new Vector2 (pearlSpawner.transform.position.x, pearlSpawner.transform.position.y + 4.0f);
 
 
 		/***************************************************************************************

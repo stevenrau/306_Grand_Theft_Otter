@@ -35,7 +35,7 @@ public class damage : MonoBehaviour {
 	public void Damage()
 	{
 		playerStateScript.SetIsHit(true);
-		soundPlayer.PlayClip(hitSound, 0.8f);
+		soundPlayer.PlayClip(hitSound, 0.6f);
 		movingScript.enabled = false; // disables movement, dashing, throwing
 		throwingScript.enabled = false;
 		animator.SetTrigger ("is_hit"); // sets animator trigger so that suffocation animation is played

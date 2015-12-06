@@ -14,7 +14,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 	score_keeper scoreKeeperScript;
 
 	//the position the pearl will respawn at
-	GameObject spawnPoint;
+	GameObject[] spawnPoints;
 
 	void Start()
 	{
@@ -25,7 +25,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 		soundPlayer = GameObject.Find ("Sound_Player").GetComponent<sound_player>();
 
-		spawnPoint = GameObject.Find ("Pearl_Spawn");
+		spawnPoints = GameObject.FindGameObjectsWithTag("Jellyfish");
          
 	}
 
@@ -91,7 +91,18 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 	void CreateNewPearl()
 	{
-		GameObject newPearl = Instantiate (Resources.Load ("Pearl"), spawnPoint.transform.position, spawnPoint.transform.rotation) as GameObject;
+		Vector2 spawnPos;
+		float roll = Random.value;
+
+		//spawn pearl at a random jellyfish
+		if (roll > 0.5) {
+			spawnPos = spawnPoints[0].transform.position;
+		}
+		else { 
+			spawnPos = spawnPoints[1].transform.position;
+		}
+		
+		GameObject newPearl = Instantiate (Resources.Load ("Pearl"), spawnPos, Quaternion.identity) as GameObject;
 		newPearl.GetComponent<Rigidbody2D> ().AddForce(new Vector2(0, -200.0f)); //shoot the pearl down from the spawnpoint
 	}
 }

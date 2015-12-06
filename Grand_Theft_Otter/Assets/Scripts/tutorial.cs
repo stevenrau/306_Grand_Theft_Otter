@@ -30,14 +30,14 @@ public class tutorial : MonoBehaviour
    //     /***************************************************************************************
 		 //* Load the Score Keeper
 		 //* ************************************************************************************/
-   //     GameObject scoreKeeper = Instantiate(Resources.Load("Score_Keeper")) as GameObject;
-   //     scoreKeeper.name = "Score_Keeper";
+        GameObject scoreKeeper = Instantiate(Resources.Load("Score_Keeper")) as GameObject;
+        scoreKeeper.name = "Score_Keeper";
 
         /***************************************************************************************
 		 * Load the Sound Player
 		 * ************************************************************************************/
         GameObject soundPlayer = Instantiate(Resources.Load("Sound_Player")) as GameObject;
-
+		soundPlayer.name = "Sound_Player";
         /***************************************************************************************
 		 * Load the Water Background
 		 * ************************************************************************************/

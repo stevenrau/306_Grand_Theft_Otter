@@ -28,6 +28,7 @@ public class collision_detection : MonoBehaviour {
 	//for sound effects
 	sound_player soundPlayer;
 	public AudioClip shockSound;
+	public AudioClip grabSound;
 
 	// Use this for initialization
 	void Start() {
@@ -111,8 +112,9 @@ public class collision_detection : MonoBehaviour {
 
 			if (other.tag == "Pearl") {
 			
-				//  GameObject pearlOffset = player.transform.GetChild(0).gameObject;
-				//pearlOffset.GetComponent<SpriteRenderer>().enabled = true;
+				// play a sound when grabbing the pearl
+				soundPlayer.PlayClip(grabSound, 1.0f);
+				
 				pearlRenderer.enabled = true;
 				pearlOffset.GetComponent<SpriteRenderer> ().enabled = true;
 			
@@ -128,12 +130,15 @@ public class collision_detection : MonoBehaviour {
 			
 			}
 
-        Debug.Log(scoreScript.getLeftScore());
-        Debug.Log(scoreScript.getRightScore());
-        Debug.Log(scoreScript.getMaxScore());
+        
 
         if (other.tag == "Boat") // check if they have 5 platforms and if yes they win
         {
+			/*
+			Debug.Log(scoreScript.getLeftScore());
+			Debug.Log(scoreScript.getRightScore());
+			Debug.Log(scoreScript.getMaxScore());
+			*/
             if (other.isTrigger)
             {
                 if (scoreScript.getLeftScore() == scoreScript.getMaxScore()) // team 1 set to win
