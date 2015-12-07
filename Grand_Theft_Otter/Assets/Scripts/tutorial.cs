@@ -17,8 +17,7 @@ public class tutorial : MonoBehaviour
         /***************************************************************************************
 		 * Load the Pause Menu
 		 * ************************************************************************************/
-        //GameObject pauseMenu = Instantiate(Resources.Load("pause_menu")) as GameObject;
-        //pauseMenu.name = "pause_menu";
+ 
         //pauseMenu.SetActive(false); 
 
    //     /***************************************************************************************
