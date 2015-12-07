@@ -29,12 +29,8 @@ public class score_keeper : MonoBehaviour {
 	//increase score and build the bridge further with each point scored
 	public void IncrementLeftScore()
 	{
-		if (Random.value > 0.5) {
-			soundPlayer.PlayClip(scoreSound1, 1.0f);
-			
-		}
-		else 			
-			soundPlayer.PlayClip(scoreSound2, 1.0f);
+		soundPlayer.PlayClip(scoreSound1, 1.0f);
+
 		if (leftScore < maxScore) {
 			leftScore++;
             //enable the next section of the bridge
@@ -50,12 +46,7 @@ public class score_keeper : MonoBehaviour {
 	
 	public void IncrementRightScore()
 	{
-
-		if (Random.value > 0.5) 
-				soundPlayer.PlayClip(scoreSound1, 1.0f);
-				
-		else 				
-				soundPlayer.PlayClip(scoreSound2, 1.0f);
+		soundPlayer.PlayClip(scoreSound2, 1.0f);
 
 		if (rightScore < maxScore) {
 			rightScore++;

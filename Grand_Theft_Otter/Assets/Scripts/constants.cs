@@ -50,7 +50,7 @@ public class constants : MonoBehaviour {
 
 	//different player moving speeds
 	public static float moveForceNormal = 100.0f ;
-	public static float moveForceSlow = 15.0f;
+	public static float moveForceSlow = 30.0f;
 
 	//gravities in different locations
 	public static float waterGravity = -0.1f; // gravity when in water

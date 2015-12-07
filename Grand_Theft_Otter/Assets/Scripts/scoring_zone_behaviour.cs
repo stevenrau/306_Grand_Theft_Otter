@@ -13,8 +13,6 @@ public class scoring_zone_behaviour : MonoBehaviour {
 	SpriteRenderer clamSprite;
 
 	sound_player soundPlayer;
-	public AudioClip scoreSound1;
-	public AudioClip scoreSound2;
 
 	// the script that keeps track of scores for the round
 	score_keeper scoreKeeperScript;
@@ -41,15 +39,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 		if (other.tag == "Pearl") 
 		{
 			Destroy(other.gameObject);
-			if (Random.value > 0.5) {
-				soundPlayer.PlayClip(scoreSound1, 1.0f);
 
-			}
-			else { 
-
-				soundPlayer.PlayClip(scoreSound2, 1.0f);
-
-			}
 
 			if (gameObject.tag == "Left_Clam")
 			{
