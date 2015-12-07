@@ -103,6 +103,12 @@ public class game_setup : MonoBehaviour {
 		damRampRight.transform.localScale = new Vector2(-leftTransform.localScale.x, leftTransform.localScale.y);
 
 		/***************************************************************************************
+		 * Load the coloured flags
+		 * ************************************************************************************/
+		GameObject greenFlag = Instantiate(Resources.Load("Green_Flag")) as GameObject;
+		GameObject redFlag = Instantiate(Resources.Load("Red_Flag")) as GameObject;
+
+		/***************************************************************************************
 		 * Load the scoring zones ( now in the clams)
 		 * ************************************************************************************/
 		/*
