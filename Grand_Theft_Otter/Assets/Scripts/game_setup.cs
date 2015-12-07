@@ -48,6 +48,17 @@ public class game_setup : MonoBehaviour {
 		 * Load the Sky Background
 		 * ************************************************************************************/
 		GameObject sky = Instantiate (Resources.Load ("Day_Sky_Clear")) as GameObject;
+
+		/***************************************************************************************
+		 * Load the Clouds
+		 * ************************************************************************************/
+		Instantiate (Resources.Load ("Cloud_1"));
+		Instantiate (Resources.Load ("Cloud_2"));
+		Instantiate (Resources.Load ("Cloud_3"));
+		Instantiate (Resources.Load ("Cloud_4"));
+		Instantiate (Resources.Load ("Cloud_5"));
+		Instantiate (Resources.Load ("Cloud_6"));
+		Instantiate (Resources.Load ("Cloud_7"));
 		
 
 		/***************************************************************************************
