@@ -48,6 +48,17 @@ public class game_setup : MonoBehaviour {
 		 * Load the Sky Background
 		 * ************************************************************************************/
 		GameObject sky = Instantiate (Resources.Load ("Day_Sky_Clear")) as GameObject;
+
+		/***************************************************************************************
+		 * Load the Clouds
+		 * ************************************************************************************/
+		Instantiate (Resources.Load ("Cloud_1"));
+		Instantiate (Resources.Load ("Cloud_2"));
+		Instantiate (Resources.Load ("Cloud_3"));
+		Instantiate (Resources.Load ("Cloud_4"));
+		Instantiate (Resources.Load ("Cloud_5"));
+		Instantiate (Resources.Load ("Cloud_6"));
+		Instantiate (Resources.Load ("Cloud_7"));
 		
 
 		/***************************************************************************************
@@ -174,12 +185,27 @@ public class game_setup : MonoBehaviour {
 		/***************************************************************************************
 		 * Load the obstacles
 		 * ************************************************************************************/
-		GameObject obstacleTopRight = Instantiate (Resources.Load ("Obstacle_Top_Right")) as GameObject;
-		GameObject obstacleTopLeft = Instantiate (Resources.Load ("Obstacle_Top_Left")) as GameObject;
-		GameObject obstacleBottomRight = Instantiate (Resources.Load ("Obstacle_Bottom_Right")) as GameObject;
-		GameObject obstacleBottomLeft = Instantiate (Resources.Load ("Obstacle_Bottom_Left")) as GameObject;
-		GameObject obstacleEllipse = Instantiate (Resources.Load ("Obstacle_Ellipse")) as GameObject;
-		GameObject obstacleCurve = Instantiate (Resources.Load ("Obstacle_Curve")) as GameObject;
+		if (constants.fourPlayers) {
+			GameObject obstacleBottomRight = Instantiate (Resources.Load ("Obstacle_Bottom_Right")) as GameObject;
+			GameObject obstacleBottomLeft = Instantiate (Resources.Load ("Obstacle_Bottom_Left")) as GameObject;
+		
+			Vector3 posTR = obstacleBottomRight.transform.position;
+			posTR.y += 1.5f;
+			obstacleBottomRight.transform.position = posTR;
+			Vector3 posTL = obstacleBottomLeft.transform.position;
+			posTL.y += 1.5f;
+			obstacleBottomLeft.transform.position = posTL;
+
+			GameObject obstacleEllipse = Instantiate (Resources.Load ("Obstacle_Ellipse")) as GameObject;
+//			GameObject obstacleCurve = Instantiate (Resources.Load ("Obstacle_Curve")) as GameObject;
+		} else {
+			GameObject obstacleTopRight = Instantiate (Resources.Load ("Obstacle_Top_Right")) as GameObject;
+			GameObject obstacleTopLeft = Instantiate (Resources.Load ("Obstacle_Top_Left")) as GameObject;
+			GameObject obstacleBottomRight = Instantiate (Resources.Load ("Obstacle_Bottom_Right")) as GameObject;
+			GameObject obstacleBottomLeft = Instantiate (Resources.Load ("Obstacle_Bottom_Left")) as GameObject;
+			GameObject obstacleEllipse = Instantiate (Resources.Load ("Obstacle_Ellipse")) as GameObject;
+			GameObject obstacleCurve = Instantiate (Resources.Load ("Obstacle_Curve")) as GameObject;
+		}
 
 		/***************************************************************************************
 		 * Load the pearl
