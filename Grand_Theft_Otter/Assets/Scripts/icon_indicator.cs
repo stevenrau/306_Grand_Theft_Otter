@@ -60,7 +60,7 @@ public class icon_indicator : MonoBehaviour {
 			iconAnim.SetTrigger("breath_held");
 		}
 
-		// underwater
+		// breathing in and out in the game (while not suffocating).
 		if (!playerStateScript.GetIsSuffocating ()) {
 
 			if (Input.GetKey (breatheIn)) {

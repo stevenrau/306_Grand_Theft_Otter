@@ -1,9 +1,32 @@
 fileFormatVersion: 2
 guid: 047a605da7369a74e966fc707c558cb7
-timeCreated: 1449302954
+timeCreated: 1449448146
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: green_flag_0
+    21300002: green_flag_1
+    21300004: green_flag_2
+    21300006: green_flag_3
+    21300008: green_flag_4
+    21300010: green_flag_5
+    21300012: green_flag_6
+    21300014: green_flag_7
+    21300016: green_flag_8
+    21300018: green_flag_9
+    21300020: green_flag_10
+    21300022: green_flag_11
+    21300024: green_flag_12
+    21300026: green_flag_13
+    21300028: green_flag_14
+    21300030: green_flag_15
+    21300032: green_flag_16
+    21300034: green_flag_17
+    21300036: green_flag_18
+    21300038: green_flag_19
+    21300040: green_flag_20
+    21300042: green_flag_21
+    21300044: green_flag_22
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -30,7 +53,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -38,18 +61,248 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 60
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: green_flag_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 81
+        width: 51
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 81
+        width: 50
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 81
+        width: 48
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_3
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 81
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_4
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 81
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_5
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 81
+        width: 46
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_6
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 81
+        width: 48
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_7
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 81
+        width: 49
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_8
+      rect:
+        serializedVersion: 2
+        x: 407
+        y: 81
+        width: 48
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_9
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 81
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_10
+      rect:
+        serializedVersion: 2
+        x: 508
+        y: 81
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_11
+      rect:
+        serializedVersion: 2
+        x: 556
+        y: 81
+        width: 49
+        height: 63
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_12
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_13
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_14
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_15
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_16
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_17
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_18
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_19
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_20
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_21
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: green_flag_22
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 8
+        width: 50
+        height: 63
+      alignment: 3
+      pivot: {x: 1, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

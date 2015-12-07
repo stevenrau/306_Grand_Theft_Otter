@@ -3,8 +3,14 @@ using System.Collections;
 
 public class scoring_zone_behaviour : MonoBehaviour {
 
+	private Color leftScoredColor = new Color(0.6f, 0.95f, 0.6f, 1f); // Darkened green
+	private Color rightScoredColor = new Color(0.95f, 0.6f, 0.6f, 1f); //Darkened red
+
 	// Clam animator
 	Animator animator;
+
+	// Clam sprite that gets animated
+	SpriteRenderer clamSprite;
 
 	sound_player soundPlayer;
 	public AudioClip scoreSound1;
@@ -18,7 +24,7 @@ public class scoring_zone_behaviour : MonoBehaviour {
 
 	void Start()
 	{
-
+		clamSprite = gameObject.GetComponentInParent<SpriteRenderer>();
 		animator = gameObject.GetComponentInParent<Animator>();
 		scoreKeeperScript = GameObject.Find ("Score_Keeper").GetComponent<score_keeper> ();
 
@@ -48,10 +54,14 @@ public class scoring_zone_behaviour : MonoBehaviour {
 			if (gameObject.tag == "Left_Clam")
 			{
 				scoreKeeperScript.IncrementLeftScore();
+
+				clamSprite.material.color = leftScoredColor;
 			}
 			else if (gameObject.tag == "Right_Clam")
 			{
 				scoreKeeperScript.IncrementRightScore ();
+
+				clamSprite.material.color = rightScoredColor;
 			}
 
 			animator.SetTrigger("scored");
@@ -73,10 +83,14 @@ public class scoring_zone_behaviour : MonoBehaviour {
 				if (gameObject.tag == "Left_Clam")
 				{
 					scoreKeeperScript.IncrementLeftScore();
+
+					clamSprite.material.color = leftScoredColor;
 				}
 				else if (gameObject.tag == "Right_Clam")
 				{
 					scoreKeeperScript.IncrementRightScore ();
+
+					clamSprite.material.color = rightScoredColor;
 				}
 
 				animator.SetTrigger("scored");
