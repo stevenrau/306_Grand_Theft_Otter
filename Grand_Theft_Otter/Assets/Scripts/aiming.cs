@@ -60,21 +60,25 @@ public class aiming : MonoBehaviour {
 
 			if (inputScript.PlatformIsPC ()) {
 				throwAngle = ((Mathf.Atan2 (y, x) * Mathf.Rad2Deg) * -1) - 180;	// for PC
-			} else {
+			}
+			else {
 				throwAngle = ((Mathf.Atan2 (y, x) * Mathf.Rad2Deg) - 90);			// for MAC
 			}
-
-			playerStateScript.SetAimingAngle(throwAngle);
 
 			//point the aiming guide in the direction 
 			pearlOffset.transform.rotation = Quaternion.AngleAxis (throwAngle, Vector3.forward);
 		} 
 
-		//not aiming, do not show aiming guide on pearl offset
 		else {
+			//not aiming, do not show aiming guide on pearl offset, next trow will be in facing dir
 			anim.SetBool ("Aiming", false);
-
+			throwAngle = playerStateScript.GetFacingAngle();
 		}
+
+		playerStateScript.SetAimingAngle (throwAngle);
+
+
+	
 	}
 
 	public float GetThrowAngle() {
