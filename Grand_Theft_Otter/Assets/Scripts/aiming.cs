@@ -20,14 +20,14 @@ public class aiming : MonoBehaviour {
 	//the script that listens for input from the right analog stick
 	get_input inputScript;
 	player_state playerStateScript;
-
+	moving movingScript;
 
 
 	// Use this for initialization
 	void Start () {
 		inputScript = gameObject.GetComponent<get_input>();
 		playerStateScript = gameObject.GetComponent<player_state>();
-
+		movingScript = gameObject.GetComponent<moving>();
 		pearlOffset = transform.GetChild(0).gameObject;
 
 		pearlRenderer = pearlOffset.GetComponent<SpriteRenderer>();
@@ -72,7 +72,13 @@ public class aiming : MonoBehaviour {
 		else {
 			//not aiming, do not show aiming guide on pearl offset, next trow will be in facing dir
 			anim.SetBool ("Aiming", false);
-			throwAngle = playerStateScript.GetFacingAngle();
+
+			if(movingScript.GetFacingRight()){
+			throwAngle = playerStateScript.GetFacingAngle() - 90;
+			}
+			else{
+				throwAngle = playerStateScript.GetFacingAngle() + 90;
+			}
 		}
 
 		playerStateScript.SetAimingAngle (throwAngle);
